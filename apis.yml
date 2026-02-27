@@ -1,0 +1,114 @@
+name: Pluralsight
+description: APIs for the Pluralsight technology skills platform, providing access to courses, learning paths, assessments, and user progress data.
+image: https://www.pluralsight.com/content/dam/pluralsight2/general/headers/logo.png
+url: https://www.pluralsight.com
+created: '2024'
+modified: '2024'
+tags:
+- education
+- learning
+- technology
+- courses
+- skills assessment
+- video training
+apis:
+- name: Pluralsight Course API
+  description: Access course catalog information including titles, descriptions, authors, and metadata
+  image: https://www.pluralsight.com/content/dam/pluralsight2/general/headers/logo.png
+  humanURL: https://www.pluralsight.com/product/professional/courses
+  baseURL: https://api.pluralsight.com/v1
+  tags:
+  - courses
+  - catalog
+  - content
+  properties:
+  - type: documentation
+    url: https://developer.pluralsight.com/docs/courses
+  - type: openapi
+    url: https://api.pluralsight.com/openapi/courses.yaml
+  - type: authentication
+    url: https://developer.pluralsight.com/docs/authentication
+  contact:
+  - FN: Pluralsight API Support
+    email: api-support@pluralsight.com
+    url: https://help.pluralsight.com
+- name: Pluralsight User Progress API
+  description: Track and retrieve user learning progress, completion status, and viewing history
+  image: https://www.pluralsight.com/content/dam/pluralsight2/general/headers/logo.png
+  humanURL: https://www.pluralsight.com
+  baseURL: https://api.pluralsight.com/v1
+  tags:
+  - progress
+  - analytics
+  - user data
+  properties:
+  - type: documentation
+    url: https://developer.pluralsight.com/docs/progress
+  - type: openapi
+    url: https://api.pluralsight.com/openapi/progress.yaml
+  - type: authentication
+    url: https://developer.pluralsight.com/docs/authentication
+  contact:
+  - FN: Pluralsight API Support
+    email: api-support@pluralsight.com
+- name: Pluralsight Skills Assessment API
+  description: Access skill assessments, Skill IQ scores, and competency measurements
+  image: https://www.pluralsight.com/content/dam/pluralsight2/general/headers/logo.png
+  humanURL: https://www.pluralsight.com/product/skills
+  baseURL: https://api.pluralsight.com/v1
+  tags:
+  - assessments
+  - skills
+  - IQ scores
+  - analytics
+  properties:
+  - type: documentation
+    url: https://developer.pluralsight.com/docs/assessments
+  - type: openapi
+    url: https://api.pluralsight.com/openapi/assessments.yaml
+  - type: authentication
+    url: https://developer.pluralsight.com/docs/authentication
+  contact:
+  - FN: Pluralsight API Support
+    email: api-support@pluralsight.com
+- name: Pluralsight Analytics API
+  description: Access learning analytics, team performance metrics, and usage statistics
+  image: https://www.pluralsight.com/content/dam/pluralsight2/general/headers/logo.png
+  humanURL: https://www.pluralsight.com/product/insights
+  baseURL: https://api.pluralsight.com/v1
+  tags:
+  - analytics
+  - reporting
+  - metrics
+  - teams
+  properties:
+  - type: documentation
+    url: https://developer.pluralsight.com/docs/analytics
+  - type: openapi
+    url: https://api.pluralsight.com/openapi/analytics.yaml
+  - type: authentication
+    url: https://developer.pluralsight.com/docs/authentication
+  contact:
+  - FN: Pluralsight API Support
+    email: api-support@pluralsight.com
+common:
+- type: getting-started
+  url: https://developer.pluralsight.com/getting-started
+- type: authentication
+  url: https://developer.pluralsight.com/docs/authentication
+- type: rate-limits
+  url: https://developer.pluralsight.com/docs/rate-limits
+- type: terms-of-service
+  url: https://www.pluralsight.com/terms
+- type: privacy-policy
+  url: https://www.pluralsight.com/privacy
+- type: support
+  url: https://help.pluralsight.com
+- type: status
+  url: https://status.pluralsight.com
+- type: blog
+  url: https://www.pluralsight.com/blog
+maintainers:
+- FN: Pluralsight Developer Relations
+  email: developer-relations@pluralsight.com
+  url: https://developer.pluralsight.com
