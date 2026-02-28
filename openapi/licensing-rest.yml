@@ -1,0 +1,136 @@
+openapi: 3.1.0
+info:
+  title: Pluralsight Licensing REST API
+  description: Legacy REST API for managing user invitations, users, and teams within a plan. Deprecated as of February 2025, removal scheduled for November 2025.
+  version: 1.0.0
+  contact:
+    name: Pluralsight API Support
+    email: support@pluralsight.com
+    url: https://help.pluralsight.com
+  license:
+    name: Proprietary
+    url: https://www.pluralsight.com/terms
+servers:
+  - url: https://app.pluralsight.com/plans/api/license/v1
+    description: Production
+externalDocs:
+  description: Migration Guide - REST to GraphQL
+  url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+tags:
+  - name: Licensing
+    description: License management operations (deprecated)
+paths:
+  /invitations:
+    get:
+      summary: List Invitations
+      description: Retrieve a list of pending user invitations. Deprecated - migrate to GraphQL User Management API.
+      operationId: listInvitations
+      deprecated: true
+      tags:
+        - Licensing
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response with invitation data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                    description: Invitation records
+        '401':
+          description: Unauthorized - Invalid or missing authentication token
+        '429':
+          description: Too Many Requests - Rate limit exceeded
+    post:
+      summary: Create Invitation
+      description: Send a new user invitation. Deprecated - migrate to GraphQL User Management API.
+      operationId: createInvitation
+      deprecated: true
+      tags:
+        - Licensing
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Invitation details
+      responses:
+        '201':
+          description: Invitation created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized - Invalid or missing authentication token
+        '429':
+          description: Too Many Requests - Rate limit exceeded
+  /users:
+    get:
+      summary: List Users
+      description: Retrieve a list of users in the plan. Deprecated - migrate to GraphQL User Management API.
+      operationId: listUsers
+      deprecated: true
+      tags:
+        - Licensing
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response with user data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                    description: User records
+        '401':
+          description: Unauthorized - Invalid or missing authentication token
+        '429':
+          description: Too Many Requests - Rate limit exceeded
+  /teams:
+    get:
+      summary: List Teams
+      description: Retrieve a list of teams in the plan. Deprecated - migrate to GraphQL Teams API.
+      operationId: listTeams
+      deprecated: true
+      tags:
+        - Licensing
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response with team data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                    description: Team records
+        '401':
+          description: Unauthorized - Invalid or missing authentication token
+        '429':
+          description: Too Many Requests - Rate limit exceeded
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

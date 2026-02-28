@@ -1,0 +1,65 @@
+openapi: 3.1.0
+info:
+  title: Pluralsight Flow DORA Metrics API
+  description: REST API for accessing DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service.
+  version: 1.0.0
+  contact:
+    name: Pluralsight API Support
+    email: support@pluralsight.com
+    url: https://help.pluralsight.com
+  license:
+    name: Proprietary
+    url: https://www.pluralsight.com/terms
+servers:
+  - url: https://flow-api.pluralsight.com
+    description: Production
+externalDocs:
+  description: DORA Metrics API Documentation
+  url: https://help.pluralsight.com/hc/en-us/articles/27573677812884-DORA-metrics-API
+tags:
+  - name: DORA Metrics
+    description: DORA engineering metrics operations
+paths:
+  /dora/build-release:
+    get:
+      summary: Get DORA Metrics
+      description: Retrieve DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service.
+      operationId: getDoraMetrics
+      tags:
+        - DORA Metrics
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date for the metrics period
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date for the metrics period
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response with DORA metrics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: DORA metrics data
+        '401':
+          description: Unauthorized - Invalid or missing authentication token
+        '429':
+          description: Too Many Requests - Rate limit exceeded
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

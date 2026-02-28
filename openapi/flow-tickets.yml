@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: Pluralsight Flow Tickets API
+  description: REST API for accessing ticket data including comments, events, and project associations from connected project management tools.
+  version: 1.0.0
+  contact:
+    name: Pluralsight API Support
+    email: support@pluralsight.com
+    url: https://help.pluralsight.com
+  license:
+    name: Proprietary
+    url: https://www.pluralsight.com/terms
+servers:
+  - url: https://{workspace}.appfireflow.com/v3/customer/core
+    description: Production
+    variables:
+      workspace:
+        description: Your Flow workspace identifier
+        default: your-workspace
+externalDocs:
+  description: Customer API References
+  url: https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references
+tags:
+  - name: Tickets
+    description: Ticket data operations
+paths:
+  /tickets:
+    get:
+      summary: Get Tickets
+      description: Retrieve ticket data including comments, events, and project associations from connected project management tools.
+      operationId: getTickets
+      tags:
+        - Tickets
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date for the query period
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date for the query period
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response with ticket data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                    description: Ticket records
+        '401':
+          description: Unauthorized - Invalid or missing authentication token
+        '429':
+          description: Too Many Requests - Rate limit exceeded
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
