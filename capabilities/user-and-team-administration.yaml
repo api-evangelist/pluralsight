@@ -1,0 +1,341 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight User And Team Administration"
+  description: "Unified workflow for platform administrators to manage users, teams, licensing, plan configuration, and Flow workspace settings. Combines user management, teams, licensing, plan info, Flow users, Flow teams, Flow integrations, and Flow repos APIs."
+  tags:
+    - Pluralsight
+    - User Management
+    - Team Administration
+    - Platform Administration
+    - Licensing
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_BEARER_TOKEN: PLURALSIGHT_BEARER_TOKEN
+      PLURALSIGHT_FLOW_BEARER_TOKEN: PLURALSIGHT_FLOW_BEARER_TOKEN
+      PLURALSIGHT_FLOW_WORKSPACE: PLURALSIGHT_FLOW_WORKSPACE
+
+capability:
+  consumes:
+    - import: pluralsight-user-management
+      location: ./shared/user-management.yaml
+    - import: pluralsight-teams
+      location: ./shared/teams.yaml
+    - import: pluralsight-licensing-rest
+      location: ./shared/licensing-rest.yaml
+    - import: pluralsight-plan-info
+      location: ./shared/plan-info.yaml
+    - import: pluralsight-flow-users
+      location: ./shared/flow-users.yaml
+    - import: pluralsight-flow-teams
+      location: ./shared/flow-teams.yaml
+    - import: pluralsight-flow-integrations
+      location: ./shared/flow-integrations.yaml
+    - import: pluralsight-flow-repos
+      location: ./shared/flow-repos.yaml
+
+  exposes:
+    - type: rest
+      port: 8083
+      namespace: user-team-admin-api
+      description: "Unified REST API for Pluralsight user and team administration across Skills and Flow platforms."
+      resources:
+        - path: /v1/users
+          name: users
+          description: "User management including listing, inviting, editing, and removing users"
+          operations:
+            - method: POST
+              name: manage-users
+              description: "Query and manage users via GraphQL"
+              call: "pluralsight-user-management.manage-users"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/teams
+          name: teams
+          description: "Team management including creating teams, managing membership, and permissions"
+          operations:
+            - method: POST
+              name: manage-teams
+              description: "Query and manage teams via GraphQL"
+              call: "pluralsight-teams.manage-teams"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/invitations
+          name: invitations
+          description: "User invitation management (legacy REST, deprecated)"
+          operations:
+            - method: GET
+              name: list-invitations
+              description: "List pending user invitations"
+              call: "pluralsight-licensing-rest.list-invitations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-invitation
+              description: "Create a new user invitation"
+              call: "pluralsight-licensing-rest.create-invitation"
+              with:
+                payload: "rest.payload"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/license-users
+          name: license-users
+          description: "Plan user listing (legacy REST, deprecated)"
+          operations:
+            - method: GET
+              name: list-license-users
+              description: "List users in the plan"
+              call: "pluralsight-licensing-rest.list-license-users"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/license-teams
+          name: license-teams
+          description: "Plan team listing (legacy REST, deprecated)"
+          operations:
+            - method: GET
+              name: list-license-teams
+              description: "List teams in the plan"
+              call: "pluralsight-licensing-rest.list-license-teams"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/plan-info
+          name: plan-info
+          description: "Account and plan details including subscription tier"
+          operations:
+            - method: POST
+              name: query-plan-info
+              description: "Retrieve account and plan details"
+              call: "pluralsight-plan-info.query-plan-info"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/flow-users
+          name: flow-users
+          description: "Flow workspace user management"
+          operations:
+            - method: GET
+              name: list-flow-users
+              description: "List Flow workspace users"
+              call: "pluralsight-flow-users.list-flow-users"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-flow-users
+              description: "Update Flow user accounts"
+              call: "pluralsight-flow-users.update-flow-users"
+              with:
+                payload: "rest.payload"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/flow-teams
+          name: flow-teams
+          description: "Flow engineering team management"
+          operations:
+            - method: GET
+              name: list-flow-teams
+              description: "List Flow engineering teams"
+              call: "pluralsight-flow-teams.list-flow-teams"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/integrations
+          name: integrations
+          description: "Flow integration management and connection status"
+          operations:
+            - method: GET
+              name: list-integrations
+              description: "List Flow integrations and connection status"
+              call: "pluralsight-flow-integrations.list-integrations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/repositories
+          name: repositories
+          description: "Connected repository data and metadata"
+          operations:
+            - method: GET
+              name: get-repos
+              description: "Retrieve repository data and metadata"
+              call: "pluralsight-flow-repos.get-repos"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9093
+      namespace: user-team-admin-mcp
+      transport: http
+      description: "MCP server for AI-assisted user and team administration across Pluralsight Skills and Flow platforms."
+      tools:
+        - name: manage-users
+          description: "Query and manage users including listing users, inviting members, editing user details, removing users, and canceling invitations."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "pluralsight-user-management.manage-users"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: manage-teams
+          description: "Query and manage teams including creating teams, managing membership, assigning managers, and configuring team permissions."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "pluralsight-teams.manage-teams"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-invitations
+          description: "List pending user invitations. Deprecated - migrate to GraphQL User Management API."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-licensing-rest.list-invitations"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-invitation
+          description: "Send a new user invitation. Deprecated - migrate to GraphQL User Management API."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "pluralsight-licensing-rest.create-invitation"
+          with:
+            payload: "tools.payload"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-license-users
+          description: "List users in the plan. Deprecated - migrate to GraphQL User Management API."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-licensing-rest.list-license-users"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-license-teams
+          description: "List teams in the plan. Deprecated - migrate to GraphQL Teams API."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-licensing-rest.list-license-teams"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-plan-info
+          description: "Retrieve account and plan details including subscription tier and configuration."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-plan-info.query-plan-info"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-flow-users
+          description: "List Flow users in the workspace."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-flow-users.list-flow-users"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-flow-users
+          description: "Update, merge, hide, or perform bulk operations on Flow user accounts."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-flow-users.update-flow-users"
+          with:
+            payload: "tools.payload"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-flow-teams
+          description: "List Flow engineering teams and team membership data."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-flow-teams.list-flow-teams"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-integrations
+          description: "List Flow integrations and check connection status with external tools and services."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-flow-integrations.list-integrations"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-repos
+          description: "Retrieve repository data and metadata across connected source control systems."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-flow-repos.get-repos"
+          outputParameters:
+            - type: object
+              mapping: "$."

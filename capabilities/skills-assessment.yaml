@@ -1,0 +1,131 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight Skills Assessment"
+  description: "Unified workflow for L&D managers and developers to assess skills through Skill IQ, Role IQ, and practice exams. Combines skills assessment, role IQ, and practice exams APIs for comprehensive competency measurement."
+  tags:
+    - Pluralsight
+    - Skills Assessment
+    - Skill IQ
+    - Role IQ
+    - Practice Exams
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_BEARER_TOKEN: PLURALSIGHT_BEARER_TOKEN
+
+capability:
+  consumes:
+    - import: pluralsight-skills-assessment
+      location: ./shared/skills-assessment.yaml
+    - import: pluralsight-role-iq
+      location: ./shared/role-iq.yaml
+    - import: pluralsight-practice-exams
+      location: ./shared/practice-exams.yaml
+
+  exposes:
+    - type: rest
+      port: 8081
+      namespace: skills-assessment-api
+      description: "Unified REST API for Pluralsight skills assessment including Skill IQ, Role IQ, and practice exams."
+      resources:
+        - path: /v1/skills-assessments
+          name: skills-assessments
+          description: "Skill IQ assessments, scores, and competency measurements"
+          operations:
+            - method: POST
+              name: query-skills-assessment
+              description: "Query skill assessments and Skill IQ scores"
+              call: "pluralsight-skills-assessment.query-skills-assessment"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/role-iq
+          name: role-iq
+          description: "Role IQ assessments, role catalogs, and skill assignments"
+          operations:
+            - method: POST
+              name: manage-role-iq
+              description: "Query and manage Role IQ assessments and role associations"
+              call: "pluralsight-role-iq.manage-role-iq"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/practice-exams
+          name: practice-exams
+          description: "Practice exam attempts, scores, and results"
+          operations:
+            - method: POST
+              name: query-practice-exams
+              description: "Query practice exam attempt data and results"
+              call: "pluralsight-practice-exams.query-practice-exams"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9091
+      namespace: skills-assessment-mcp
+      transport: http
+      description: "MCP server for AI-assisted skills assessment including Skill IQ, Role IQ, and practice exams."
+      tools:
+        - name: query-skills-assessment
+          description: "Query skill assessments, Skill IQ scores, assessment catalogs, and competency measurements."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-skills-assessment.query-skills-assessment"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: manage-role-iq
+          description: "Query and manage Role IQ assessments, role catalogs, skill assignments, and user/team role associations."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "pluralsight-role-iq.manage-role-iq"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-practice-exams
+          description: "Query practice exam attempt data including scores and results."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-practice-exams.query-practice-exams"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."

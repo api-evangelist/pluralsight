@@ -1,0 +1,104 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight Course Catalog"
+  description: "GraphQL query for accessing course catalog information including titles, descriptions, authors, duration, release dates, and retirement status. Updated daily."
+  tags:
+    - Pluralsight
+    - Course Catalog
+    - Learning Content
+    - GraphQL
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_BEARER_TOKEN: PLURALSIGHT_BEARER_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: pluralsight-course-catalog
+      baseUri: https://paas-api.pluralsight.com
+      description: "GraphQL query for accessing course catalog information including titles, descriptions, authors, duration, release dates, and retirement status."
+      authentication:
+        type: bearer
+        token: "{{PLURALSIGHT_BEARER_TOKEN}}"
+      resources:
+        - name: course-catalog
+          path: /graphql
+          description: "Course catalog queries via GraphQL"
+          operations:
+            - name: query-course-catalog
+              method: POST
+              description: "Execute GraphQL queries to retrieve course catalog information including titles, descriptions, authors, duration, release dates, and retirement status."
+              inputParameters:
+                - name: query
+                  in: body
+                  type: string
+                  required: true
+                  description: "The GraphQL query string"
+                - name: variables
+                  in: body
+                  type: object
+                  required: false
+                  description: "Variables for the GraphQL query"
+                - name: operationName
+                  in: body
+                  type: string
+                  required: false
+                  description: "Name of the operation to execute"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  query: "{{tools.query}}"
+                  variables: "{{tools.variables}}"
+                  operationName: "{{tools.operationName}}"
+
+  exposes:
+    - type: rest
+      port: 8104
+      namespace: pluralsight-course-catalog-api
+      resources:
+        - path: /v1/course-catalog
+          name: course-catalog
+          description: "Query course catalog"
+          operations:
+            - method: POST
+              name: query-course-catalog
+              description: "Query course catalog information"
+              call: "pluralsight-course-catalog.query-course-catalog"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9104
+      namespace: pluralsight-course-catalog-mcp
+      transport: http
+      tools:
+        - name: query-course-catalog
+          description: "Query course catalog information including titles, descriptions, authors, duration, release dates, and retirement status."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-course-catalog.query-course-catalog"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."

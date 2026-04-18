@@ -1,0 +1,316 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight Learning Content Management"
+  description: "Unified workflow for L&D managers and content administrators to browse, organize, and manage learning content across courses, channels, learning paths, programs, labs, and tags. Combines content catalog, course catalog, public catalog, channels, learning paths, programs, labs, content slugs, and tags APIs."
+  tags:
+    - Pluralsight
+    - Learning Content
+    - Content Management
+    - Courses
+    - Channels
+    - Learning Paths
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_BEARER_TOKEN: PLURALSIGHT_BEARER_TOKEN
+
+capability:
+  consumes:
+    - import: pluralsight-content-catalog
+      location: ./shared/content-catalog.yaml
+    - import: pluralsight-content-slug
+      location: ./shared/content-slug.yaml
+    - import: pluralsight-course-catalog
+      location: ./shared/course-catalog.yaml
+    - import: pluralsight-public-course-catalog
+      location: ./shared/public-course-catalog-rest.yaml
+    - import: pluralsight-channels
+      location: ./shared/channels.yaml
+    - import: pluralsight-learning-paths
+      location: ./shared/learning-paths.yaml
+    - import: pluralsight-programs
+      location: ./shared/programs.yaml
+    - import: pluralsight-labs
+      location: ./shared/labs.yaml
+    - import: pluralsight-tags
+      location: ./shared/tags.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: learning-content-api
+      description: "Unified REST API for browsing and managing Pluralsight learning content across all content types."
+      resources:
+        - path: /v1/content-catalog
+          name: content-catalog
+          description: "General content catalog including videos, guides, and interactive courses"
+          operations:
+            - method: POST
+              name: query-content-catalog
+              description: "Query the general content catalog"
+              call: "pluralsight-content-catalog.query-content-catalog"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/content-slugs
+          name: content-slugs
+          description: "Resolve content slugs to internal identifiers"
+          operations:
+            - method: POST
+              name: query-content-slugs
+              description: "Resolve content slugs to internal identifiers"
+              call: "pluralsight-content-slug.query-content-slugs"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/course-catalog
+          name: course-catalog
+          description: "Course catalog with titles, descriptions, authors, and metadata"
+          operations:
+            - method: POST
+              name: query-course-catalog
+              description: "Query the course catalog"
+              call: "pluralsight-course-catalog.query-course-catalog"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/public-courses
+          name: public-courses
+          description: "Public course catalog accessible without authentication"
+          operations:
+            - method: GET
+              name: get-public-course-catalog
+              description: "Retrieve the full public course catalog"
+              call: "pluralsight-public-course-catalog.get-public-course-catalog"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/channels
+          name: channels
+          description: "Content channels for organizing and curating learning content"
+          operations:
+            - method: POST
+              name: manage-channels
+              description: "Query and manage content channels"
+              call: "pluralsight-channels.manage-channels"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/learning-paths
+          name: learning-paths
+          description: "Structured sequences of courses organized around skills and roles"
+          operations:
+            - method: POST
+              name: query-learning-paths
+              description: "Query learning path catalog data"
+              call: "pluralsight-learning-paths.query-learning-paths"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/programs
+          name: programs
+          description: "Structured learning programs and curriculum offerings"
+          operations:
+            - method: POST
+              name: query-programs
+              description: "Query the program catalog"
+              call: "pluralsight-programs.query-programs"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/labs
+          name: labs
+          description: "Hands-on labs and practical exercises"
+          operations:
+            - method: POST
+              name: query-labs
+              description: "Query lab catalog and activity data"
+              call: "pluralsight-labs.query-labs"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/tags
+          name: tags
+          description: "Content tags and taxonomy for categorization"
+          operations:
+            - method: POST
+              name: query-tags
+              description: "Query content tags and taxonomy data"
+              call: "pluralsight-tags.query-tags"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: learning-content-mcp
+      transport: http
+      description: "MCP server for AI-assisted learning content management across all Pluralsight content types."
+      tools:
+        - name: query-content-catalog
+          description: "Query the general content catalog including videos, guides, interactive courses, and other content types."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-content-catalog.query-content-catalog"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-content-slugs
+          description: "Resolve content slugs to internal identifiers for content lookup by human-readable URL slugs."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-content-slug.query-content-slugs"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-course-catalog
+          description: "Query course catalog information including titles, descriptions, authors, duration, release dates, and retirement status."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-course-catalog.query-course-catalog"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-public-course-catalog
+          description: "Retrieve the full public course catalog including course IDs, titles, durations, release dates, and retirement status."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-public-course-catalog.get-public-course-catalog"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: manage-channels
+          description: "Query and manage content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "pluralsight-channels.manage-channels"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-learning-paths
+          description: "Query learning path catalog data including structured sequences of courses and content organized around specific skills and roles."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-learning-paths.query-learning-paths"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-programs
+          description: "Query the program catalog including structured learning programs and curriculum offerings."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-programs.query-programs"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-labs
+          description: "Query lab catalog and lab activity data for hands-on learning experiences and practical exercises."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-labs.query-labs"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-tags
+          description: "Query content tags and taxonomy data used to categorize and organize learning content."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-tags.query-tags"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,75 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight Flow Repos"
+  description: "REST API for accessing repository data and metadata across connected source control systems."
+  tags:
+    - Pluralsight
+    - Flow
+    - Repositories
+    - Source Control
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_FLOW_BEARER_TOKEN: PLURALSIGHT_FLOW_BEARER_TOKEN
+      PLURALSIGHT_FLOW_WORKSPACE: PLURALSIGHT_FLOW_WORKSPACE
+
+capability:
+  consumes:
+    - type: http
+      namespace: pluralsight-flow-repos
+      baseUri: https://{{PLURALSIGHT_FLOW_WORKSPACE}}.appfireflow.com/v3/customer/core
+      description: "REST API for accessing repository data and metadata across connected source control systems."
+      authentication:
+        type: bearer
+        token: "{{PLURALSIGHT_FLOW_BEARER_TOKEN}}"
+      resources:
+        - name: repos
+          path: /repos
+          description: "Repository data and metadata"
+          operations:
+            - name: get-repos
+              method: GET
+              description: "Retrieve repository data and metadata across connected source control systems."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8113
+      namespace: pluralsight-flow-repos-api
+      resources:
+        - path: /v1/repositories
+          name: repositories
+          description: "Access repository data"
+          operations:
+            - method: GET
+              name: get-repos
+              description: "Retrieve repository data and metadata"
+              call: "pluralsight-flow-repos.get-repos"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9113
+      namespace: pluralsight-flow-repos-mcp
+      transport: http
+      tools:
+        - name: get-repos
+          description: "Retrieve repository data and metadata across connected source control systems."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-flow-repos.get-repos"
+          outputParameters:
+            - type: object
+              mapping: "$."

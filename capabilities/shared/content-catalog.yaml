@@ -1,0 +1,104 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight Content Catalog"
+  description: "GraphQL query for accessing the general content catalog including videos, guides, interactive courses, and other content types beyond traditional courses."
+  tags:
+    - Pluralsight
+    - Content Catalog
+    - Learning Content
+    - GraphQL
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_BEARER_TOKEN: PLURALSIGHT_BEARER_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: pluralsight-content-catalog
+      baseUri: https://paas-api.pluralsight.com
+      description: "GraphQL query for accessing the general content catalog including videos, guides, interactive courses, and other content types."
+      authentication:
+        type: bearer
+        token: "{{PLURALSIGHT_BEARER_TOKEN}}"
+      resources:
+        - name: content-catalog
+          path: /graphql
+          description: "Content catalog queries via GraphQL"
+          operations:
+            - name: query-content-catalog
+              method: POST
+              description: "Execute GraphQL queries to retrieve the general content catalog including videos, guides, interactive courses, and other content types."
+              inputParameters:
+                - name: query
+                  in: body
+                  type: string
+                  required: true
+                  description: "The GraphQL query string"
+                - name: variables
+                  in: body
+                  type: object
+                  required: false
+                  description: "Variables for the GraphQL query"
+                - name: operationName
+                  in: body
+                  type: string
+                  required: false
+                  description: "Name of the operation to execute"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  query: "{{tools.query}}"
+                  variables: "{{tools.variables}}"
+                  operationName: "{{tools.operationName}}"
+
+  exposes:
+    - type: rest
+      port: 8101
+      namespace: pluralsight-content-catalog-api
+      resources:
+        - path: /v1/content-catalog
+          name: content-catalog
+          description: "Query content catalog"
+          operations:
+            - method: POST
+              name: query-content-catalog
+              description: "Query the general content catalog"
+              call: "pluralsight-content-catalog.query-content-catalog"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9101
+      namespace: pluralsight-content-catalog-mcp
+      transport: http
+      tools:
+        - name: query-content-catalog
+          description: "Query the general content catalog including videos, guides, interactive courses, and other content types."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-content-catalog.query-content-catalog"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."

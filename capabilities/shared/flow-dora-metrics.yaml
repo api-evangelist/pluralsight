@@ -1,0 +1,91 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight Flow DORA Metrics"
+  description: "REST API for accessing DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service."
+  tags:
+    - Pluralsight
+    - Flow
+    - DORA Metrics
+    - Engineering Productivity
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_FLOW_BEARER_TOKEN: PLURALSIGHT_FLOW_BEARER_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: pluralsight-flow-dora-metrics
+      baseUri: https://flow-api.pluralsight.com
+      description: "REST API for accessing DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service."
+      authentication:
+        type: bearer
+        token: "{{PLURALSIGHT_FLOW_BEARER_TOKEN}}"
+      resources:
+        - name: dora-metrics
+          path: /dora/build-release
+          description: "DORA engineering metrics"
+          operations:
+            - name: get-dora-metrics
+              method: GET
+              description: "Retrieve DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service."
+              inputParameters:
+                - name: start_date
+                  in: query
+                  type: string
+                  required: false
+                  description: "Start date for the metrics period"
+                - name: end_date
+                  in: query
+                  type: string
+                  required: false
+                  description: "End date for the metrics period"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8110
+      namespace: pluralsight-flow-dora-metrics-api
+      resources:
+        - path: /v1/dora-metrics
+          name: dora-metrics
+          description: "Access DORA metrics"
+          operations:
+            - method: GET
+              name: get-dora-metrics
+              description: "Retrieve DORA engineering metrics"
+              call: "pluralsight-flow-dora-metrics.get-dora-metrics"
+              with:
+                start_date: "rest.start_date"
+                end_date: "rest.end_date"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9110
+      namespace: pluralsight-flow-dora-metrics-mcp
+      transport: http
+      tools:
+        - name: get-dora-metrics
+          description: "Retrieve DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-flow-dora-metrics.get-dora-metrics"
+          with:
+            start_date: "tools.start_date"
+            end_date: "tools.end_date"
+          outputParameters:
+            - type: object
+              mapping: "$."

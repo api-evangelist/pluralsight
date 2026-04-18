@@ -1,0 +1,104 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight Teams"
+  description: "GraphQL queries and mutations for managing teams including creating teams, managing membership, assigning managers, and configuring team permissions."
+  tags:
+    - Pluralsight
+    - Teams
+    - Team Management
+    - GraphQL
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_BEARER_TOKEN: PLURALSIGHT_BEARER_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: pluralsight-teams
+      baseUri: https://paas-api.pluralsight.com
+      description: "GraphQL queries and mutations for managing teams including creating teams, managing membership, assigning managers, and configuring team permissions."
+      authentication:
+        type: bearer
+        token: "{{PLURALSIGHT_BEARER_TOKEN}}"
+      resources:
+        - name: teams
+          path: /graphql
+          description: "Team management via GraphQL"
+          operations:
+            - name: manage-teams
+              method: POST
+              description: "Execute GraphQL queries and mutations for managing teams including creating teams, managing membership, assigning managers, and configuring team permissions."
+              inputParameters:
+                - name: query
+                  in: body
+                  type: string
+                  required: true
+                  description: "The GraphQL query string"
+                - name: variables
+                  in: body
+                  type: object
+                  required: false
+                  description: "Variables for the GraphQL query"
+                - name: operationName
+                  in: body
+                  type: string
+                  required: false
+                  description: "Name of the operation to execute"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  query: "{{tools.query}}"
+                  variables: "{{tools.variables}}"
+                  operationName: "{{tools.operationName}}"
+
+  exposes:
+    - type: rest
+      port: 8128
+      namespace: pluralsight-teams-api
+      resources:
+        - path: /v1/teams
+          name: teams
+          description: "Manage teams"
+          operations:
+            - method: POST
+              name: manage-teams
+              description: "Query and manage teams"
+              call: "pluralsight-teams.manage-teams"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9128
+      namespace: pluralsight-teams-mcp
+      transport: http
+      tools:
+        - name: manage-teams
+          description: "Query and manage teams including creating teams, managing membership, assigning managers, and configuring team permissions."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "pluralsight-teams.manage-teams"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."

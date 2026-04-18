@@ -1,0 +1,199 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight Reporting And Analytics"
+  description: "Unified workflow for L&D managers to track learning progress, course completions, daily usage patterns, and generate reports. Combines content progress, course progress, course daily usage, and reports REST APIs."
+  tags:
+    - Pluralsight
+    - Reporting
+    - Analytics
+    - Learning Progress
+    - Course Completion
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_BEARER_TOKEN: PLURALSIGHT_BEARER_TOKEN
+
+capability:
+  consumes:
+    - import: pluralsight-content-progress
+      location: ./shared/content-progress.yaml
+    - import: pluralsight-course-progress
+      location: ./shared/course-progress.yaml
+    - import: pluralsight-course-daily-usage
+      location: ./shared/course-daily-usage.yaml
+    - import: pluralsight-reports-rest
+      location: ./shared/reports-rest.yaml
+
+  exposes:
+    - type: rest
+      port: 8084
+      namespace: reporting-analytics-api
+      description: "Unified REST API for Pluralsight reporting and analytics including learning progress, course completions, usage, and legacy reports."
+      resources:
+        - path: /v1/content-progress
+          name: content-progress
+          description: "User progress across all content types including videos, guides, paths, and projects"
+          operations:
+            - method: POST
+              name: query-content-progress
+              description: "Track user progress across all content types"
+              call: "pluralsight-content-progress.query-content-progress"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/course-progress
+          name: course-progress
+          description: "User course progress including completion status and viewing history"
+          operations:
+            - method: POST
+              name: query-course-progress
+              description: "Track user course progress and completion status"
+              call: "pluralsight-course-progress.query-course-progress"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/course-daily-usage
+          name: course-daily-usage
+          description: "Daily course engagement metrics and usage statistics"
+          operations:
+            - method: POST
+              name: query-course-daily-usage
+              description: "Retrieve daily course engagement metrics"
+              call: "pluralsight-course-daily-usage.query-course-daily-usage"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/user-reports
+          name: user-reports
+          description: "User reports as CSV downloads (legacy REST, deprecated)"
+          operations:
+            - method: GET
+              name: download-user-report
+              description: "Download a user report as CSV"
+              call: "pluralsight-reports-rest.download-user-report"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/course-completion-reports
+          name: course-completion-reports
+          description: "Course completion reports as CSV downloads (legacy REST, deprecated)"
+          operations:
+            - method: GET
+              name: download-course-completion-report
+              description: "Download a course completion report as CSV"
+              call: "pluralsight-reports-rest.download-course-completion-report"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/course-usage-reports
+          name: course-usage-reports
+          description: "Course usage reports as CSV downloads (legacy REST, deprecated)"
+          operations:
+            - method: GET
+              name: download-course-usage-report
+              description: "Download a course usage report as CSV"
+              call: "pluralsight-reports-rest.download-course-usage-report"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9094
+      namespace: reporting-analytics-mcp
+      transport: http
+      description: "MCP server for AI-assisted reporting and analytics across learning progress, course completions, and usage data."
+      tools:
+        - name: query-content-progress
+          description: "Track user progress across all content types including videos, guides, paths, interactive courses, and projects."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-content-progress.query-content-progress"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-course-progress
+          description: "Track user course progress including completion status and viewing history for video courses."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-course-progress.query-course-progress"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-course-daily-usage
+          description: "Retrieve daily course engagement metrics and usage statistics."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-course-daily-usage.query-course-daily-usage"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: download-user-report
+          description: "Download a user report as CSV. Deprecated - migrate to GraphQL."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-reports-rest.download-user-report"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: download-course-completion-report
+          description: "Download a course completion report as CSV. Deprecated - migrate to GraphQL."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-reports-rest.download-course-completion-report"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: download-course-usage-report
+          description: "Download a course usage report as CSV. Deprecated - migrate to GraphQL."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-reports-rest.download-course-usage-report"
+          outputParameters:
+            - type: object
+              mapping: "$."

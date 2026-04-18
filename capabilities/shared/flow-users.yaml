@@ -1,0 +1,109 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight Flow Users"
+  description: "REST API for managing Flow users including listing, updating, merging, hiding, and bulk operations on user accounts."
+  tags:
+    - Pluralsight
+    - Flow
+    - Users
+    - User Management
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_FLOW_BEARER_TOKEN: PLURALSIGHT_FLOW_BEARER_TOKEN
+      PLURALSIGHT_FLOW_WORKSPACE: PLURALSIGHT_FLOW_WORKSPACE
+
+capability:
+  consumes:
+    - type: http
+      namespace: pluralsight-flow-users
+      baseUri: https://{{PLURALSIGHT_FLOW_WORKSPACE}}.appfireflow.com/v3/customer/core
+      description: "REST API for managing Flow users including listing, updating, merging, hiding, and bulk operations on user accounts."
+      authentication:
+        type: bearer
+        token: "{{PLURALSIGHT_FLOW_BEARER_TOKEN}}"
+      resources:
+        - name: flow-users
+          path: /users
+          description: "Flow user management"
+          operations:
+            - name: list-flow-users
+              method: GET
+              description: "Retrieve a list of Flow users in the workspace."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-flow-users
+              method: PUT
+              description: "Update, merge, hide, or perform bulk operations on Flow user accounts."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  payload: "{{tools.payload}}"
+
+  exposes:
+    - type: rest
+      port: 8116
+      namespace: pluralsight-flow-users-api
+      resources:
+        - path: /v1/flow-users
+          name: flow-users
+          description: "Manage Flow users"
+          operations:
+            - method: GET
+              name: list-flow-users
+              description: "List Flow users"
+              call: "pluralsight-flow-users.list-flow-users"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-flow-users
+              description: "Update Flow user accounts"
+              call: "pluralsight-flow-users.update-flow-users"
+              with:
+                payload: "rest.payload"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9116
+      namespace: pluralsight-flow-users-mcp
+      transport: http
+      tools:
+        - name: list-flow-users
+          description: "List Flow users in the workspace."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-flow-users.list-flow-users"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-flow-users
+          description: "Update, merge, hide, or perform bulk operations on Flow user accounts."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-flow-users.update-flow-users"
+          with:
+            payload: "tools.payload"
+          outputParameters:
+            - type: object
+              mapping: "$."

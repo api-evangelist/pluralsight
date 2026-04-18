@@ -1,0 +1,91 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight Flow Collaboration Metrics"
+  description: "REST API for accessing pull request and collaboration metrics for engineering teams with date range filtering."
+  tags:
+    - Pluralsight
+    - Flow
+    - Collaboration Metrics
+    - Engineering Productivity
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_FLOW_BEARER_TOKEN: PLURALSIGHT_FLOW_BEARER_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: pluralsight-flow-collaboration-metrics
+      baseUri: https://api.appfireflow.com
+      description: "REST API for accessing pull request and collaboration metrics for engineering teams."
+      authentication:
+        type: bearer
+        token: "{{PLURALSIGHT_FLOW_BEARER_TOKEN}}"
+      resources:
+        - name: collaboration-metrics
+          path: /collaboration/pullrequest/metrics
+          description: "Pull request and collaboration metrics"
+          operations:
+            - name: get-collaboration-metrics
+              method: GET
+              description: "Retrieve pull request and collaboration metrics for engineering teams with date range filtering."
+              inputParameters:
+                - name: start_date
+                  in: query
+                  type: string
+                  required: false
+                  description: "Start date for the metrics period"
+                - name: end_date
+                  in: query
+                  type: string
+                  required: false
+                  description: "End date for the metrics period"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8108
+      namespace: pluralsight-flow-collaboration-metrics-api
+      resources:
+        - path: /v1/collaboration-metrics
+          name: collaboration-metrics
+          description: "Access collaboration metrics"
+          operations:
+            - method: GET
+              name: get-collaboration-metrics
+              description: "Retrieve collaboration metrics for engineering teams"
+              call: "pluralsight-flow-collaboration-metrics.get-collaboration-metrics"
+              with:
+                start_date: "rest.start_date"
+                end_date: "rest.end_date"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9108
+      namespace: pluralsight-flow-collaboration-metrics-mcp
+      transport: http
+      tools:
+        - name: get-collaboration-metrics
+          description: "Retrieve pull request and collaboration metrics for engineering teams with date range filtering."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "pluralsight-flow-collaboration-metrics.get-collaboration-metrics"
+          with:
+            start_date: "tools.start_date"
+            end_date: "tools.end_date"
+          outputParameters:
+            - type: object
+              mapping: "$."

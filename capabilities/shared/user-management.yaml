@@ -1,0 +1,104 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Pluralsight User Management"
+  description: "GraphQL queries and mutations for managing users including listing users, inviting members, editing user details, removing users, and canceling invitations."
+  tags:
+    - Pluralsight
+    - User Management
+    - Identity
+    - GraphQL
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PLURALSIGHT_BEARER_TOKEN: PLURALSIGHT_BEARER_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: pluralsight-user-management
+      baseUri: https://paas-api.pluralsight.com
+      description: "GraphQL queries and mutations for managing users including listing users, inviting members, editing user details, removing users, and canceling invitations."
+      authentication:
+        type: bearer
+        token: "{{PLURALSIGHT_BEARER_TOKEN}}"
+      resources:
+        - name: user-management
+          path: /graphql
+          description: "User management via GraphQL"
+          operations:
+            - name: manage-users
+              method: POST
+              description: "Execute GraphQL queries and mutations for managing users including listing users, inviting members, editing user details, removing users, and canceling invitations."
+              inputParameters:
+                - name: query
+                  in: body
+                  type: string
+                  required: true
+                  description: "The GraphQL query string"
+                - name: variables
+                  in: body
+                  type: object
+                  required: false
+                  description: "Variables for the GraphQL query"
+                - name: operationName
+                  in: body
+                  type: string
+                  required: false
+                  description: "Name of the operation to execute"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  query: "{{tools.query}}"
+                  variables: "{{tools.variables}}"
+                  operationName: "{{tools.operationName}}"
+
+  exposes:
+    - type: rest
+      port: 8129
+      namespace: pluralsight-user-management-api
+      resources:
+        - path: /v1/users
+          name: users
+          description: "Manage users"
+          operations:
+            - method: POST
+              name: manage-users
+              description: "Query and manage users"
+              call: "pluralsight-user-management.manage-users"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+                operationName: "rest.operationName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9129
+      namespace: pluralsight-user-management-mcp
+      transport: http
+      tools:
+        - name: manage-users
+          description: "Query and manage users including listing users, inviting members, editing user details, removing users, and canceling invitations."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "pluralsight-user-management.manage-users"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+            operationName: "tools.operationName"
+          outputParameters:
+            - type: object
+              mapping: "$."
