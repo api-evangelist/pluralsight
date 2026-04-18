@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/pluralsight/refs/heads/main/json-schema/pluralsight-labs-graph-ql-request-schema.json",
+  "title": "GraphQLRequest",
+  "description": "GraphQLRequest from Pluralsight API",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "The GraphQL query string",
+      "example": "example_value"
+    },
+    "variables": {
+      "type": "object",
+      "description": "Variables for the GraphQL query"
+    },
+    "operationName": {
+      "type": "string",
+      "description": "Name of the operation to execute",
+      "example": "Example Course"
+    }
+  },
+  "required": [
+    "query"
+  ]
+}

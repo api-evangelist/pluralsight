@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/pluralsight/refs/heads/main/json-schema/pluralsight-labs-graph-ql-response-schema.json",
+  "title": "GraphQLResponse",
+  "description": "GraphQLResponse from Pluralsight API",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "description": "The query result data"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/GraphQLError"
+      },
+      "description": "Any errors that occurred during query execution"
+    }
+  }
+}

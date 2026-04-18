@@ -1,0 +1,67 @@
+vocabulary: 1.0.0
+info:
+  provider: Pluralsight
+  description: Vocabulary for Pluralsight Skills and Flow APIs covering learning,
+    assessments, and engineering intelligence.
+  created: '2026-04-17'
+  modified: '2026-04-17'
+operational:
+  apis:
+  - name: Skills GraphQL API
+    namespace: ps-skills
+    baseUrl: https://paas-api.pluralsight.com/graphql
+    status: active
+  - name: Flow REST API
+    namespace: ps-flow
+    baseUrl: https://flow-api.pluralsight.com
+    status: active
+  resources:
+  - name: courses
+    description: Video courses in the catalog.
+  - name: learning-paths
+    description: Structured course sequences.
+  - name: skills
+    description: Skill IQ assessments.
+  - name: roles
+    description: Role IQ assessments.
+  - name: users
+    description: Platform users.
+  - name: teams
+    description: User teams.
+  - name: channels
+    description: Curated content channels.
+  - name: commits
+    description: Source control commits.
+  - name: pull-requests
+    description: Code review pull requests.
+  - name: tickets
+    description: Project management tickets.
+capability:
+  personas:
+  - id: l-and-d-admin
+    name: L&D Administrator
+  - id: engineering-manager
+    name: Engineering Manager
+  - id: hr-admin
+    name: HR Administrator
+  - id: integration-developer
+    name: Integration Developer
+  domains:
+  - name: learning
+    resources:
+    - courses
+    - learning-paths
+    - channels
+  - name: assessment
+    resources:
+    - skills
+    - roles
+  - name: user-management
+    resources:
+    - users
+    - teams
+  - name: engineering-intelligence
+    resources:
+    - commits
+    - pull-requests
+    - tickets

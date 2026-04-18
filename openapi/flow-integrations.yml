@@ -11,28 +11,28 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-  - url: https://{workspace}.appfireflow.com/v3/customer/core
-    description: Production
-    variables:
-      workspace:
-        description: Your Flow workspace identifier
-        default: your-workspace
+- url: https://{workspace}.appfireflow.com/v3/customer/core
+  description: Production
+  variables:
+    workspace:
+      description: Your Flow workspace identifier
+      default: your-workspace
 externalDocs:
   description: Integrations API Documentation
   url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
 tags:
-  - name: Integrations
-    description: Flow integration management operations
+- name: Integrations
+  description: Flow integration management operations
 paths:
   /integrations:
     get:
-      summary: List Integrations
+      summary: Pluralsight List Integrations
       description: Retrieve a list of Flow integrations and check connection status with external tools and services.
       operationId: listIntegrations
       tags:
-        - Integrations
+      - Integrations
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
         '200':
           description: Successful response with integration data
@@ -50,6 +50,9 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:

@@ -1,0 +1,46 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ps": "https://developer.pluralsight.com/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "GraphQLError": "ps:GraphQLError",
+    "GraphQLRequest": "ps:GraphQLRequest",
+    "GraphQLResponse": "ps:GraphQLResponse",
+    "data": {
+      "@id": "ps:data",
+      "@type": "@id"
+    },
+    "errors": {
+      "@id": "ps:errors",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "locations": {
+      "@id": "ps:locations",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "message": {
+      "@id": "ps:message",
+      "@type": "xsd:string"
+    },
+    "operationName": {
+      "@id": "ps:operationName",
+      "@type": "xsd:string"
+    },
+    "path": {
+      "@id": "ps:path",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "query": {
+      "@id": "ps:query",
+      "@type": "xsd:string"
+    },
+    "variables": {
+      "@id": "ps:variables",
+      "@type": "@id"
+    }
+  }
+}

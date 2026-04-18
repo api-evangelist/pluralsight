@@ -1,0 +1,12 @@
+{
+  "message": "example_value",
+  "locations": [
+    {
+      "line": 42,
+      "column": 42
+    }
+  ],
+  "path": [
+    "example_value"
+  ]
+}

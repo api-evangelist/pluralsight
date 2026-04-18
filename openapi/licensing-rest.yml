@@ -11,25 +11,25 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-  - url: https://app.pluralsight.com/plans/api/license/v1
-    description: Production
+- url: https://app.pluralsight.com/plans/api/license/v1
+  description: Production
 externalDocs:
   description: Migration Guide - REST to GraphQL
   url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
 tags:
-  - name: Licensing
-    description: License management operations (deprecated)
+- name: Licensing
+  description: License management operations (deprecated)
 paths:
   /invitations:
     get:
-      summary: List Invitations
+      summary: Pluralsight List Invitations
       description: Retrieve a list of pending user invitations. Deprecated - migrate to GraphQL User Management API.
       operationId: listInvitations
       deprecated: true
       tags:
-        - Licensing
+      - Licensing
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
         '200':
           description: Successful response with invitation data
@@ -47,15 +47,18 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
-      summary: Create Invitation
+      summary: Pluralsight Create Invitation
       description: Send a new user invitation. Deprecated - migrate to GraphQL User Management API.
       operationId: createInvitation
       deprecated: true
       tags:
-        - Licensing
+      - Licensing
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -74,16 +77,19 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /users:
     get:
-      summary: List Users
+      summary: Pluralsight List Users
       description: Retrieve a list of users in the plan. Deprecated - migrate to GraphQL User Management API.
       operationId: listUsers
       deprecated: true
       tags:
-        - Licensing
+      - Licensing
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
         '200':
           description: Successful response with user data
@@ -101,16 +107,19 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /teams:
     get:
-      summary: List Teams
+      summary: Pluralsight List Teams
       description: Retrieve a list of teams in the plan. Deprecated - migrate to GraphQL Teams API.
       operationId: listTeams
       deprecated: true
       tags:
-        - Licensing
+      - Licensing
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
         '200':
           description: Successful response with team data
@@ -128,6 +137,9 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:

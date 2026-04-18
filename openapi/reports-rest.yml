@@ -11,25 +11,25 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-  - url: https://app.pluralsight.com/plans/api/reports/v1
-    description: Production
+- url: https://app.pluralsight.com/plans/api/reports/v1
+  description: Production
 externalDocs:
   description: Migration Guide - REST to GraphQL
   url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
 tags:
-  - name: Reports
-    description: Report download operations (deprecated)
+- name: Reports
+  description: Report download operations (deprecated)
 paths:
   /users:
     get:
-      summary: Download User Report
+      summary: Pluralsight Download User Report
       description: Download a user report as CSV. Deprecated - migrate to GraphQL User Management API.
       operationId: downloadUserReport
       deprecated: true
       tags:
-        - Reports
+      - Reports
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
         '200':
           description: CSV file download
@@ -41,16 +41,19 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /course-completion:
     get:
-      summary: Download Course Completion Report
+      summary: Pluralsight Download Course Completion Report
       description: Download a course completion report as CSV. Deprecated - migrate to GraphQL Course Progress API.
       operationId: downloadCourseCompletionReport
       deprecated: true
       tags:
-        - Reports
+      - Reports
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
         '200':
           description: CSV file download
@@ -62,16 +65,19 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /course-usage:
     get:
-      summary: Download Course Usage Report
+      summary: Pluralsight Download Course Usage Report
       description: Download a course usage report as CSV. Deprecated - migrate to GraphQL Course Daily Usage API.
       operationId: downloadCourseUsageReport
       deprecated: true
       tags:
-        - Reports
+      - Reports
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
         '200':
           description: CSV file download
@@ -83,6 +89,9 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:

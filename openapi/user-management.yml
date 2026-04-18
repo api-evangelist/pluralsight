@@ -11,24 +11,24 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-  - url: https://paas-api.pluralsight.com
-    description: Production
+- url: https://paas-api.pluralsight.com
+  description: Production
 externalDocs:
   description: Pluralsight Developer Documentation
   url: https://developer.pluralsight.com
 tags:
-  - name: GraphQL
-    description: GraphQL query and mutation operations
+- name: GraphQL
+  description: GraphQL query and mutation operations
 paths:
   /graphql:
     post:
-      summary: Query and Manage Users
+      summary: Pluralsight Query and Manage Users
       description: Execute GraphQL queries and mutations for managing users including listing users, inviting members, editing user details, removing users, and canceling invitations.
       operationId: manageUsers
       tags:
-        - GraphQL
+      - GraphQL
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -46,6 +46,9 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:
@@ -56,17 +59,19 @@ components:
     GraphQLRequest:
       type: object
       required:
-        - query
+      - query
       properties:
         query:
           type: string
           description: The GraphQL query string
+          example: example_value
         variables:
           type: object
           description: Variables for the GraphQL query
         operationName:
           type: string
           description: Name of the operation to execute
+          example: Example Course
     GraphQLResponse:
       type: object
       properties:
@@ -84,6 +89,7 @@ components:
         message:
           type: string
           description: Error message
+          example: example_value
         locations:
           type: array
           items:

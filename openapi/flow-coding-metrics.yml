@@ -11,37 +11,39 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-  - url: https://flow-api.pluralsight.com
-    description: Production
+- url: https://flow-api.pluralsight.com
+  description: Production
 externalDocs:
   description: Coding Metrics API Documentation
   url: https://help.pluralsight.com/hc/en-us/articles/31476876875028-Updated-Coding-metrics-API
 tags:
-  - name: Coding Metrics
-    description: Code-level engineering metrics operations
+- name: Coding Metrics
+  description: Code-level engineering metrics operations
 paths:
   /collaboration/code/metrics:
     get:
-      summary: Get Coding Metrics
+      summary: Pluralsight Get Coding Metrics
       description: Retrieve code-level engineering metrics and developer productivity data with date range filtering.
       operationId: getCodingMetrics
       tags:
-        - Coding Metrics
+      - Coding Metrics
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       parameters:
-        - name: start_date
-          in: query
-          description: Start date for the metrics period
-          schema:
-            type: string
-            format: date
-        - name: end_date
-          in: query
-          description: End date for the metrics period
-          schema:
-            type: string
-            format: date
+      - name: start_date
+        in: query
+        description: Start date for the metrics period
+        schema:
+          type: string
+          format: date
+        example: '2026-04-17T12:00:00Z'
+      - name: end_date
+        in: query
+        description: End date for the metrics period
+        schema:
+          type: string
+          format: date
+        example: '2026-04-17T12:00:00Z'
       responses:
         '200':
           description: Successful response with coding metrics
@@ -57,6 +59,9 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:

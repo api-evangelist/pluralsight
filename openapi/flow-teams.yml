@@ -11,28 +11,28 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-  - url: https://{workspace}.appfireflow.com/v3/customer/core
-    description: Production
-    variables:
-      workspace:
-        description: Your Flow workspace identifier
-        default: your-workspace
+- url: https://{workspace}.appfireflow.com/v3/customer/core
+  description: Production
+  variables:
+    workspace:
+      description: Your Flow workspace identifier
+      default: your-workspace
 externalDocs:
   description: Customer API References
   url: https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references
 tags:
-  - name: Teams
-    description: Flow team management operations
+- name: Teams
+  description: Flow team management operations
 paths:
   /teams:
     get:
-      summary: List Teams
+      summary: Pluralsight List Teams
       description: Retrieve a list of Flow engineering teams and team membership data.
       operationId: listTeams
       tags:
-        - Teams
+      - Teams
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
         '200':
           description: Successful response with team data
@@ -50,6 +50,9 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:

@@ -11,41 +11,43 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-  - url: https://{workspace}.appfireflow.com/v3/customer/core
-    description: Production
-    variables:
-      workspace:
-        description: Your Flow workspace identifier
-        default: your-workspace
+- url: https://{workspace}.appfireflow.com/v3/customer/core
+  description: Production
+  variables:
+    workspace:
+      description: Your Flow workspace identifier
+      default: your-workspace
 externalDocs:
   description: Customer API References
   url: https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references
 tags:
-  - name: Pull Requests
-    description: Pull request data operations
+- name: Pull Requests
+  description: Pull request data operations
 paths:
   /pull-requests:
     get:
-      summary: Get Pull Requests
+      summary: Pluralsight Get Pull Requests
       description: Retrieve pull request data, comments, and events across repositories.
       operationId: getPullRequests
       tags:
-        - Pull Requests
+      - Pull Requests
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       parameters:
-        - name: start_date
-          in: query
-          description: Start date for the query period
-          schema:
-            type: string
-            format: date
-        - name: end_date
-          in: query
-          description: End date for the query period
-          schema:
-            type: string
-            format: date
+      - name: start_date
+        in: query
+        description: Start date for the query period
+        schema:
+          type: string
+          format: date
+        example: '2026-04-17T12:00:00Z'
+      - name: end_date
+        in: query
+        description: End date for the query period
+        schema:
+          type: string
+          format: date
+        example: '2026-04-17T12:00:00Z'
       responses:
         '200':
           description: Successful response with pull request data
@@ -63,6 +65,9 @@ paths:
           description: Unauthorized - Invalid or missing authentication token
         '429':
           description: Too Many Requests - Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:
