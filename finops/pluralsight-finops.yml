@@ -1,0 +1,389 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Pluralsight
+providerId: pluralsight
+publisherName: Pluralsight
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - Courses
+  - Education
+  - Engineering Metrics
+  - Learning
+  - Skills Assessment
+  - Technology
+  - Video Training
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the Pluralsight API surface. Provides a FOCUS-aligned mapping
+  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Pluralsight
+  ServiceCategory: Developer Tools / API
+  ProviderName: Pluralsight
+  PublisherName: Pluralsight
+  InvoiceIssuerName: Pluralsight
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: Pluralsight Course Catalog API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Catalog
+      - Content
+      - Courses
+      - Graphql
+    serviceName: Pluralsight Course Catalog API
+    serviceCategory: API
+  - name: Pluralsight Content Catalog API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Catalog
+      - Content
+      - Graphql
+    serviceName: Pluralsight Content Catalog API
+    serviceCategory: API
+  - name: Pluralsight Learning Paths API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Catalog
+      - Content
+      - Graphql
+      - Learning Paths
+    serviceName: Pluralsight Learning Paths API
+    serviceCategory: API
+  - name: Pluralsight Labs API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Catalog
+      - Graphql
+      - Hands-On
+      - Labs
+    serviceName: Pluralsight Labs API
+    serviceCategory: API
+  - name: Pluralsight Programs API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Catalog
+      - Curriculum
+      - Graphql
+      - Programs
+    serviceName: Pluralsight Programs API
+    serviceCategory: API
+  - name: Pluralsight Tags API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Content
+      - Graphql
+      - Taxonomy
+    serviceName: Pluralsight Tags API
+    serviceCategory: API
+  - name: Pluralsight Content Slug API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Content
+      - Graphql
+      - Identifiers
+      - Slugs
+    serviceName: Pluralsight Content Slug API
+    serviceCategory: API
+  - name: Pluralsight Channels API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Channels
+      - Content Curation
+      - Graphql
+      - Members
+    serviceName: Pluralsight Channels API
+    serviceCategory: API
+  - name: Pluralsight Course Progress API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Completion
+      - Courses
+      - Graphql
+      - Progress
+    serviceName: Pluralsight Course Progress API
+    serviceCategory: API
+  - name: Pluralsight Content Progress API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Analytics
+      - Beta
+      - Content
+      - Graphql
+      - Progress
+    serviceName: Pluralsight Content Progress API
+    serviceCategory: API
+  - name: Pluralsight Course Daily Usage API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Analytics
+      - Daily Metrics
+      - Graphql
+      - Usage
+    serviceName: Pluralsight Course Daily Usage API
+    serviceCategory: API
+  - name: Pluralsight Practice Exams API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Assessments
+      - Certification Prep
+      - Graphql
+      - Practice Exams
+    serviceName: Pluralsight Practice Exams API
+    serviceCategory: API
+  - name: Pluralsight Skills Assessment API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Assessments
+      - Graphql
+      - Skill Iq
+      - Skills
+    serviceName: Pluralsight Skills Assessment API
+    serviceCategory: API
+  - name: Pluralsight Role IQ API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Assessments
+      - Graphql
+      - Role Iq
+      - Roles
+      - Skills
+    serviceName: Pluralsight Role IQ API
+    serviceCategory: API
+  - name: Pluralsight User Management API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Graphql
+      - Invitations
+      - Licensing
+      - Users
+    serviceName: Pluralsight User Management API
+    serviceCategory: API
+  - name: Pluralsight Teams API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Graphql
+      - Management
+      - Permissions
+      - Teams
+    serviceName: Pluralsight Teams API
+    serviceCategory: API
+  - name: Pluralsight Plan Info API
+    baseURL: https://paas-api.pluralsight.com/graphql
+    tags:
+      - Account
+      - Graphql
+      - Plan
+      - Subscription
+    serviceName: Pluralsight Plan Info API
+    serviceCategory: API
+  - name: Pluralsight Flow DORA Metrics API
+    baseURL: https://flow-api.pluralsight.com/dora/build-release
+    tags:
+      - Change Failure Rate
+      - Deployment Frequency
+      - Dora
+      - Engineering Metrics
+      - Lead Time
+    serviceName: Pluralsight Flow DORA Metrics API
+    serviceCategory: API
+  - name: Pluralsight Flow Coding Metrics API
+    baseURL: https://flow-api.pluralsight.com/collaboration/code/metrics
+    tags:
+      - Coding Metrics
+      - Engineering Metrics
+      - Productivity
+    serviceName: Pluralsight Flow Coding Metrics API
+    serviceCategory: API
+  - name: Pluralsight Flow Collaboration Metrics API
+    baseURL: https://api.appfireflow.com/collaboration/pullrequest/metrics
+    tags:
+      - Collaboration
+      - Engineering Metrics
+      - Pull Requests
+    serviceName: Pluralsight Flow Collaboration Metrics API
+    serviceCategory: API
+  - name: Pluralsight Flow Commits API
+    baseURL: https://<workspace>.appfireflow.com/v3/customer/core
+    tags:
+      - Commits
+      - Engineering Data
+      - Source Control
+    serviceName: Pluralsight Flow Commits API
+    serviceCategory: API
+  - name: Pluralsight Flow Pull Requests API
+    baseURL: https://<workspace>.appfireflow.com/v3/customer/core
+    tags:
+      - Code Review
+      - Engineering Data
+      - Pull Requests
+    serviceName: Pluralsight Flow Pull Requests API
+    serviceCategory: API
+  - name: Pluralsight Flow Repos API
+    baseURL: https://<workspace>.appfireflow.com/v3/customer/core
+    tags:
+      - Engineering Data
+      - Repositories
+      - Source Control
+    serviceName: Pluralsight Flow Repos API
+    serviceCategory: API
+  - name: Pluralsight Flow Users API
+    baseURL: https://<workspace>.appfireflow.com/v3/customer/core
+    tags:
+      - Engineering Data
+      - Management
+      - Users
+    serviceName: Pluralsight Flow Users API
+    serviceCategory: API
+  - name: Pluralsight Flow Teams API
+    baseURL: https://<workspace>.appfireflow.com/v3/customer/core
+    tags:
+      - Engineering Data
+      - Management
+      - Teams
+    serviceName: Pluralsight Flow Teams API
+    serviceCategory: API
+  - name: Pluralsight Flow Integrations API
+    baseURL: https://<workspace>.appfireflow.com/v3/customer/core
+    tags:
+      - Connections
+      - Engineering Data
+      - Integrations
+    serviceName: Pluralsight Flow Integrations API
+    serviceCategory: API
+  - name: Pluralsight Flow Tickets API
+    baseURL: https://<workspace>.appfireflow.com/v3/customer/core
+    tags:
+      - Engineering Data
+      - Project Management
+      - Tickets
+    serviceName: Pluralsight Flow Tickets API
+    serviceCategory: API
+  - name: Pluralsight Reports REST API
+    baseURL: https://app.pluralsight.com/plans/api/reports/v1
+    tags:
+      - Csv
+      - Deprecated
+      - Legacy
+      - Reports
+    serviceName: Pluralsight Reports REST API
+    serviceCategory: API
+  - name: Pluralsight Licensing REST API
+    baseURL: https://app.pluralsight.com/plans/api/license/v1
+    tags:
+      - Deprecated
+      - Invitations
+      - Legacy
+      - Licensing
+      - Users
+    serviceName: Pluralsight Licensing REST API
+    serviceCategory: API
+  - name: Pluralsight Public Course Catalog REST API
+    baseURL: https://paas-rest-api.pluralsight.com
+    tags:
+      - Catalog
+      - Courses
+      - Legacy
+      - Public
+    serviceName: Pluralsight Public Course Catalog REST API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
