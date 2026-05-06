@@ -4,261 +4,278 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Pluralsight
 providerId: pluralsight
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Courses
-  - Education
-  - Engineering Metrics
   - Learning
+  - Education
   - Skills Assessment
-  - Technology
+  - Engineering Metrics
   - Video Training
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Technology
+description: Pluralsight is a per-seat subscription business across two product lines - Pluralsight
+  Skills (individual and business learning library, including Cloud Guru content) and Pluralsight Flow
+  (engineering metrics). Individual Skills plans are sold direct on the public pricing page; Business,
+  Enterprise, and Flow plans are quoted by the sales team. APIs (Skills GraphQL, Flow REST, legacy
+  Reports/Licensing REST) are entitlements of the Business / Enterprise / Flow plans rather than
+  separately metered products.
+sources:
+  - https://www.pluralsight.com/individuals/pricing
+  - https://www.pluralsight.com/pricing
+  - https://help.pluralsight.com/help/skills-business-customer-api
 plans:
-  - id: pluralsight-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Pluralsight API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: pluralsight-skills-core-tech
+    name: Skills - Core Tech
+    type: subscription
+    description: Individual subscription for Pluralsight Skills with access to over 3,900 courses
+      across the core technology library.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$449/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
         timeFrame: month
         geo: global
-        domains:
-          - https://paas-api.pluralsight.com/graphql
-          - https://flow-api.pluralsight.com/dora/build-release
-          - https://flow-api.pluralsight.com/collaboration/code/metrics
-          - https://api.appfireflow.com/collaboration/pullrequest/metrics
-          - https://<workspace>.appfireflow.com/v3/customer/core
-          - https://app.pluralsight.com/plans/api/reports/v1
-          - https://app.pluralsight.com/plans/api/license/v1
-          - https://paas-rest-api.pluralsight.com
         unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://paas-api.pluralsight.com/graphql
-          - https://flow-api.pluralsight.com/dora/build-release
-          - https://flow-api.pluralsight.com/collaboration/code/metrics
-          - https://api.appfireflow.com/collaboration/pullrequest/metrics
-          - https://<workspace>.appfireflow.com/v3/customer/core
-          - https://app.pluralsight.com/plans/api/reports/v1
-          - https://app.pluralsight.com/plans/api/license/v1
-          - https://paas-rest-api.pluralsight.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
+        price: '$45/month'
+        userMultiplied: true
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Pluralsight Course Catalog API
-      - name: Pluralsight Content Catalog API
-      - name: Pluralsight Learning Paths API
-      - name: Pluralsight Labs API
-      - name: Pluralsight Programs API
-      - name: Pluralsight Tags API
-      - name: Pluralsight Content Slug API
-      - name: Pluralsight Channels API
-  - id: pluralsight-pro
-    name: Professional
-    type: paid
-    description: Production tier for Pluralsight. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+      - name: 3900+ Courses
+      - name: Skill Assessments
+      - name: Learning Paths
+      - name: Certification Prep
+      - name: Hands-On Labs
+  - id: pluralsight-skills-aiplus
+    name: Skills - AI+
+    type: subscription
+    description: Topic-focused individual plan covering the AI library.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$299/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
         timeFrame: month
         geo: global
-        domains:
-          - https://paas-api.pluralsight.com/graphql
-          - https://flow-api.pluralsight.com/dora/build-release
-          - https://flow-api.pluralsight.com/collaboration/code/metrics
-          - https://api.appfireflow.com/collaboration/pullrequest/metrics
-          - https://<workspace>.appfireflow.com/v3/customer/core
-          - https://app.pluralsight.com/plans/api/reports/v1
-          - https://app.pluralsight.com/plans/api/license/v1
-          - https://paas-rest-api.pluralsight.com
         unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://paas-api.pluralsight.com/graphql
-          - https://flow-api.pluralsight.com/dora/build-release
-          - https://flow-api.pluralsight.com/collaboration/code/metrics
-          - https://api.appfireflow.com/collaboration/pullrequest/metrics
-          - https://<workspace>.appfireflow.com/v3/customer/core
-          - https://app.pluralsight.com/plans/api/reports/v1
-          - https://app.pluralsight.com/plans/api/license/v1
-          - https://paas-rest-api.pluralsight.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://paas-api.pluralsight.com/graphql
-          - https://flow-api.pluralsight.com/dora/build-release
-          - https://flow-api.pluralsight.com/collaboration/code/metrics
-          - https://api.appfireflow.com/collaboration/pullrequest/metrics
-          - https://<workspace>.appfireflow.com/v3/customer/core
-          - https://app.pluralsight.com/plans/api/reports/v1
-          - https://app.pluralsight.com/plans/api/license/v1
-          - https://paas-rest-api.pluralsight.com
-        unit: 1000
-        price: TBD
-        userMultiplied: false
+        price: '$29/month'
+        userMultiplied: true
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Pluralsight Course Catalog API
-      - name: Pluralsight Content Catalog API
-      - name: Pluralsight Learning Paths API
-      - name: Pluralsight Labs API
-      - name: Pluralsight Programs API
-      - name: Pluralsight Tags API
-      - name: Pluralsight Content Slug API
-      - name: Pluralsight Channels API
-      - name: Pluralsight Course Progress API
-      - name: Pluralsight Content Progress API
-      - name: Pluralsight Course Daily Usage API
-      - name: Pluralsight Practice Exams API
-      - name: Pluralsight Skills Assessment API
-      - name: Pluralsight Role IQ API
-      - name: Pluralsight User Management API
-      - name: Pluralsight Teams API
-      - name: Pluralsight Plan Info API
-      - name: Pluralsight Flow DORA Metrics API
-      - name: Pluralsight Flow Coding Metrics API
-      - name: Pluralsight Flow Collaboration Metrics API
-      - name: Pluralsight Flow Commits API
-      - name: Pluralsight Flow Pull Requests API
-      - name: Pluralsight Flow Repos API
-      - name: Pluralsight Flow Users API
-      - name: Pluralsight Flow Teams API
-      - name: Pluralsight Flow Integrations API
-      - name: Pluralsight Flow Tickets API
-      - name: Pluralsight Reports REST API
-      - name: Pluralsight Licensing REST API
-      - name: Pluralsight Public Course Catalog REST API
-  - id: pluralsight-enterprise
-    name: Enterprise
+      - name: AI-Focused Library
+      - name: Skill Assessments
+      - name: Learning Paths
+      - name: Hands-On Labs
+  - id: pluralsight-skills-cloudplus
+    name: Skills - Cloud+
+    type: subscription
+    description: Topic-focused individual plan that includes A Cloud Guru courses and labs.
+    entries:
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$299/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$29/month'
+        userMultiplied: true
+    elements:
+      - name: A Cloud Guru Courses
+      - name: Cloud Sandbox Labs
+      - name: Certification Prep
+      - name: Hands-On Labs
+  - id: pluralsight-skills-securityplus
+    name: Skills - Security+
+    type: subscription
+    description: Topic-focused individual plan covering the security library.
+    entries:
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$299/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$29/month'
+        userMultiplied: true
+    elements:
+      - name: Security Library
+      - name: Skill Assessments
+      - name: Learning Paths
+      - name: Hands-On Labs
+  - id: pluralsight-skills-dataplus
+    name: Skills - Data+
+    type: subscription
+    description: Topic-focused individual plan covering the data library.
+    entries:
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$299/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$29/month'
+        userMultiplied: true
+    elements:
+      - name: Data Library
+      - name: Skill Assessments
+      - name: Learning Paths
+      - name: Hands-On Labs
+  - id: pluralsight-skills-complete
+    name: Skills - Complete
+    type: subscription
+    description: All-access individual plan with unlimited access to over 6,500 courses.
+    entries:
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$299/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$29/month'
+        userMultiplied: true
+    elements:
+      - name: 6500+ Courses (All Libraries)
+      - name: Skill Assessments
+      - name: Learning Paths
+      - name: Certification Prep
+      - name: Hands-On Labs
+  - id: pluralsight-skills-business
+    name: Skills - Business / Enterprise
     type: enterprise
-    description: Custom-negotiated tier for Pluralsight. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
+    description: Per-seat business and enterprise plans. Pricing is contact-sales. Skills GraphQL APIs
+      and legacy Reports / Licensing REST APIs are included as entitlements of these plans for
+      subscription, user, content, and progress management.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Per-Seat Subscription
+        name: per_seat_subscription
+        type: subscription
+        metric: seat
         limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://paas-api.pluralsight.com/graphql
-          - https://flow-api.pluralsight.com/dora/build-release
-          - https://flow-api.pluralsight.com/collaboration/code/metrics
-          - https://api.appfireflow.com/collaboration/pullrequest/metrics
-          - https://<workspace>.appfireflow.com/v3/customer/core
-          - https://app.pluralsight.com/plans/api/reports/v1
-          - https://app.pluralsight.com/plans/api/license/v1
-          - https://paas-rest-api.pluralsight.com
+        timeFrame: year
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://paas-api.pluralsight.com/graphql
-          - https://flow-api.pluralsight.com/dora/build-release
-          - https://flow-api.pluralsight.com/collaboration/code/metrics
-          - https://api.appfireflow.com/collaboration/pullrequest/metrics
-          - https://<workspace>.appfireflow.com/v3/customer/core
-          - https://app.pluralsight.com/plans/api/reports/v1
-          - https://app.pluralsight.com/plans/api/license/v1
-          - https://paas-rest-api.pluralsight.com
+        price: contact sales
+        userMultiplied: true
+      - label: API Access
+        name: api_access
+        type: flat
+        metric: varies
+        limit: -1
+        timeFrame: usage
+        geo: global
         unit: 1
-        price: custom
+        price: included
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Pluralsight Course Catalog API
-      - name: Pluralsight Content Catalog API
-      - name: Pluralsight Learning Paths API
-      - name: Pluralsight Labs API
-      - name: Pluralsight Programs API
-      - name: Pluralsight Tags API
-      - name: Pluralsight Content Slug API
-      - name: Pluralsight Channels API
-      - name: Pluralsight Course Progress API
-      - name: Pluralsight Content Progress API
-      - name: Pluralsight Course Daily Usage API
-      - name: Pluralsight Practice Exams API
-      - name: Pluralsight Skills Assessment API
-      - name: Pluralsight Role IQ API
-      - name: Pluralsight User Management API
-      - name: Pluralsight Teams API
-      - name: Pluralsight Plan Info API
-      - name: Pluralsight Flow DORA Metrics API
-      - name: Pluralsight Flow Coding Metrics API
-      - name: Pluralsight Flow Collaboration Metrics API
-      - name: Pluralsight Flow Commits API
-      - name: Pluralsight Flow Pull Requests API
-      - name: Pluralsight Flow Repos API
-      - name: Pluralsight Flow Users API
-      - name: Pluralsight Flow Teams API
-      - name: Pluralsight Flow Integrations API
-      - name: Pluralsight Flow Tickets API
-      - name: Pluralsight Reports REST API
-      - name: Pluralsight Licensing REST API
-      - name: Pluralsight Public Course Catalog REST API
+      - name: Skills GraphQL API
+      - name: Reports REST API (legacy)
+      - name: Licensing REST API (legacy)
+      - name: SSO and SCIM
+      - name: Customer Success Manager
+      - name: Custom Channels
+  - id: pluralsight-flow
+    name: Flow
+    type: enterprise
+    description: Pluralsight Flow engineering metrics platform. Per-developer pricing, contact-sales.
+      Flow REST APIs (DORA, coding metrics, collaboration metrics, commits, pull requests, repos,
+      users, teams, integrations, tickets) are included as entitlements.
+    entries:
+      - label: Per-Developer Subscription
+        name: per_developer_subscription
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: true
+      - label: Flow API Access
+        name: flow_api_access
+        type: flat
+        metric: varies
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: Flow DORA Metrics API
+      - name: Flow Coding Metrics API
+      - name: Flow Collaboration Metrics API
+      - name: Flow Commits / Pull Requests / Repos APIs
+      - name: Flow Users / Teams / Integrations / Tickets APIs
+      - name: Source Control Integrations
+      - name: Issue Tracker Integrations
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
