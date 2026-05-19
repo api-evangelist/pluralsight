@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pluralsight Public Course Catalog REST API — Catalog
+  description: 'Pluralsight Public Course Catalog REST API — Catalog. 1 operations. Lead operation: Pluralsight Get Course
+    Catalog. Self-contained Naftiko capability covering one Pluralsight business surface.'
+  tags:
+  - Pluralsight
+  - Catalog
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PLURALSIGHT_API_KEY: PLURALSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: public-course-catalog-rest-catalog
+    baseUri: https://paas-rest-api.pluralsight.com
+    description: Pluralsight Public Course Catalog REST API — Catalog business capability. Self-contained, no shared references.
+    resources:
+    - name: courses
+      path: /courses
+      operations:
+      - name: getcoursecatalog
+        method: GET
+        description: Pluralsight Get Course Catalog
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: public-course-catalog-rest-catalog-rest
+    port: 8080
+    description: REST adapter for Pluralsight Public Course Catalog REST API — Catalog. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/courses
+      name: courses
+      description: REST surface for courses.
+      operations:
+      - method: GET
+        name: getcoursecatalog
+        description: Pluralsight Get Course Catalog
+        call: public-course-catalog-rest-catalog.getcoursecatalog
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: public-course-catalog-rest-catalog-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pluralsight Public Course Catalog REST API — Catalog. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: pluralsight-get-course-catalog
+      description: Pluralsight Get Course Catalog
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-course-catalog-rest-catalog.getcoursecatalog
+      outputParameters:
+      - type: object
+        mapping: $.

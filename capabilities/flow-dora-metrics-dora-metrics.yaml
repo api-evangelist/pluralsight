@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pluralsight Flow DORA Metrics API — DORA Metrics
+  description: 'Pluralsight Flow DORA Metrics API — DORA Metrics. 1 operations. Lead operation: Pluralsight Get DORA Metrics.
+    Self-contained Naftiko capability covering one Pluralsight business surface.'
+  tags:
+  - Pluralsight
+  - DORA Metrics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PLURALSIGHT_API_KEY: PLURALSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: flow-dora-metrics-dora-metrics
+    baseUri: https://flow-api.pluralsight.com
+    description: Pluralsight Flow DORA Metrics API — DORA Metrics business capability. Self-contained, no shared references.
+    resources:
+    - name: dora-build-release
+      path: /dora/build-release
+      operations:
+      - name: getdorametrics
+        method: GET
+        description: Pluralsight Get DORA Metrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: start_date
+          in: query
+          type: string
+          description: Start date for the metrics period
+        - name: end_date
+          in: query
+          type: string
+          description: End date for the metrics period
+    authentication:
+      type: bearer
+      token: '{{env.PLURALSIGHT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: flow-dora-metrics-dora-metrics-rest
+    port: 8080
+    description: REST adapter for Pluralsight Flow DORA Metrics API — DORA Metrics. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/dora/build-release
+      name: dora-build-release
+      description: REST surface for dora-build-release.
+      operations:
+      - method: GET
+        name: getdorametrics
+        description: Pluralsight Get DORA Metrics
+        call: flow-dora-metrics-dora-metrics.getdorametrics
+        with:
+          start_date: rest.start_date
+          end_date: rest.end_date
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: flow-dora-metrics-dora-metrics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pluralsight Flow DORA Metrics API — DORA Metrics. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: pluralsight-get-dora-metrics
+      description: Pluralsight Get DORA Metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flow-dora-metrics-dora-metrics.getdorametrics
+      with:
+        start_date: tools.start_date
+        end_date: tools.end_date
+      outputParameters:
+      - type: object
+        mapping: $.

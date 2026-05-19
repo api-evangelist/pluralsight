@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pluralsight Course Progress API — GraphQL
+  description: 'Pluralsight Course Progress API — GraphQL. 1 operations. Lead operation: Pluralsight Query Course Progress.
+    Self-contained Naftiko capability covering one Pluralsight business surface.'
+  tags:
+  - Pluralsight
+  - GraphQL
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PLURALSIGHT_API_KEY: PLURALSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: course-progress-graphql
+    baseUri: https://paas-api.pluralsight.com
+    description: Pluralsight Course Progress API — GraphQL business capability. Self-contained, no shared references.
+    resources:
+    - name: graphql
+      path: /graphql
+      operations:
+      - name: querycourseprogress
+        method: POST
+        description: Pluralsight Query Course Progress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PLURALSIGHT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: course-progress-graphql-rest
+    port: 8080
+    description: REST adapter for Pluralsight Course Progress API — GraphQL. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/graphql
+      name: graphql
+      description: REST surface for graphql.
+      operations:
+      - method: POST
+        name: querycourseprogress
+        description: Pluralsight Query Course Progress
+        call: course-progress-graphql.querycourseprogress
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: course-progress-graphql-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pluralsight Course Progress API — GraphQL. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: pluralsight-query-course-progress
+      description: Pluralsight Query Course Progress
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: course-progress-graphql.querycourseprogress
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

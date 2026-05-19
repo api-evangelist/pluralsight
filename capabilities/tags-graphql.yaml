@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pluralsight Tags API — GraphQL
+  description: 'Pluralsight Tags API — GraphQL. 1 operations. Lead operation: Pluralsight Query Tags. Self-contained Naftiko
+    capability covering one Pluralsight business surface.'
+  tags:
+  - Pluralsight
+  - GraphQL
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PLURALSIGHT_API_KEY: PLURALSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tags-graphql
+    baseUri: https://paas-api.pluralsight.com
+    description: Pluralsight Tags API — GraphQL business capability. Self-contained, no shared references.
+    resources:
+    - name: graphql
+      path: /graphql
+      operations:
+      - name: querytags
+        method: POST
+        description: Pluralsight Query Tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PLURALSIGHT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: tags-graphql-rest
+    port: 8080
+    description: REST adapter for Pluralsight Tags API — GraphQL. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/graphql
+      name: graphql
+      description: REST surface for graphql.
+      operations:
+      - method: POST
+        name: querytags
+        description: Pluralsight Query Tags
+        call: tags-graphql.querytags
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tags-graphql-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pluralsight Tags API — GraphQL. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: pluralsight-query-tags
+      description: Pluralsight Query Tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: tags-graphql.querytags
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

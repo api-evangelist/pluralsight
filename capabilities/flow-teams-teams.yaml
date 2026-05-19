@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pluralsight Flow Teams API — Teams
+  description: 'Pluralsight Flow Teams API — Teams. 1 operations. Lead operation: Pluralsight List Teams. Self-contained Naftiko
+    capability covering one Pluralsight business surface.'
+  tags:
+  - Pluralsight
+  - Teams
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PLURALSIGHT_API_KEY: PLURALSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: flow-teams-teams
+    baseUri: https://{workspace}.appfireflow.com/v3/customer/core
+    description: Pluralsight Flow Teams API — Teams business capability. Self-contained, no shared references.
+    resources:
+    - name: teams
+      path: /teams
+      operations:
+      - name: listteams
+        method: GET
+        description: Pluralsight List Teams
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.PLURALSIGHT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: flow-teams-teams-rest
+    port: 8080
+    description: REST adapter for Pluralsight Flow Teams API — Teams. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/teams
+      name: teams
+      description: REST surface for teams.
+      operations:
+      - method: GET
+        name: listteams
+        description: Pluralsight List Teams
+        call: flow-teams-teams.listteams
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: flow-teams-teams-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pluralsight Flow Teams API — Teams. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: pluralsight-list-teams
+      description: Pluralsight List Teams
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flow-teams-teams.listteams
+      outputParameters:
+      - type: object
+        mapping: $.

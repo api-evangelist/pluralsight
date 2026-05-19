@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pluralsight Flow Pull Requests API — Pull Requests
+  description: 'Pluralsight Flow Pull Requests API — Pull Requests. 1 operations. Lead operation: Pluralsight Get Pull Requests.
+    Self-contained Naftiko capability covering one Pluralsight business surface.'
+  tags:
+  - Pluralsight
+  - Pull Requests
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PLURALSIGHT_API_KEY: PLURALSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: flow-pull-requests-pull-requests
+    baseUri: https://{workspace}.appfireflow.com/v3/customer/core
+    description: Pluralsight Flow Pull Requests API — Pull Requests business capability. Self-contained, no shared references.
+    resources:
+    - name: pull-requests
+      path: /pull-requests
+      operations:
+      - name: getpullrequests
+        method: GET
+        description: Pluralsight Get Pull Requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: start_date
+          in: query
+          type: string
+          description: Start date for the query period
+        - name: end_date
+          in: query
+          type: string
+          description: End date for the query period
+    authentication:
+      type: bearer
+      token: '{{env.PLURALSIGHT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: flow-pull-requests-pull-requests-rest
+    port: 8080
+    description: REST adapter for Pluralsight Flow Pull Requests API — Pull Requests. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/pull-requests
+      name: pull-requests
+      description: REST surface for pull-requests.
+      operations:
+      - method: GET
+        name: getpullrequests
+        description: Pluralsight Get Pull Requests
+        call: flow-pull-requests-pull-requests.getpullrequests
+        with:
+          start_date: rest.start_date
+          end_date: rest.end_date
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: flow-pull-requests-pull-requests-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pluralsight Flow Pull Requests API — Pull Requests. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: pluralsight-get-pull-requests
+      description: Pluralsight Get Pull Requests
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flow-pull-requests-pull-requests.getpullrequests
+      with:
+        start_date: tools.start_date
+        end_date: tools.end_date
+      outputParameters:
+      - type: object
+        mapping: $.

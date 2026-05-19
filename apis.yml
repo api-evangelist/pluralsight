@@ -676,6 +676,8 @@ apis:
     url: https://help.pluralsight.com
   aid: pluralsight:public-course-catalog-rest-api
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/pluralsight
 - type: Portal
   url: https://developer.pluralsight.com
 - type: GettingStarted
