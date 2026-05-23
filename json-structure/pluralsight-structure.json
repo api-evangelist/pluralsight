@@ -1,0 +1,47 @@
+{
+  "provider": "Pluralsight",
+  "providerId": "pluralsight",
+  "kind": "json-structure",
+  "description": "Structural overview of the Pluralsight API surface; extracted from openapi/.",
+  "schemaCount": 0,
+  "operationCount": 4,
+  "schemas": [],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/invitations",
+      "operationId": "listInvitations",
+      "summary": "Pluralsight List Invitations",
+      "tags": [
+        "Licensing"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/invitations",
+      "operationId": "createInvitation",
+      "summary": "Pluralsight Create Invitation",
+      "tags": [
+        "Licensing"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users",
+      "operationId": "listUsers",
+      "summary": "Pluralsight List Users",
+      "tags": [
+        "Licensing"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/teams",
+      "operationId": "listTeams",
+      "summary": "Pluralsight List Teams",
+      "tags": [
+        "Licensing"
+      ]
+    }
+  ]
+}

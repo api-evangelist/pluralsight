@@ -1,0 +1,7 @@
+name: Pluralsight Domain Vocabulary
+provider: Pluralsight
+providerId: pluralsight
+description: Tag-derived vocabulary for the Pluralsight API surface; sourced from openapi/ tags.
+terms:
+- term: Licensing
+  description: License management operations (deprecated)

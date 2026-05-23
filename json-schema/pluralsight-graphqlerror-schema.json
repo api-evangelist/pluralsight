@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphQLError",
+  "title": "GraphQLError",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string",
+      "description": "Error message",
+      "example": "example_value"
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "line": {
+            "type": "integer"
+          },
+          "column": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "path": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
