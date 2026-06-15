@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Channels API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GraphQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight Query and Manage Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://paas-api.pluralsight.com/graphql",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Execute GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

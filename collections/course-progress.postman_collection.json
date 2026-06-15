@@ -1,0 +1,233 @@
+{
+  "item": [
+    {
+      "id": "8e8afdb9-6364-4c17-979c-a51fe1e0f5ed",
+      "name": "GraphQL",
+      "description": {
+        "content": "GraphQL query operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9286b3a9-1da1-4881-b0bb-800a434142ca",
+          "name": "Pluralsight Query Course Progress",
+          "request": {
+            "name": "Pluralsight Query Course Progress",
+            "description": {
+              "content": "Execute GraphQL queries to track user course progress including completion status and viewing history for video courses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "graphql"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": \"<object>\",\n  \"operationName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f649a48-ae4d-4942-abd0-1ac8f3134202",
+              "name": "Successful GraphQL response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"example_value\",\n  \"variables\": \"<object>\",\n  \"operationName\": \"Example Course\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"errors\": [\n    {\n      \"message\": \"example_value\",\n      \"locations\": [\n        {\n          \"line\": 4491,\n          \"column\": 434\n        },\n        {\n          \"line\": 3362,\n          \"column\": 4329\n        }\n      ],\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"message\": \"example_value\",\n      \"locations\": [\n        {\n          \"line\": 8950,\n          \"column\": 7887\n        },\n        {\n          \"line\": 5897,\n          \"column\": 6121\n        }\n      ],\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c41cb3e1-7086-45fe-a699-4116b57c26a0",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"example_value\",\n  \"variables\": \"<object>\",\n  \"operationName\": \"Example Course\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29fc4dd0-d844-44e1-ae4e-02681984488b",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"example_value\",\n  \"variables\": \"<object>\",\n  \"operationName\": \"Example Course\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://paas-api.pluralsight.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f4a5fb12-bb5f-47e4-b7f0-40a0a17aaf58",
+    "name": "Pluralsight Course Progress API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "GraphQL query for tracking user course progress including completion status and viewing history for video courses. Updated daily.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+      "type": "text/plain"
+    }
+  }
+}

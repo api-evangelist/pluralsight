@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Course Daily Usage API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GraphQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight Query Course Daily Usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://paas-api.pluralsight.com/graphql",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Execute GraphQL queries to retrieve daily course engagement metrics and usage statistics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

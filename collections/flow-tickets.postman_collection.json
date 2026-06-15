@@ -1,0 +1,273 @@
+{
+  "item": [
+    {
+      "id": "17bab041-ed01-47c3-98ba-5788b8b19537",
+      "name": "Tickets",
+      "description": {
+        "content": "Ticket data operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "13471eb1-52e0-4fa4-b634-8e94fc46d8a0",
+          "name": "Pluralsight Get Tickets",
+          "request": {
+            "name": "Pluralsight Get Tickets",
+            "description": {
+              "content": "Retrieve ticket data including comments, events, and project associations from connected project management tools.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Start date for the query period"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "End date for the query period"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Flow workspace identifier",
+                  "type": "any",
+                  "value": "{{workspace}}",
+                  "key": "workspace"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "505cf97e-e846-4318-8399-6a1b68180d95",
+              "name": "Successful response with ticket data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Flow workspace identifier",
+                      "type": "any",
+                      "value": "{{workspace}}",
+                      "key": "workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "baad2246-3c42-47f7-8b3a-3261cd5e796e",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Flow workspace identifier",
+                      "type": "any",
+                      "value": "{{workspace}}",
+                      "key": "workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef6c1664-a89e-4084-a355-b7f3e2737ad5",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Flow workspace identifier",
+                      "type": "any",
+                      "value": "{{workspace}}",
+                      "key": "workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Flow workspace identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "your-workspace",
+      "key": "workspace"
+    },
+    {
+      "type": "string",
+      "value": "https://{{workspace}}.appfireflow.com/v3/customer/core",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "16921533-034f-41a5-85e0-c1dc466f54e5",
+    "name": "Pluralsight Flow Tickets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing ticket data including comments, events, and project associations from connected project management tools.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+      "type": "text/plain"
+    }
+  }
+}

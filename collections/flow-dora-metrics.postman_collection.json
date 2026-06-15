@@ -1,0 +1,240 @@
+{
+  "item": [
+    {
+      "id": "c946fec2-9d34-4466-9082-576d207c02b6",
+      "name": "DORA Metrics",
+      "description": {
+        "content": "DORA engineering metrics operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1737796b-c0f1-4ce2-af0f-0d684d0e6f37",
+          "name": "Pluralsight Get DORA Metrics",
+          "request": {
+            "name": "Pluralsight Get DORA Metrics",
+            "description": {
+              "content": "Retrieve DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dora",
+                "build-release"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Start date for the metrics period"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "End date for the metrics period"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "158a9dca-9935-44d9-9235-c06ccef71caa",
+              "name": "Successful response with DORA metrics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dora",
+                    "build-release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1fa0aba0-11bc-43d9-9bb8-fa63a48d6d42",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dora",
+                    "build-release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "64b9e3a6-a42b-4f7f-9345-527c5ccafab7",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dora",
+                    "build-release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://flow-api.pluralsight.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2ff6b344-4dc9-449d-bc77-f9e2b356d7e6",
+    "name": "Pluralsight Flow DORA Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+      "type": "text/plain"
+    }
+  }
+}

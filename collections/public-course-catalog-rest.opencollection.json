@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Public Course Catalog REST API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight Get Course Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://paas-rest-api.pluralsight.com/courses"
+          },
+          "docs": "Retrieve the full public course catalog without authentication. Returns course IDs, titles, durations, release dates, and retirement status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

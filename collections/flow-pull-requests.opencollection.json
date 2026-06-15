@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Flow Pull Requests API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pull Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight Get Pull Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace}.appfireflow.com/v3/customer/core/pull-requests",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "2026-04-17T12:00:00Z",
+                "type": "query",
+                "description": "Start date for the query period"
+              },
+              {
+                "name": "end_date",
+                "value": "2026-04-17T12:00:00Z",
+                "type": "query",
+                "description": "End date for the query period"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve pull request data, comments, and events across repositories."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Skills Assessment API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GraphQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight Query Skills Assessments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://paas-api.pluralsight.com/graphql",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Execute GraphQL queries to access skill assessments, Skill IQ scores, assessment catalogs, and competency measurements."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

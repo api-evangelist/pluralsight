@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Licensing REST API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Licensing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight List Invitations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pluralsight.com/plans/api/license/v1/invitations",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a list of pending user invitations. Deprecated - migrate to GraphQL User Management API."
+        },
+        {
+          "info": {
+            "name": "Pluralsight Create Invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pluralsight.com/plans/api/license/v1/invitations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Send a new user invitation. Deprecated - migrate to GraphQL User Management API."
+        },
+        {
+          "info": {
+            "name": "Pluralsight List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pluralsight.com/plans/api/license/v1/users",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a list of users in the plan. Deprecated - migrate to GraphQL User Management API."
+        },
+        {
+          "info": {
+            "name": "Pluralsight List Teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pluralsight.com/plans/api/license/v1/teams",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a list of teams in the plan. Deprecated - migrate to GraphQL Teams API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

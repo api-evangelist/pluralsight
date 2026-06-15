@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Flow Repos API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight Get Repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace}.appfireflow.com/v3/customer/core/repos",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve repository data and metadata across connected source control systems."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

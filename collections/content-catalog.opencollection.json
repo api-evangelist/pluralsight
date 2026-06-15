@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Content Catalog API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GraphQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight Query Content Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://paas-api.pluralsight.com/graphql",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Execute GraphQL queries to retrieve the general content catalog including videos, guides, interactive courses, and other content types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

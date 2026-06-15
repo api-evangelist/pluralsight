@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Reports REST API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight Download User Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pluralsight.com/plans/api/reports/v1/users",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download a user report as CSV. Deprecated - migrate to GraphQL User Management API."
+        },
+        {
+          "info": {
+            "name": "Pluralsight Download Course Completion Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pluralsight.com/plans/api/reports/v1/course-completion",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download a course completion report as CSV. Deprecated - migrate to GraphQL Course Progress API."
+        },
+        {
+          "info": {
+            "name": "Pluralsight Download Course Usage Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pluralsight.com/plans/api/reports/v1/course-usage",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download a course usage report as CSV. Deprecated - migrate to GraphQL Course Daily Usage API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

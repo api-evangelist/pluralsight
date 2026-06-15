@@ -1,0 +1,273 @@
+{
+  "item": [
+    {
+      "id": "a748058c-1751-47fb-a101-e2774eccd681",
+      "name": "Pull Requests",
+      "description": {
+        "content": "Pull request data operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c0574dc8-eda3-43eb-b520-1c59affef5aa",
+          "name": "Pluralsight Get Pull Requests",
+          "request": {
+            "name": "Pluralsight Get Pull Requests",
+            "description": {
+              "content": "Retrieve pull request data, comments, and events across repositories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pull-requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Start date for the query period"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "End date for the query period"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Flow workspace identifier",
+                  "type": "any",
+                  "value": "{{workspace}}",
+                  "key": "workspace"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "345c7fd6-bc00-4359-bfd5-6cb30d5fbe14",
+              "name": "Successful response with pull request data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pull-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Flow workspace identifier",
+                      "type": "any",
+                      "value": "{{workspace}}",
+                      "key": "workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d66a9477-91dd-472f-adaa-3c05da6f4a31",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pull-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Flow workspace identifier",
+                      "type": "any",
+                      "value": "{{workspace}}",
+                      "key": "workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "630e780c-1797-485d-a6b2-173170db4165",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pull-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Flow workspace identifier",
+                      "type": "any",
+                      "value": "{{workspace}}",
+                      "key": "workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Flow workspace identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "your-workspace",
+      "key": "workspace"
+    },
+    {
+      "type": "string",
+      "value": "https://{{workspace}}.appfireflow.com/v3/customer/core",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "98e1c574-492c-4ef7-9117-d406c6d7257c",
+    "name": "Pluralsight Flow Pull Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing pull request data, comments, and events across repositories.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+      "type": "text/plain"
+    }
+  }
+}

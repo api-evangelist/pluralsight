@@ -1,0 +1,233 @@
+{
+  "item": [
+    {
+      "id": "1731bdbe-ca31-4de7-819a-6a5ec86ac950",
+      "name": "Repos",
+      "description": {
+        "content": "Repository data operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8a3d83d4-59ab-40da-ad4e-f9f214a49034",
+          "name": "Pluralsight Get Repositories",
+          "request": {
+            "name": "Pluralsight Get Repositories",
+            "description": {
+              "content": "Retrieve repository data and metadata across connected source control systems.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "repos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Flow workspace identifier",
+                  "type": "any",
+                  "value": "{{workspace}}",
+                  "key": "workspace"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "415b0889-45ef-412f-a438-c8d89ecf5618",
+              "name": "Successful response with repository data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Flow workspace identifier",
+                      "type": "any",
+                      "value": "{{workspace}}",
+                      "key": "workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b74d071-30c4-4a5c-80fb-4709f38ad520",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Flow workspace identifier",
+                      "type": "any",
+                      "value": "{{workspace}}",
+                      "key": "workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb54a99a-c76b-4f5e-a5c6-fb5fb31ef8a5",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "repos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Flow workspace identifier",
+                      "type": "any",
+                      "value": "{{workspace}}",
+                      "key": "workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Flow workspace identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "your-workspace",
+      "key": "workspace"
+    },
+    {
+      "type": "string",
+      "value": "https://{{workspace}}.appfireflow.com/v3/customer/core",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "672c0cee-50e2-44fa-9513-85885bacfdec",
+    "name": "Pluralsight Flow Repos API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing repository data and metadata across connected source control systems.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+      "type": "text/plain"
+    }
+  }
+}

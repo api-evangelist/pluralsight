@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Flow Coding Metrics API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Coding Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight Get Coding Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flow-api.pluralsight.com/collaboration/code/metrics",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "2026-04-17T12:00:00Z",
+                "type": "query",
+                "description": "Start date for the metrics period"
+              },
+              {
+                "name": "end_date",
+                "value": "2026-04-17T12:00:00Z",
+                "type": "query",
+                "description": "End date for the metrics period"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve code-level engineering metrics and developer productivity data with date range filtering."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

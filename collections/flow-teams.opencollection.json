@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Flow Teams API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight List Teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace}.appfireflow.com/v3/customer/core/teams",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a list of Flow engineering teams and team membership data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

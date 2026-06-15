@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Flow Users API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace}.appfireflow.com/v3/customer/core/users",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a list of Flow users in the workspace."
+        },
+        {
+          "info": {
+            "name": "Pluralsight Update Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{workspace}.appfireflow.com/v3/customer/core/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update, merge, hide, or perform bulk operations on Flow user accounts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

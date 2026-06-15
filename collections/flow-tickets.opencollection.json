@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pluralsight Flow Tickets API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tickets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pluralsight Get Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace}.appfireflow.com/v3/customer/core/tickets",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "2026-04-17T12:00:00Z",
+                "type": "query",
+                "description": "Start date for the query period"
+              },
+              {
+                "name": "end_date",
+                "value": "2026-04-17T12:00:00Z",
+                "type": "query",
+                "description": "End date for the query period"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve ticket data including comments, events, and project associations from connected project management tools."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
