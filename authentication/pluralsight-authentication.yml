@@ -1,0 +1,44 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/channels.yml, openapi/content-catalog.yml, openapi/content-progress.yml, openapi/content-slug.yml,
+  openapi/course-catalog.yml, openapi/course-daily-usage.yml, openapi/course-progress.yml, openapi/flow-coding-metrics.yml,
+  openapi/flow-collaboration-metrics.yml, openapi/flow-commits.yml, openapi/flow-dora-metrics.yml,
+  openapi/flow-integrations.yml ...
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/channels.yml
+  - openapi/content-catalog.yml
+  - openapi/content-progress.yml
+  - openapi/content-slug.yml
+  - openapi/course-catalog.yml
+  - openapi/course-daily-usage.yml
+  - openapi/course-progress.yml
+  - openapi/flow-coding-metrics.yml
+  - openapi/flow-collaboration-metrics.yml
+  - openapi/flow-commits.yml
+  - openapi/flow-dora-metrics.yml
+  - openapi/flow-integrations.yml
+  - openapi/flow-pull-requests.yml
+  - openapi/flow-repos.yml
+  - openapi/flow-teams.yml
+  - openapi/flow-tickets.yml
+  - openapi/flow-users.yml
+  - openapi/labs.yml
+  - openapi/learning-paths.yml
+  - openapi/licensing-rest.yml
+  - openapi/plan-info.yml
+  - openapi/practice-exams.yml
+  - openapi/programs.yml
+  - openapi/reports-rest.yml
+  - openapi/role-iq.yml
+  - openapi/skills-assessment.yml
+  - openapi/tags.yml
+  - openapi/teams.yml
+  - openapi/user-management.yml

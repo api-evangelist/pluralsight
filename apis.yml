@@ -643,6 +643,14 @@ apis:
     url: https://help.pluralsight.com
   aid: pluralsight:public-course-catalog-rest-api
 common:
+- type: TrustCenter
+  url: security/pluralsight-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/pluralsight-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/pluralsight-domain-security.yml
+- type: Authentication
+  url: authentication/pluralsight-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/pluralsight
 - type: LinkedIn
