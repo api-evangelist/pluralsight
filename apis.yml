@@ -643,6 +643,8 @@ apis:
     url: https://help.pluralsight.com
   aid: pluralsight:public-course-catalog-rest-api
 common:
+- type: AgenticAccess
+  url: agentic-access/pluralsight-agentic-access.yml
 - type: TrustCenter
   url: security/pluralsight-trust-center.yml
 - type: VulnerabilityDisclosure
