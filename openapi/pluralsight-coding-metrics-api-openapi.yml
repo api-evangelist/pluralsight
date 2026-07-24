@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Pluralsight Flow Pull Requests API
-  description: REST API for accessing pull request data, comments, and events across repositories.
+  title: Pluralsight Channels Catalog Coding Metrics API
+  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -11,56 +11,47 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-- url: https://{workspace}.appfireflow.com/v3/customer/core
+- url: https://paas-api.pluralsight.com
   description: Production
-  variables:
-    workspace:
-      description: Your Flow workspace identifier
-      default: your-workspace
-externalDocs:
-  description: Customer API References
-  url: https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references
 tags:
-- name: Pull Requests
-  description: Pull request data operations
+- name: Coding Metrics
+  description: Code-level engineering metrics operations
 paths:
-  /pull-requests:
+  /collaboration/code/metrics:
     get:
-      summary: Pluralsight Get Pull Requests
-      description: Retrieve pull request data, comments, and events across repositories.
-      operationId: getPullRequests
+      summary: Pluralsight Get Coding Metrics
+      description: Retrieve code-level engineering metrics and developer productivity data with date range filtering.
+      operationId: getCodingMetrics
       tags:
-      - Pull Requests
+      - Coding Metrics
       security:
       - bearerAuth: []
       parameters:
       - name: start_date
         in: query
-        description: Start date for the query period
+        description: Start date for the metrics period
         schema:
           type: string
           format: date
         example: '2026-04-17T12:00:00Z'
       - name: end_date
         in: query
-        description: End date for the query period
+        description: End date for the metrics period
         schema:
           type: string
           format: date
         example: '2026-04-17T12:00:00Z'
       responses:
         '200':
-          description: Successful response with pull request data
+          description: Successful response with coding metrics
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   data:
-                    type: array
-                    items:
-                      type: object
-                    description: Pull request records
+                    type: object
+                    description: Coding metrics data
         '401':
           description: Unauthorized - Invalid or missing authentication token
         '429':
@@ -74,3 +65,6 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+externalDocs:
+  description: Pluralsight Developer Documentation
+  url: https://developer.pluralsight.com

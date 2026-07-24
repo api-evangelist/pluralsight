@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Pluralsight Flow Coding Metrics API
-  description: REST API for accessing code-level engineering metrics and developer productivity data with date range filtering.
+  title: Pluralsight Channels Catalog Commits API
+  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -11,50 +11,49 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-- url: https://flow-api.pluralsight.com
+- url: https://paas-api.pluralsight.com
   description: Production
-externalDocs:
-  description: Coding Metrics API Documentation
-  url: https://help.pluralsight.com/hc/en-us/articles/31476876875028-Updated-Coding-metrics-API
 tags:
-- name: Coding Metrics
-  description: Code-level engineering metrics operations
+- name: Commits
+  description: Commit data operations
 paths:
-  /collaboration/code/metrics:
+  /commits:
     get:
-      summary: Pluralsight Get Coding Metrics
-      description: Retrieve code-level engineering metrics and developer productivity data with date range filtering.
-      operationId: getCodingMetrics
+      summary: Pluralsight Get Commits
+      description: Retrieve commit data and aggregated commit metrics across repositories.
+      operationId: getCommits
       tags:
-      - Coding Metrics
+      - Commits
       security:
       - bearerAuth: []
       parameters:
       - name: start_date
         in: query
-        description: Start date for the metrics period
+        description: Start date for the query period
         schema:
           type: string
           format: date
         example: '2026-04-17T12:00:00Z'
       - name: end_date
         in: query
-        description: End date for the metrics period
+        description: End date for the query period
         schema:
           type: string
           format: date
         example: '2026-04-17T12:00:00Z'
       responses:
         '200':
-          description: Successful response with coding metrics
+          description: Successful response with commit data
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   data:
-                    type: object
-                    description: Coding metrics data
+                    type: array
+                    items:
+                      type: object
+                    description: Commit records
         '401':
           description: Unauthorized - Invalid or missing authentication token
         '429':
@@ -68,3 +67,6 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+externalDocs:
+  description: Pluralsight Developer Documentation
+  url: https://developer.pluralsight.com

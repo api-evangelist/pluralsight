@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Pluralsight Reports REST API
-  description: Legacy REST API for downloading user, course completion, and course usage reports as CSV files. Deprecated as of February 2025, removal scheduled for November 2025.
+  title: Pluralsight Channels Catalog Reports API
+  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -11,11 +11,8 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-- url: https://app.pluralsight.com/plans/api/reports/v1
+- url: https://paas-api.pluralsight.com
   description: Production
-externalDocs:
-  description: Migration Guide - REST to GraphQL
-  url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
 tags:
 - name: Reports
   description: Report download operations (deprecated)
@@ -98,3 +95,6 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+externalDocs:
+  description: Pluralsight Developer Documentation
+  url: https://developer.pluralsight.com

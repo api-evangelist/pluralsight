@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Pluralsight Public Course Catalog REST API
-  description: Legacy public REST API for accessing the full course catalog without authentication. Returns course IDs, titles, durations, release dates, and retirement status.
+  title: Pluralsight Channels Catalog API
+  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -11,11 +11,8 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-- url: https://paas-rest-api.pluralsight.com
+- url: https://paas-api.pluralsight.com
   description: Production
-externalDocs:
-  description: Skills APIs and Integrations
-  url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 tags:
 - name: Catalog
   description: Public course catalog operations
@@ -63,3 +60,12 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+externalDocs:
+  description: Pluralsight Developer Documentation
+  url: https://developer.pluralsight.com

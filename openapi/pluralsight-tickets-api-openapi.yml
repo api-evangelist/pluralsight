@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Pluralsight Flow Collaboration Metrics API
-  description: REST API for accessing pull request and collaboration metrics for engineering teams with date range filtering.
+  title: Pluralsight Channels Catalog Tickets API
+  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -11,50 +11,49 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-- url: https://api.appfireflow.com
+- url: https://paas-api.pluralsight.com
   description: Production
-externalDocs:
-  description: Collaboration Metrics API Documentation
-  url: https://help.pluralsight.com/hc/en-us/articles/24286030333332-Collaboration-metrics-API
 tags:
-- name: Collaboration Metrics
-  description: Pull request and collaboration metrics operations
+- name: Tickets
+  description: Ticket data operations
 paths:
-  /collaboration/pullrequest/metrics:
+  /tickets:
     get:
-      summary: Pluralsight Get Collaboration Metrics
-      description: Retrieve pull request and collaboration metrics for engineering teams with date range filtering.
-      operationId: getCollaborationMetrics
+      summary: Pluralsight Get Tickets
+      description: Retrieve ticket data including comments, events, and project associations from connected project management tools.
+      operationId: getTickets
       tags:
-      - Collaboration Metrics
+      - Tickets
       security:
       - bearerAuth: []
       parameters:
       - name: start_date
         in: query
-        description: Start date for the metrics period
+        description: Start date for the query period
         schema:
           type: string
           format: date
         example: '2026-04-17T12:00:00Z'
       - name: end_date
         in: query
-        description: End date for the metrics period
+        description: End date for the query period
         schema:
           type: string
           format: date
         example: '2026-04-17T12:00:00Z'
       responses:
         '200':
-          description: Successful response with collaboration metrics
+          description: Successful response with ticket data
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   data:
-                    type: object
-                    description: Collaboration metrics data
+                    type: array
+                    items:
+                      type: object
+                    description: Ticket records
         '401':
           description: Unauthorized - Invalid or missing authentication token
         '429':
@@ -68,3 +67,6 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+externalDocs:
+  description: Pluralsight Developer Documentation
+  url: https://developer.pluralsight.com

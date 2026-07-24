@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Pluralsight Content Catalog API
-  description: GraphQL query for accessing the general content catalog including videos, guides, interactive courses, and other content types beyond traditional courses.
+  title: Pluralsight Channels Catalog GraphQL API
+  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -13,18 +13,15 @@ info:
 servers:
 - url: https://paas-api.pluralsight.com
   description: Production
-externalDocs:
-  description: Pluralsight Developer Documentation
-  url: https://developer.pluralsight.com
 tags:
 - name: GraphQL
-  description: GraphQL query operations
+  description: GraphQL query and mutation operations
 paths:
   /graphql:
     post:
-      summary: Pluralsight Query Content Catalog
-      description: Execute GraphQL queries to retrieve the general content catalog including videos, guides, interactive courses, and other content types.
-      operationId: queryContentCatalog
+      summary: Pluralsight Query and Manage Channels
+      description: Execute GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
+      operationId: manageChannels
       tags:
       - GraphQL
       security:
@@ -50,12 +47,18 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   schemas:
+    GraphQLResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          description: The query result data
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GraphQLError'
+          description: Any errors that occurred during query execution
     GraphQLRequest:
       type: object
       required:
@@ -72,17 +75,6 @@ components:
           type: string
           description: Name of the operation to execute
           example: Example Course
-    GraphQLResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          description: The query result data
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GraphQLError'
-          description: Any errors that occurred during query execution
     GraphQLError:
       type: object
       properties:
@@ -103,3 +95,11 @@ components:
           type: array
           items:
             type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+externalDocs:
+  description: Pluralsight Developer Documentation
+  url: https://developer.pluralsight.com

@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Pluralsight Flow Tickets API
-  description: REST API for accessing ticket data including comments, events, and project associations from connected project management tools.
+  title: Pluralsight Channels Catalog Pull Requests API
+  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -11,26 +11,19 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-- url: https://{workspace}.appfireflow.com/v3/customer/core
+- url: https://paas-api.pluralsight.com
   description: Production
-  variables:
-    workspace:
-      description: Your Flow workspace identifier
-      default: your-workspace
-externalDocs:
-  description: Customer API References
-  url: https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references
 tags:
-- name: Tickets
-  description: Ticket data operations
+- name: Pull Requests
+  description: Pull request data operations
 paths:
-  /tickets:
+  /pull-requests:
     get:
-      summary: Pluralsight Get Tickets
-      description: Retrieve ticket data including comments, events, and project associations from connected project management tools.
-      operationId: getTickets
+      summary: Pluralsight Get Pull Requests
+      description: Retrieve pull request data, comments, and events across repositories.
+      operationId: getPullRequests
       tags:
-      - Tickets
+      - Pull Requests
       security:
       - bearerAuth: []
       parameters:
@@ -50,7 +43,7 @@ paths:
         example: '2026-04-17T12:00:00Z'
       responses:
         '200':
-          description: Successful response with ticket data
+          description: Successful response with pull request data
           content:
             application/json:
               schema:
@@ -60,7 +53,7 @@ paths:
                     type: array
                     items:
                       type: object
-                    description: Ticket records
+                    description: Pull request records
         '401':
           description: Unauthorized - Invalid or missing authentication token
         '429':
@@ -74,3 +67,6 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+externalDocs:
+  description: Pluralsight Developer Documentation
+  url: https://developer.pluralsight.com

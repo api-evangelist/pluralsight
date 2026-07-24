@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Pluralsight Flow Repos API
-  description: REST API for accessing repository data and metadata across connected source control systems.
+  title: Pluralsight Channels Catalog Teams API
+  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -11,31 +11,24 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-- url: https://{workspace}.appfireflow.com/v3/customer/core
+- url: https://paas-api.pluralsight.com
   description: Production
-  variables:
-    workspace:
-      description: Your Flow workspace identifier
-      default: your-workspace
-externalDocs:
-  description: Customer API References
-  url: https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references
 tags:
-- name: Repos
-  description: Repository data operations
+- name: Teams
+  description: Flow team management operations
 paths:
-  /repos:
+  /teams:
     get:
-      summary: Pluralsight Get Repositories
-      description: Retrieve repository data and metadata across connected source control systems.
-      operationId: getRepos
+      summary: Pluralsight List Teams
+      description: Retrieve a list of Flow engineering teams and team membership data.
+      operationId: listTeams
       tags:
-      - Repos
+      - Teams
       security:
       - bearerAuth: []
       responses:
         '200':
-          description: Successful response with repository data
+          description: Successful response with team data
           content:
             application/json:
               schema:
@@ -45,7 +38,7 @@ paths:
                     type: array
                     items:
                       type: object
-                    description: Repository records
+                    description: Team records
         '401':
           description: Unauthorized - Invalid or missing authentication token
         '429':
@@ -59,3 +52,6 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+externalDocs:
+  description: Pluralsight Developer Documentation
+  url: https://developer.pluralsight.com

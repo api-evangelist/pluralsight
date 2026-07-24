@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Pluralsight Flow Commits API
-  description: REST API for accessing commit data and aggregated commit metrics across repositories.
+  title: Pluralsight Channels Catalog DORA Metrics API
+  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -11,56 +11,47 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-- url: https://{workspace}.appfireflow.com/v3/customer/core
+- url: https://paas-api.pluralsight.com
   description: Production
-  variables:
-    workspace:
-      description: Your Flow workspace identifier
-      default: your-workspace
-externalDocs:
-  description: Customer API References
-  url: https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references
 tags:
-- name: Commits
-  description: Commit data operations
+- name: DORA Metrics
+  description: DORA engineering metrics operations
 paths:
-  /commits:
+  /dora/build-release:
     get:
-      summary: Pluralsight Get Commits
-      description: Retrieve commit data and aggregated commit metrics across repositories.
-      operationId: getCommits
+      summary: Pluralsight Get DORA Metrics
+      description: Retrieve DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service.
+      operationId: getDoraMetrics
       tags:
-      - Commits
+      - DORA Metrics
       security:
       - bearerAuth: []
       parameters:
       - name: start_date
         in: query
-        description: Start date for the query period
+        description: Start date for the metrics period
         schema:
           type: string
           format: date
         example: '2026-04-17T12:00:00Z'
       - name: end_date
         in: query
-        description: End date for the query period
+        description: End date for the metrics period
         schema:
           type: string
           format: date
         example: '2026-04-17T12:00:00Z'
       responses:
         '200':
-          description: Successful response with commit data
+          description: Successful response with DORA metrics
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   data:
-                    type: array
-                    items:
-                      type: object
-                    description: Commit records
+                    type: object
+                    description: DORA metrics data
         '401':
           description: Unauthorized - Invalid or missing authentication token
         '429':
@@ -74,3 +65,6 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+externalDocs:
+  description: Pluralsight Developer Documentation
+  url: https://developer.pluralsight.com
