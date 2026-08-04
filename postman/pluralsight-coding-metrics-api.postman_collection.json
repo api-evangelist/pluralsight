@@ -1,0 +1,252 @@
+{
+  "info": {
+    "_postman_id": "59cdddd0-c173-4c9d-bc87-01a8453a4d53",
+    "name": "Pluralsight Channels Catalog Coding Metrics API",
+    "description": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:32.000Z",
+    "updatedAt": "2026-07-28T02:38:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-59cdddd0-c173-4c9d-bc87-01a8453a4d53"
+  },
+  "item": [
+    {
+      "name": "collaboration",
+      "item": [
+        {
+          "name": "code",
+          "item": [
+            {
+              "name": "metrics",
+              "item": [
+                {
+                  "name": "Pluralsight Get Coding Metrics",
+                  "id": "1ad0c1eb-cd9f-4eac-b84c-e298c510d33d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaboration/code/metrics?start_date=<date>&end_date=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaboration",
+                        "code",
+                        "metrics"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start date for the metrics period",
+                          "key": "start_date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "End date for the metrics period",
+                          "key": "end_date",
+                          "value": "<date>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve code-level engineering metrics and developer productivity data with date range filtering."
+                  },
+                  "response": [
+                    {
+                      "id": "0e16c1a4-b82a-43dd-a220-66d0c7f2faef",
+                      "name": "Successful response with coding metrics",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collaboration/code/metrics?start_date=<date>&end_date=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collaboration",
+                            "code",
+                            "metrics"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start date for the metrics period",
+                              "key": "start_date",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "End date for the metrics period",
+                              "key": "end_date",
+                              "value": "<date>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {}\n}",
+                      "createdAt": "2026-07-28T02:38:33.000Z",
+                      "updatedAt": "2026-07-28T02:38:33.000Z",
+                      "uid": "35240-0e16c1a4-b82a-43dd-a220-66d0c7f2faef"
+                    },
+                    {
+                      "id": "19381c93-568a-4dd3-a375-cc634c046447",
+                      "name": "Unauthorized - Invalid or missing authentication token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collaboration/code/metrics?start_date=<date>&end_date=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collaboration",
+                            "code",
+                            "metrics"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start date for the metrics period",
+                              "key": "start_date",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "End date for the metrics period",
+                              "key": "end_date",
+                              "value": "<date>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:38:33.000Z",
+                      "updatedAt": "2026-07-28T02:38:33.000Z",
+                      "uid": "35240-19381c93-568a-4dd3-a375-cc634c046447"
+                    },
+                    {
+                      "id": "b862427e-b95f-4100-9fc4-4a20cb530910",
+                      "name": "Too Many Requests - Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collaboration/code/metrics?start_date=<date>&end_date=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collaboration",
+                            "code",
+                            "metrics"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start date for the metrics period",
+                              "key": "start_date",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "End date for the metrics period",
+                              "key": "end_date",
+                              "value": "<date>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:38:33.000Z",
+                      "updatedAt": "2026-07-28T02:38:33.000Z",
+                      "uid": "35240-b862427e-b95f-4100-9fc4-4a20cb530910"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:33.000Z",
+                  "updatedAt": "2026-07-28T02:38:33.000Z",
+                  "uid": "35240-1ad0c1eb-cd9f-4eac-b84c-e298c510d33d"
+                }
+              ],
+              "id": "48f8d31f-b3f0-4698-8bc6-2645bde6af8e",
+              "createdAt": "2026-07-28T02:38:33.000Z",
+              "updatedAt": "2026-07-28T02:38:33.000Z",
+              "uid": "35240-48f8d31f-b3f0-4698-8bc6-2645bde6af8e"
+            }
+          ],
+          "id": "b9fe60ca-b01c-4911-bba5-c1e29c563188",
+          "createdAt": "2026-07-28T02:38:33.000Z",
+          "updatedAt": "2026-07-28T02:38:33.000Z",
+          "uid": "35240-b9fe60ca-b01c-4911-bba5-c1e29c563188"
+        }
+      ],
+      "id": "170b967f-f357-4a1e-a4f2-b546eb82f041",
+      "createdAt": "2026-07-28T02:38:33.000Z",
+      "updatedAt": "2026-07-28T02:38:33.000Z",
+      "uid": "35240-170b967f-f357-4a1e-a4f2-b546eb82f041"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://paas-api.pluralsight.com"
+    }
+  ]
+}

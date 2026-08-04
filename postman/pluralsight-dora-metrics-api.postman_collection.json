@@ -1,0 +1,239 @@
+{
+  "info": {
+    "_postman_id": "289012e1-3251-4695-a3bf-0e40979be05f",
+    "name": "Pluralsight Channels Catalog DORA Metrics API",
+    "description": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:35.000Z",
+    "updatedAt": "2026-07-28T02:38:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-289012e1-3251-4695-a3bf-0e40979be05f"
+  },
+  "item": [
+    {
+      "name": "dora",
+      "item": [
+        {
+          "name": "build-release",
+          "item": [
+            {
+              "name": "Pluralsight Get DORA Metrics",
+              "id": "26de697c-1e81-4b4e-b276-fa1867ba0c30",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dora/build-release?start_date=<date>&end_date=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dora",
+                    "build-release"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start date for the metrics period",
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "End date for the metrics period",
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ]
+                },
+                "description": "Retrieve DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service."
+              },
+              "response": [
+                {
+                  "id": "19cae41a-f909-4086-9c1c-4016360ad803",
+                  "name": "Successful response with DORA metrics",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dora/build-release?start_date=<date>&end_date=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dora",
+                        "build-release"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start date for the metrics period",
+                          "key": "start_date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "End date for the metrics period",
+                          "key": "end_date",
+                          "value": "<date>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": {}\n}",
+                  "createdAt": "2026-07-28T02:38:36.000Z",
+                  "updatedAt": "2026-07-28T02:38:36.000Z",
+                  "uid": "35240-19cae41a-f909-4086-9c1c-4016360ad803"
+                },
+                {
+                  "id": "e381623a-7724-44ba-9226-6e92fb294534",
+                  "name": "Unauthorized - Invalid or missing authentication token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dora/build-release?start_date=<date>&end_date=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dora",
+                        "build-release"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start date for the metrics period",
+                          "key": "start_date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "End date for the metrics period",
+                          "key": "end_date",
+                          "value": "<date>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:38:36.000Z",
+                  "updatedAt": "2026-07-28T02:38:36.000Z",
+                  "uid": "35240-e381623a-7724-44ba-9226-6e92fb294534"
+                },
+                {
+                  "id": "58856054-f5da-451d-be23-2ec72cc845b6",
+                  "name": "Too Many Requests - Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dora/build-release?start_date=<date>&end_date=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dora",
+                        "build-release"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start date for the metrics period",
+                          "key": "start_date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "End date for the metrics period",
+                          "key": "end_date",
+                          "value": "<date>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:38:36.000Z",
+                  "updatedAt": "2026-07-28T02:38:36.000Z",
+                  "uid": "35240-58856054-f5da-451d-be23-2ec72cc845b6"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:36.000Z",
+              "updatedAt": "2026-07-28T02:38:36.000Z",
+              "uid": "35240-26de697c-1e81-4b4e-b276-fa1867ba0c30"
+            }
+          ],
+          "id": "171e43ad-1da9-4834-a59b-8d0215d1bc95",
+          "createdAt": "2026-07-28T02:38:36.000Z",
+          "updatedAt": "2026-07-28T02:38:36.000Z",
+          "uid": "35240-171e43ad-1da9-4834-a59b-8d0215d1bc95"
+        }
+      ],
+      "id": "69920c85-3a5b-4c79-bd04-45178aceaddc",
+      "createdAt": "2026-07-28T02:38:36.000Z",
+      "updatedAt": "2026-07-28T02:38:36.000Z",
+      "uid": "35240-69920c85-3a5b-4c79-bd04-45178aceaddc"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://paas-api.pluralsight.com"
+    }
+  ]
+}

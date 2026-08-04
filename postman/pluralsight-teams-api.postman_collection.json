@@ -1,0 +1,178 @@
+{
+  "info": {
+    "_postman_id": "f4a10e79-c485-4ccf-9d5e-fb89d5dbc4ab",
+    "name": "Pluralsight Channels Catalog Teams API",
+    "description": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:43.000Z",
+    "updatedAt": "2026-07-28T02:38:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f4a10e79-c485-4ccf-9d5e-fb89d5dbc4ab"
+  },
+  "item": [
+    {
+      "name": "teams",
+      "item": [
+        {
+          "name": "Pluralsight List Teams",
+          "id": "6b062f57-c836-4be6-8cd3-85741d70076e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/teams",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "teams"
+              ]
+            },
+            "description": "Retrieve a list of Flow engineering teams and team membership data."
+          },
+          "response": [
+            {
+              "id": "80fc8c4b-83a0-4ba5-9e7f-57175a7a00cf",
+              "name": "Successful response with team data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "teams"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:44.000Z",
+              "updatedAt": "2026-07-28T02:38:44.000Z",
+              "uid": "35240-80fc8c4b-83a0-4ba5-9e7f-57175a7a00cf"
+            },
+            {
+              "id": "c6767960-f11e-4324-a021-788d6741769c",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "teams"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:44.000Z",
+              "updatedAt": "2026-07-28T02:38:44.000Z",
+              "uid": "35240-c6767960-f11e-4324-a021-788d6741769c"
+            },
+            {
+              "id": "d468861f-2eba-4712-820e-568399c76bad",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "teams"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:44.000Z",
+              "updatedAt": "2026-07-28T02:38:44.000Z",
+              "uid": "35240-d468861f-2eba-4712-820e-568399c76bad"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:44.000Z",
+          "updatedAt": "2026-07-28T02:38:44.000Z",
+          "uid": "35240-6b062f57-c836-4be6-8cd3-85741d70076e"
+        }
+      ],
+      "id": "38e0ee10-1b01-4cc9-9d77-afd3701f89aa",
+      "createdAt": "2026-07-28T02:38:44.000Z",
+      "updatedAt": "2026-07-28T02:38:44.000Z",
+      "uid": "35240-38e0ee10-1b01-4cc9-9d77-afd3701f89aa"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://paas-api.pluralsight.com"
+    }
+  ]
+}

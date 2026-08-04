@@ -1,0 +1,226 @@
+{
+  "info": {
+    "_postman_id": "5ac825ea-fee8-4f6b-82ba-88c3e9c541b5",
+    "name": "Pluralsight Channels Catalog Pull Requests API",
+    "description": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:39.000Z",
+    "updatedAt": "2026-07-28T02:38:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5ac825ea-fee8-4f6b-82ba-88c3e9c541b5"
+  },
+  "item": [
+    {
+      "name": "pull-requests",
+      "item": [
+        {
+          "name": "Pluralsight Get Pull Requests",
+          "id": "71db2364-4e6a-4bd3-a26f-251196dc8ce8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pull-requests?start_date=<date>&end_date=<date>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pull-requests"
+              ],
+              "query": [
+                {
+                  "description": "Start date for the query period",
+                  "key": "start_date",
+                  "value": "<date>"
+                },
+                {
+                  "description": "End date for the query period",
+                  "key": "end_date",
+                  "value": "<date>"
+                }
+              ]
+            },
+            "description": "Retrieve pull request data, comments, and events across repositories."
+          },
+          "response": [
+            {
+              "id": "51026256-e30a-43bc-9731-4c08f6cf340b",
+              "name": "Successful response with pull request data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pull-requests?start_date=<date>&end_date=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pull-requests"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start date for the query period",
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "End date for the query period",
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:40.000Z",
+              "updatedAt": "2026-07-28T02:38:40.000Z",
+              "uid": "35240-51026256-e30a-43bc-9731-4c08f6cf340b"
+            },
+            {
+              "id": "ee492d0e-0528-4acb-9ac8-f1f170c168d5",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pull-requests?start_date=<date>&end_date=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pull-requests"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start date for the query period",
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "End date for the query period",
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:40.000Z",
+              "updatedAt": "2026-07-28T02:38:40.000Z",
+              "uid": "35240-ee492d0e-0528-4acb-9ac8-f1f170c168d5"
+            },
+            {
+              "id": "4993a60b-0789-4920-b3c1-b53506c1a1cb",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pull-requests?start_date=<date>&end_date=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pull-requests"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start date for the query period",
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "End date for the query period",
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:40.000Z",
+              "updatedAt": "2026-07-28T02:38:40.000Z",
+              "uid": "35240-4993a60b-0789-4920-b3c1-b53506c1a1cb"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:40.000Z",
+          "updatedAt": "2026-07-28T02:38:40.000Z",
+          "uid": "35240-71db2364-4e6a-4bd3-a26f-251196dc8ce8"
+        }
+      ],
+      "id": "6415cd77-846a-4a4d-8774-bbd5bdee4470",
+      "createdAt": "2026-07-28T02:38:40.000Z",
+      "updatedAt": "2026-07-28T02:38:40.000Z",
+      "uid": "35240-6415cd77-846a-4a4d-8774-bbd5bdee4470"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://paas-api.pluralsight.com"
+    }
+  ]
+}

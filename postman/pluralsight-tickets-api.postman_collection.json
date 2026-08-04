@@ -1,0 +1,226 @@
+{
+  "info": {
+    "_postman_id": "d5630428-baa6-4a92-a943-29eaadecd174",
+    "name": "Pluralsight Channels Catalog Tickets API",
+    "description": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:44.000Z",
+    "updatedAt": "2026-07-28T02:38:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d5630428-baa6-4a92-a943-29eaadecd174"
+  },
+  "item": [
+    {
+      "name": "tickets",
+      "item": [
+        {
+          "name": "Pluralsight Get Tickets",
+          "id": "4ee8e9bb-d4fb-4b2a-930d-a730256ec22d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tickets?start_date=<date>&end_date=<date>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tickets"
+              ],
+              "query": [
+                {
+                  "description": "Start date for the query period",
+                  "key": "start_date",
+                  "value": "<date>"
+                },
+                {
+                  "description": "End date for the query period",
+                  "key": "end_date",
+                  "value": "<date>"
+                }
+              ]
+            },
+            "description": "Retrieve ticket data including comments, events, and project associations from connected project management tools."
+          },
+          "response": [
+            {
+              "id": "ba6c6312-be87-4c5f-9c9b-15b7b4c37dc8",
+              "name": "Successful response with ticket data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tickets?start_date=<date>&end_date=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start date for the query period",
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "End date for the query period",
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:45.000Z",
+              "updatedAt": "2026-07-28T02:38:45.000Z",
+              "uid": "35240-ba6c6312-be87-4c5f-9c9b-15b7b4c37dc8"
+            },
+            {
+              "id": "1735c2c8-7874-4e74-9782-a21ca09fd878",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tickets?start_date=<date>&end_date=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start date for the query period",
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "End date for the query period",
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:45.000Z",
+              "updatedAt": "2026-07-28T02:38:45.000Z",
+              "uid": "35240-1735c2c8-7874-4e74-9782-a21ca09fd878"
+            },
+            {
+              "id": "06ecb89e-3f10-4539-9435-8ae527b64849",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tickets?start_date=<date>&end_date=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start date for the query period",
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "End date for the query period",
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:45.000Z",
+              "updatedAt": "2026-07-28T02:38:45.000Z",
+              "uid": "35240-06ecb89e-3f10-4539-9435-8ae527b64849"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:45.000Z",
+          "updatedAt": "2026-07-28T02:38:45.000Z",
+          "uid": "35240-4ee8e9bb-d4fb-4b2a-930d-a730256ec22d"
+        }
+      ],
+      "id": "9b33fb96-216e-432e-87be-007ba4d76f6d",
+      "createdAt": "2026-07-28T02:38:45.000Z",
+      "updatedAt": "2026-07-28T02:38:45.000Z",
+      "uid": "35240-9b33fb96-216e-432e-87be-007ba4d76f6d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://paas-api.pluralsight.com"
+    }
+  ]
+}

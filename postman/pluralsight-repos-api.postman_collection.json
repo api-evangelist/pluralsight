@@ -1,0 +1,178 @@
+{
+  "info": {
+    "_postman_id": "e6b43ce1-df4a-42fa-a9f4-fa8ad5421022",
+    "name": "Pluralsight Channels Catalog Repos API",
+    "description": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:41.000Z",
+    "updatedAt": "2026-07-28T02:38:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e6b43ce1-df4a-42fa-a9f4-fa8ad5421022"
+  },
+  "item": [
+    {
+      "name": "repos",
+      "item": [
+        {
+          "name": "Pluralsight Get Repositories",
+          "id": "3e0d6894-07b2-4a11-b152-82e30f1169aa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/repos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "repos"
+              ]
+            },
+            "description": "Retrieve repository data and metadata across connected source control systems."
+          },
+          "response": [
+            {
+              "id": "eb4521d4-30e4-4a2a-b645-acc59a2904b8",
+              "name": "Successful response with repository data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/repos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "repos"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:42.000Z",
+              "updatedAt": "2026-07-28T02:38:42.000Z",
+              "uid": "35240-eb4521d4-30e4-4a2a-b645-acc59a2904b8"
+            },
+            {
+              "id": "852aa62d-e91b-4e75-a51b-ac131f478de2",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/repos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "repos"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:42.000Z",
+              "updatedAt": "2026-07-28T02:38:42.000Z",
+              "uid": "35240-852aa62d-e91b-4e75-a51b-ac131f478de2"
+            },
+            {
+              "id": "d70e6061-09c4-4897-8c89-27296b545b24",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/repos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "repos"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:42.000Z",
+              "updatedAt": "2026-07-28T02:38:42.000Z",
+              "uid": "35240-d70e6061-09c4-4897-8c89-27296b545b24"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:42.000Z",
+          "updatedAt": "2026-07-28T02:38:42.000Z",
+          "uid": "35240-3e0d6894-07b2-4a11-b152-82e30f1169aa"
+        }
+      ],
+      "id": "cad94ef7-863a-427d-ae08-97908a952b1e",
+      "createdAt": "2026-07-28T02:38:42.000Z",
+      "updatedAt": "2026-07-28T02:38:42.000Z",
+      "uid": "35240-cad94ef7-863a-427d-ae08-97908a952b1e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://paas-api.pluralsight.com"
+    }
+  ]
+}

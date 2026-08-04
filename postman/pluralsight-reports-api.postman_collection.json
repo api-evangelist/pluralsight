@@ -1,0 +1,494 @@
+{
+  "info": {
+    "_postman_id": "dc729a63-fd77-4279-93a6-52b0d6c5dd00",
+    "name": "Pluralsight Channels Catalog Reports API",
+    "description": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:40.000Z",
+    "updatedAt": "2026-07-28T02:38:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dc729a63-fd77-4279-93a6-52b0d6c5dd00"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "Pluralsight Download User Report",
+          "id": "2573ca2d-4a18-4e8a-b7ef-9dd3bdd0a42d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Download a user report as CSV. Deprecated - migrate to GraphQL User Management API."
+          },
+          "response": [
+            {
+              "id": "8111ee0a-f204-4518-94a2-2ef064994842",
+              "name": "CSV file download",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T02:38:41.000Z",
+              "updatedAt": "2026-07-28T02:38:41.000Z",
+              "uid": "35240-8111ee0a-f204-4518-94a2-2ef064994842"
+            },
+            {
+              "id": "b357c580-ea94-46f0-b800-8b7dca8f6952",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:41.000Z",
+              "updatedAt": "2026-07-28T02:38:41.000Z",
+              "uid": "35240-b357c580-ea94-46f0-b800-8b7dca8f6952"
+            },
+            {
+              "id": "a58826ca-6e03-4f22-bd8c-c361ea558ed6",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:41.000Z",
+              "updatedAt": "2026-07-28T02:38:41.000Z",
+              "uid": "35240-a58826ca-6e03-4f22-bd8c-c361ea558ed6"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:41.000Z",
+          "updatedAt": "2026-07-28T02:38:41.000Z",
+          "uid": "35240-2573ca2d-4a18-4e8a-b7ef-9dd3bdd0a42d"
+        }
+      ],
+      "id": "3967653b-24aa-4197-b9d4-3237e5c6cbda",
+      "createdAt": "2026-07-28T02:38:41.000Z",
+      "updatedAt": "2026-07-28T02:38:41.000Z",
+      "uid": "35240-3967653b-24aa-4197-b9d4-3237e5c6cbda"
+    },
+    {
+      "name": "course-completion",
+      "item": [
+        {
+          "name": "Pluralsight Download Course Completion Report",
+          "id": "affb1a35-f730-4bd0-8370-1d7bf6ed8a81",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/course-completion",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "course-completion"
+              ]
+            },
+            "description": "Download a course completion report as CSV. Deprecated - migrate to GraphQL Course Progress API."
+          },
+          "response": [
+            {
+              "id": "eda31dce-9ec9-4a58-baf3-6c0565f17904",
+              "name": "CSV file download",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/course-completion",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course-completion"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T02:38:41.000Z",
+              "updatedAt": "2026-07-28T02:38:41.000Z",
+              "uid": "35240-eda31dce-9ec9-4a58-baf3-6c0565f17904"
+            },
+            {
+              "id": "e8369c4b-cac5-4c7e-83e9-ce3512669abd",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/course-completion",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course-completion"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:41.000Z",
+              "updatedAt": "2026-07-28T02:38:41.000Z",
+              "uid": "35240-e8369c4b-cac5-4c7e-83e9-ce3512669abd"
+            },
+            {
+              "id": "c60a2995-be27-4e6a-bfcd-e599c914ac4e",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/course-completion",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course-completion"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:41.000Z",
+              "updatedAt": "2026-07-28T02:38:41.000Z",
+              "uid": "35240-c60a2995-be27-4e6a-bfcd-e599c914ac4e"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:41.000Z",
+          "updatedAt": "2026-07-28T02:38:41.000Z",
+          "uid": "35240-affb1a35-f730-4bd0-8370-1d7bf6ed8a81"
+        }
+      ],
+      "id": "26818d13-d7b6-4449-a627-5f76dee09f97",
+      "createdAt": "2026-07-28T02:38:41.000Z",
+      "updatedAt": "2026-07-28T02:38:41.000Z",
+      "uid": "35240-26818d13-d7b6-4449-a627-5f76dee09f97"
+    },
+    {
+      "name": "course-usage",
+      "item": [
+        {
+          "name": "Pluralsight Download Course Usage Report",
+          "id": "f379b304-79e9-4445-9a85-a5e8ee172a48",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/course-usage",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "course-usage"
+              ]
+            },
+            "description": "Download a course usage report as CSV. Deprecated - migrate to GraphQL Course Daily Usage API."
+          },
+          "response": [
+            {
+              "id": "fb6f4b24-3253-40e0-9650-1586e55a60db",
+              "name": "CSV file download",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/course-usage",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course-usage"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T02:38:41.000Z",
+              "updatedAt": "2026-07-28T02:38:41.000Z",
+              "uid": "35240-fb6f4b24-3253-40e0-9650-1586e55a60db"
+            },
+            {
+              "id": "3d321534-ce04-4f84-bf1c-90ee24a8aa14",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/course-usage",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course-usage"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:41.000Z",
+              "updatedAt": "2026-07-28T02:38:41.000Z",
+              "uid": "35240-3d321534-ce04-4f84-bf1c-90ee24a8aa14"
+            },
+            {
+              "id": "9b90e769-6a68-4204-8de5-9104eb78a66b",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/course-usage",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course-usage"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:41.000Z",
+              "updatedAt": "2026-07-28T02:38:41.000Z",
+              "uid": "35240-9b90e769-6a68-4204-8de5-9104eb78a66b"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:41.000Z",
+          "updatedAt": "2026-07-28T02:38:41.000Z",
+          "uid": "35240-f379b304-79e9-4445-9a85-a5e8ee172a48"
+        }
+      ],
+      "id": "46ef229e-8398-4bb0-b163-57248a1a2be7",
+      "createdAt": "2026-07-28T02:38:41.000Z",
+      "updatedAt": "2026-07-28T02:38:41.000Z",
+      "uid": "35240-46ef229e-8398-4bb0-b163-57248a1a2be7"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://paas-api.pluralsight.com"
+    }
+  ]
+}

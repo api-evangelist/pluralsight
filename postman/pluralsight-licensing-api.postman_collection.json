@@ -1,0 +1,699 @@
+{
+  "info": {
+    "_postman_id": "f0a95ac7-296b-45c5-a2d7-6f0eb30076b5",
+    "name": "Pluralsight Channels Catalog Licensing API",
+    "description": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:38.000Z",
+    "updatedAt": "2026-07-28T02:38:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f0a95ac7-296b-45c5-a2d7-6f0eb30076b5"
+  },
+  "item": [
+    {
+      "name": "invitations",
+      "item": [
+        {
+          "name": "Pluralsight List Invitations",
+          "id": "b461e85e-3d60-4f18-bb0f-f3e9ae33e75e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/invitations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "invitations"
+              ]
+            },
+            "description": "Retrieve a list of pending user invitations. Deprecated - migrate to GraphQL User Management API."
+          },
+          "response": [
+            {
+              "id": "92803bae-f028-4d1c-a084-0faadd576cbd",
+              "name": "Successful response with invitation data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invitations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invitations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-92803bae-f028-4d1c-a084-0faadd576cbd"
+            },
+            {
+              "id": "505576e9-d202-4801-983c-c9c05db7f5e1",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invitations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invitations"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-505576e9-d202-4801-983c-c9c05db7f5e1"
+            },
+            {
+              "id": "64453467-c861-44c4-809c-0bc00563ff3d",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invitations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invitations"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-64453467-c861-44c4-809c-0bc00563ff3d"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:39.000Z",
+          "updatedAt": "2026-07-28T02:38:39.000Z",
+          "uid": "35240-b461e85e-3d60-4f18-bb0f-f3e9ae33e75e"
+        },
+        {
+          "name": "Pluralsight Create Invitation",
+          "id": "5c6fce57-64cf-4da5-a96a-5aa0e961abf7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/invitations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "invitations"
+              ]
+            },
+            "description": "Send a new user invitation. Deprecated - migrate to GraphQL User Management API."
+          },
+          "response": [
+            {
+              "id": "6b786ca3-79f6-41b2-8080-e9e9450cf87a",
+              "name": "Invitation created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invitations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invitations"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-6b786ca3-79f6-41b2-8080-e9e9450cf87a"
+            },
+            {
+              "id": "c925a30b-de80-4a5c-8387-75a346696219",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invitations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invitations"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-c925a30b-de80-4a5c-8387-75a346696219"
+            },
+            {
+              "id": "6f1986de-987d-43a1-a8c7-495c2be98a91",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invitations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invitations"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-6f1986de-987d-43a1-a8c7-495c2be98a91"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:39.000Z",
+          "updatedAt": "2026-07-28T02:38:39.000Z",
+          "uid": "35240-5c6fce57-64cf-4da5-a96a-5aa0e961abf7"
+        }
+      ],
+      "id": "d8c8787e-6b68-4bd9-8bd5-e423654308aa",
+      "createdAt": "2026-07-28T02:38:39.000Z",
+      "updatedAt": "2026-07-28T02:38:39.000Z",
+      "uid": "35240-d8c8787e-6b68-4bd9-8bd5-e423654308aa"
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "Pluralsight List Users",
+          "id": "4539d946-28dc-49a5-be4f-2cb1cf9dcf2c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Retrieve a list of users in the plan. Deprecated - migrate to GraphQL User Management API."
+          },
+          "response": [
+            {
+              "id": "f2ae4029-f804-4f7a-bd44-beeef4099474",
+              "name": "Successful response with user data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-f2ae4029-f804-4f7a-bd44-beeef4099474"
+            },
+            {
+              "id": "8028693d-0b28-4609-99bb-1217adca443d",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-8028693d-0b28-4609-99bb-1217adca443d"
+            },
+            {
+              "id": "fe0f63eb-b370-44d3-829f-9dd44f0e8b4f",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-fe0f63eb-b370-44d3-829f-9dd44f0e8b4f"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:39.000Z",
+          "updatedAt": "2026-07-28T02:38:39.000Z",
+          "uid": "35240-4539d946-28dc-49a5-be4f-2cb1cf9dcf2c"
+        }
+      ],
+      "id": "ecde613a-6f59-4880-a7bf-00b2883ca413",
+      "createdAt": "2026-07-28T02:38:39.000Z",
+      "updatedAt": "2026-07-28T02:38:39.000Z",
+      "uid": "35240-ecde613a-6f59-4880-a7bf-00b2883ca413"
+    },
+    {
+      "name": "teams",
+      "item": [
+        {
+          "name": "Pluralsight List Teams",
+          "id": "11cd40f0-5d24-4f10-8c41-0b822cae32bd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/teams",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "teams"
+              ]
+            },
+            "description": "Retrieve a list of teams in the plan. Deprecated - migrate to GraphQL Teams API."
+          },
+          "response": [
+            {
+              "id": "78af2f95-3486-482b-974e-fe168b925c0c",
+              "name": "Successful response with team data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "teams"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-78af2f95-3486-482b-974e-fe168b925c0c"
+            },
+            {
+              "id": "c12a36db-d96e-4a92-98fa-586e76b8ee94",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "teams"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-c12a36db-d96e-4a92-98fa-586e76b8ee94"
+            },
+            {
+              "id": "037151e3-5f13-4c2b-89aa-52dcbd19236c",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "teams"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:39.000Z",
+              "updatedAt": "2026-07-28T02:38:39.000Z",
+              "uid": "35240-037151e3-5f13-4c2b-89aa-52dcbd19236c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:39.000Z",
+          "updatedAt": "2026-07-28T02:38:39.000Z",
+          "uid": "35240-11cd40f0-5d24-4f10-8c41-0b822cae32bd"
+        }
+      ],
+      "id": "3731088e-b0ca-4fe7-9f15-48ca638d7b73",
+      "createdAt": "2026-07-28T02:38:39.000Z",
+      "updatedAt": "2026-07-28T02:38:39.000Z",
+      "uid": "35240-3731088e-b0ca-4fe7-9f15-48ca638d7b73"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://paas-api.pluralsight.com"
+    }
+  ]
+}

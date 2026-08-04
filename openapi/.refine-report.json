@@ -1,0 +1,40 @@
+{
+  "provider": "pluralsight",
+  "sources": [
+    "pluralsight-catalog-api-openapi.yml",
+    "pluralsight-coding-metrics-api-openapi.yml",
+    "pluralsight-collaboration-metrics-api-openapi.yml",
+    "pluralsight-commits-api-openapi.yml",
+    "pluralsight-dora-metrics-api-openapi.yml",
+    "pluralsight-graphql-api-openapi.yml",
+    "pluralsight-integrations-api-openapi.yml",
+    "pluralsight-licensing-api-openapi.yml",
+    "pluralsight-pull-requests-api-openapi.yml",
+    "pluralsight-reports-api-openapi.yml",
+    "pluralsight-repos-api-openapi.yml",
+    "pluralsight-teams-api-openapi.yml",
+    "pluralsight-tickets-api-openapi.yml",
+    "pluralsight-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "pluralsight-catalog-api-openapi.yml",
+    "pluralsight-coding-metrics-api-openapi.yml",
+    "pluralsight-collaboration-metrics-api-openapi.yml",
+    "pluralsight-commits-api-openapi.yml",
+    "pluralsight-dora-metrics-api-openapi.yml",
+    "pluralsight-graphql-api-openapi.yml",
+    "pluralsight-integrations-api-openapi.yml",
+    "pluralsight-licensing-api-openapi.yml",
+    "pluralsight-pull-requests-api-openapi.yml",
+    "pluralsight-reports-api-openapi.yml",
+    "pluralsight-repos-api-openapi.yml",
+    "pluralsight-teams-api-openapi.yml",
+    "pluralsight-tickets-api-openapi.yml",
+    "pluralsight-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

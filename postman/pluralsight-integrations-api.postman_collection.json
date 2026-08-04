@@ -1,0 +1,178 @@
+{
+  "info": {
+    "_postman_id": "c0066c59-fb74-46d2-95ea-f2f9675b9ee8",
+    "name": "Pluralsight Channels Catalog Integrations API",
+    "description": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:37.000Z",
+    "updatedAt": "2026-07-28T02:38:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c0066c59-fb74-46d2-95ea-f2f9675b9ee8"
+  },
+  "item": [
+    {
+      "name": "integrations",
+      "item": [
+        {
+          "name": "Pluralsight List Integrations",
+          "id": "f9ddfd81-0f2f-4f10-9dac-5ae3e755334c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/integrations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "integrations"
+              ]
+            },
+            "description": "Retrieve a list of Flow integrations and check connection status with external tools and services."
+          },
+          "response": [
+            {
+              "id": "8168e74d-a215-4191-b966-21d5a5315cb5",
+              "name": "Successful response with integration data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/integrations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "integrations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:38.000Z",
+              "updatedAt": "2026-07-28T02:38:38.000Z",
+              "uid": "35240-8168e74d-a215-4191-b966-21d5a5315cb5"
+            },
+            {
+              "id": "6935bb02-6a19-48cf-b3d1-1a5d323ffdd4",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/integrations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "integrations"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:38.000Z",
+              "updatedAt": "2026-07-28T02:38:38.000Z",
+              "uid": "35240-6935bb02-6a19-48cf-b3d1-1a5d323ffdd4"
+            },
+            {
+              "id": "b6da6111-ebea-4772-980a-34215671ed85",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/integrations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "integrations"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:38.000Z",
+              "updatedAt": "2026-07-28T02:38:38.000Z",
+              "uid": "35240-b6da6111-ebea-4772-980a-34215671ed85"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:38.000Z",
+          "updatedAt": "2026-07-28T02:38:38.000Z",
+          "uid": "35240-f9ddfd81-0f2f-4f10-9dac-5ae3e755334c"
+        }
+      ],
+      "id": "80d170a0-d260-4eab-94c9-389badd7fa04",
+      "createdAt": "2026-07-28T02:38:38.000Z",
+      "updatedAt": "2026-07-28T02:38:38.000Z",
+      "uid": "35240-80d170a0-d260-4eab-94c9-389badd7fa04"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://paas-api.pluralsight.com"
+    }
+  ]
+}

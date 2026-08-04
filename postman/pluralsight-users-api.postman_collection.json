@@ -1,0 +1,383 @@
+{
+  "info": {
+    "_postman_id": "1806b9f9-a6b7-48f3-93f0-e84aeb9684c0",
+    "name": "Pluralsight Channels Catalog Users API",
+    "description": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:45.000Z",
+    "updatedAt": "2026-07-28T02:38:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1806b9f9-a6b7-48f3-93f0-e84aeb9684c0"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "Pluralsight List Users",
+          "id": "422349b6-d639-4107-9ca9-ac1dfb2e9c32",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Retrieve a list of Flow users in the workspace."
+          },
+          "response": [
+            {
+              "id": "61d08a4f-df90-455f-8c6d-32b89821b82d",
+              "name": "Successful response with user data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-61d08a4f-df90-455f-8c6d-32b89821b82d"
+            },
+            {
+              "id": "05e6bbca-ffaa-4a53-bebd-12b41b19859a",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-05e6bbca-ffaa-4a53-bebd-12b41b19859a"
+            },
+            {
+              "id": "2881778c-a3f3-4586-ae07-aa287025a66b",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-2881778c-a3f3-4586-ae07-aa287025a66b"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:46.000Z",
+          "updatedAt": "2026-07-28T02:38:46.000Z",
+          "uid": "35240-422349b6-d639-4107-9ca9-ac1dfb2e9c32"
+        },
+        {
+          "name": "Pluralsight Update Users",
+          "id": "ffb55db9-3426-4c53-9ffa-77acb84ab8f4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Update, merge, hide, or perform bulk operations on Flow user accounts."
+          },
+          "response": [
+            {
+              "id": "4dfb9cdf-608d-4c2a-b470-ac54a68a0d44",
+              "name": "Successful update response",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-4dfb9cdf-608d-4c2a-b470-ac54a68a0d44"
+            },
+            {
+              "id": "19b38bb9-2ca7-4d01-a060-05bfe33c25fb",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-19b38bb9-2ca7-4d01-a060-05bfe33c25fb"
+            },
+            {
+              "id": "11f462db-818e-46e6-9715-ad6c4898c6c5",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-11f462db-818e-46e6-9715-ad6c4898c6c5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:46.000Z",
+          "updatedAt": "2026-07-28T02:38:46.000Z",
+          "uid": "35240-ffb55db9-3426-4c53-9ffa-77acb84ab8f4"
+        }
+      ],
+      "id": "a5baaf41-c637-49a9-916a-8d8bdbc4360f",
+      "createdAt": "2026-07-28T02:38:46.000Z",
+      "updatedAt": "2026-07-28T02:38:46.000Z",
+      "uid": "35240-a5baaf41-c637-49a9-916a-8d8bdbc4360f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://paas-api.pluralsight.com"
+    }
+  ]
+}
