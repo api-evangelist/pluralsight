@@ -1,0 +1,131 @@
+{
+  "item": [
+    {
+      "id": "a02111f0-9a63-4f25-a2e9-963ed406b5a0",
+      "name": "Catalog",
+      "description": {
+        "content": "Public course catalog operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad297f19-fc34-4140-a7eb-ed70d8c07017",
+          "name": "Pluralsight Get Course Catalog",
+          "request": {
+            "name": "Pluralsight Get Course Catalog",
+            "description": {
+              "content": "Retrieve the full public course catalog without authentication. Returns course IDs, titles, durations, release dates, and retirement status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "courses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42b21e70-b62b-4908-8627-cdf1057726ae",
+              "name": "Successful response with course catalog",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "courses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"duration\": \"string\",\n      \"releaseDate\": \"1972-06-24\",\n      \"retiredDate\": \"1953-07-17\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"duration\": \"string\",\n      \"releaseDate\": \"1985-11-29\",\n      \"retiredDate\": \"2008-07-11\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab01e219-11a1-4d29-8774-572acfb787dc",
+              "name": "Too Many Requests - Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "courses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://paas-api.pluralsight.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "313bab3a-c5d2-4625-b81c-7e51162592b2",
+    "name": "Pluralsight Channels Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.\n\nContact Support:\n Name: Pluralsight API Support\n Email: support@pluralsight.com",
+      "type": "text/plain"
+    }
+  }
+}
