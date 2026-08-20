@@ -224,6 +224,8 @@ apis:
   humanURL: https://developer.pluralsight.com
   baseURL: https://paas-api.pluralsight.com/graphql
   tags:
+  - Integration
+  tags_raw:
   - Integrations
   properties:
   - type: OpenAPI
@@ -384,6 +386,8 @@ apis:
   humanURL: https://developer.pluralsight.com
   baseURL: https://paas-api.pluralsight.com/graphql
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
@@ -448,6 +452,8 @@ apis:
   humanURL: https://developer.pluralsight.com
   baseURL: https://paas-api.pluralsight.com/graphql
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
