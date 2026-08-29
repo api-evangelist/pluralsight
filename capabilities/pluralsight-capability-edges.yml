@@ -1,0 +1,56 @@
+slug: pluralsight
+provider: Pluralsight
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Coding Metrics
+  spec_file: pluralsight-coding-metrics-api-openapi.yml
+  capability_id: BC-4200.70
+  capability_id_l1: BC-4200
+  capability_name: Engineering Productivity Management
+  confidence: 0.8
+  evidence: '"REST API for accessing code-level engineering metrics and developer productivity data with
+    date range filtering"'
+  reason: Explicitly developer productivity and engineering performance measurement, which is Engineering
+    Productivity Management under Software Product Engineering. Not an education capability despite the
+    vendor's learning business.
+- tag: DORA Metrics
+  spec_file: pluralsight-dora-metrics-api-openapi.yml
+  capability_id: BC-4200.70
+  capability_id_l1: BC-4200
+  capability_name: Engineering Productivity Management
+  confidence: 0.78
+  evidence: '"DORA engineering metrics including deployment frequency, lead time for changes, change failure
+    rate, and time to restore service"'
+  reason: DORA metrics are the canonical engineering delivery performance measurement set, mapping to
+    Engineering Productivity Management. Some overlap with release/deployment management, but the API
+    only reads metrics.
+- tag: Collaboration Metrics
+  spec_file: pluralsight-collaboration-metrics-api-openapi.yml
+  capability_id: BC-4200.70
+  capability_id_l1: BC-4200
+  capability_name: Engineering Productivity Management
+  confidence: 0.75
+  evidence: '"REST API for accessing pull request and collaboration metrics for engineering teams"'
+  reason: Aggregated pull-request/collaboration metrics for engineering teams is engineering performance
+    measurement. Some ambiguity with Software Construction Management (code review), but the surface returns
+    metrics, not review artefacts.
+- tag: Pull Requests
+  spec_file: pluralsight-pull-requests-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.72
+  evidence: '"REST API for accessing pull request data, comments, and events across repositories"'
+  reason: Pull requests with comments and events are code-review artefacts of implementation practice,
+    matching Software Construction Management (source control, code review).

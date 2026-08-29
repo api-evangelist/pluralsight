@@ -475,6 +475,9 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 common:
+- type: CapabilityMap
+  url: capabilities/pluralsight-capability-edges.yml
+  name: Pluralsight Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/pluralsight/overview
 - type: AgenticAccess
