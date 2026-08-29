@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Pluralsight Channels Catalog Licensing API
-  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
+  title: Pluralsight REST Licensing API
+  description: Legacy REST API for managing user invitations, users, and teams within a plan. Deprecated as of February 2025, removal scheduled for November 2025.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.pluralsight.com/terms
 servers:
-- url: https://paas-api.pluralsight.com
+- url: https://app.pluralsight.com/plans/api/license/v1
   description: Production
 tags:
 - name: Licensing
@@ -144,5 +144,5 @@ components:
       scheme: bearer
       bearerFormat: JWT
 externalDocs:
-  description: Pluralsight Developer Documentation
-  url: https://developer.pluralsight.com
+  description: Migration Guide - REST to GraphQL
+  url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
