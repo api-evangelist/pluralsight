@@ -1,0 +1,112 @@
+generated: '2026-08-29'
+method: derived
+source: openapi/*.yml (4xx/5xx responses), https://developer.pluralsight.com/docs/deprecations/deprecation-policy
+provider: Pluralsight
+providerId: pluralsight
+description: >-
+  Error catalog for the Pluralsight APIs. Derived from the response codes declared in the OpenAPIs
+  in this repo, the live 401 bodies observed on probe, and the warning envelope documented in the
+  deprecation policy. Pluralsight publishes no dedicated error-reference page.
+format: graphql-errors
+rfc9457: false
+rfc9457_note: >-
+  No operation declares application/problem+json. GraphQL errors are returned in the top-level
+  errors[] array; the REST surfaces return bare JSON objects.
+envelopes:
+- name: GraphQL error envelope
+  applies_to: https://paas-api.pluralsight.com/graphql
+  shape: '{"data": null|object, "errors": [{"message": "...", "path": [...], "extensions": {...}}]}'
+  http_status: 200
+  note: >-
+    A GraphQL request can fail at the field level while returning HTTP 200. Callers must inspect
+    errors[] on every response, not just the status code.
+- name: GraphQL warning envelope
+  applies_to: https://paas-api.pluralsight.com/graphql
+  shape: '{"data": {...}, "extensions": {"warnings": [...]}}'
+  http_status: 200
+  documented_at: https://developer.pluralsight.com/docs/deprecations/deprecation-policy
+  note: >-
+    Carries deprecation notices AND the silent page-size truncation notice. This is the only signal
+    that a result set was reduced to the batch limit.
+- name: Gateway auth error
+  applies_to: https://paas-api.pluralsight.com
+  shape: '{"error": "AuthenticationError: Invalid API Key"}'
+  http_status: 401
+  observed: '2026-08-29'
+  note: observed live on an unauthenticated probe; not documented in any published error reference.
+- name: MCP JSON-RPC error
+  applies_to: https://mcp.pluralsight.com/mcp
+  shape: '{"jsonrpc": "2.0", "id": 0, "error": {"code": -32001, "message": "Missing Bearer token"}}'
+  http_status: 401
+  observed: '2026-08-29'
+  note: >-
+    JSON-RPC 2.0 error object with an MCP-reserved code, plus an RFC 9728 WWW-Authenticate challenge
+    naming the protected-resource metadata document.
+problem_types:
+- code: '401'
+  title: Unauthorized
+  applies_to:
+  - getCodingMetrics
+  - getCollaborationMetrics
+  - getCommits
+  - getDoraMetrics
+  - manageChannels
+  - listIntegrations
+  - listInvitations
+  - createInvitation
+  - listUsers
+  - listTeams
+  - getPullRequests
+  - downloadUserReport
+  - downloadCourseCompletionReport
+  - downloadCourseUsageReport
+  - getRepos
+  - getTickets
+  - updateUsers
+  detail: Missing, malformed, revoked or wrong-plan API key.
+  remediation: >-
+    Regenerate or re-check the key on https://developer.pluralsight.com/manage-keys and confirm the
+    plan has the API entitlement on https://developer.pluralsight.com/plan-permissions.
+  retriable: false
+- code: '429'
+  title: Too Many Requests
+  applies_to:
+  - getCourseCatalog
+  - getCodingMetrics
+  - getCollaborationMetrics
+  - getCommits
+  - getDoraMetrics
+  - manageChannels
+  - listIntegrations
+  - listInvitations
+  - createInvitation
+  - listUsers
+  - listTeams
+  - getPullRequests
+  - downloadUserReport
+  - downloadCourseCompletionReport
+  - downloadCourseUsageReport
+  - getRepos
+  - getTickets
+  - updateUsers
+  detail: Rate limit exceeded. No numeric limit and no rate-limit headers are published.
+  remediation: >-
+    Back off exponentially with jitter, honour Retry-After if present, and reduce page size toward
+    the documented 1000-record recommendation.
+  retriable: true
+- code: '503'
+  title: Service Unavailable
+  applies_to: []
+  detail: >-
+    Declared in rate-limits/pluralsight-rate-limits.yml as a throttling/availability response; not
+    declared by any OpenAPI operation in this repo.
+  retriable: true
+gaps:
+- No published error-code reference page on developer.pluralsight.com.
+- No machine-readable error taxonomy, no stable error codes, and no problem+json media type.
+- >-
+    No 4xx coverage beyond 401/429 in any spec - validation failures on the 24 GraphQL mutations
+    have no documented shape at all.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

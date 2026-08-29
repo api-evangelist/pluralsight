@@ -1,0 +1,133 @@
+generated: '2026-08-29'
+method: searched
+source: https://developer.pluralsight.com/docs/deprecations/deprecation-policy
+provider: Pluralsight
+providerId: pluralsight
+description: >-
+  Pluralsight publishes a genuine, dated, three-phase deprecation policy and a stability ladder for
+  its Skills GraphQL API, plus a maintained schema changelog. It publishes no status page and no
+  SLA that this pass could reach.
+versioning:
+  scheme: unversioned-endpoint
+  detail: >-
+    The GraphQL endpoint carries no version segment (https://paas-api.pluralsight.com/graphql).
+    Stability is expressed per operation and per field through release stages, not through a URL or
+    header version. The retired REST APIs did carry path versions (/plans/api/license/v1,
+    /plans/api/reports/v1, /api-v0.9/courses).
+  docs: https://developer.pluralsight.com/docs/getting-started/release-stages
+release_stages:
+  docs: https://developer.pluralsight.com/docs/getting-started/release-stages
+  stages:
+  - name: General Release (GR)
+    description: Safe to use in a production environment.
+    breaking_change_notice: 6 months notice + 3 months no-support before removal
+  - name: Beta
+    description: >-
+      Last stage before General Release; open opt-in per API key (not per plan or account) via the
+      "Join beta" toggle on the Manage Keys page. Known or unknown data-integrity issues possible.
+    breaking_change_notice: 6 weeks notice; the No Support phase is dropped
+  - name: Alpha
+    description: >-
+      Default stage for new operations and experimental features; subject to breaking changes with
+      little or no warning. Proof-of-concept use only. Access is by invitation - email
+      support@pluralsight.com.
+    breaking_change_notice: none guaranteed
+  notes:
+  - Release-stage access is granted per API key, not per account or plan.
+  - A key marked GR fails the ENTIRE call if any single field anywhere in the query is tagged Beta.
+deprecation:
+  policy: true
+  docs: https://developer.pluralsight.com/docs/deprecations/deprecation-policy
+  guide: https://developer.pluralsight.com/docs/deprecations/2025-deprecation-guide
+  changelog: https://developer.pluralsight.com/docs/getting-started/change-log
+  total_window: 9 months
+  phases:
+  - name: Notice
+    duration: 6 months
+    behaviour: >-
+      Field is tagged in the docs with a strike-through, listed in the changelog and the playground,
+      and calls that touch it return a deprecation warning. Pluralsight emails the plans/API keys
+      observed using the operation, which is why an email address should be attached to each key on
+      the Manage Keys page.
+  - name: No Support
+    duration: 3 months
+    behaviour: >-
+      Data-integrity issues, functional changes and bugs on the deprecated operation or field will
+      not be addressed.
+  - name: Removal
+    behaviour: Operation or field is removed; subsequent calls fail.
+  programmatic_signal:
+    mechanism: GraphQL response extensions
+    field: extensions.warnings
+    note: >-
+      Pluralsight's documented recommendation is to read extensions.warnings on EVERY response and
+      surface or handle it. There is no RFC 8594 Sunset or Deprecation HTTP header - the signal is
+      in the GraphQL response envelope, not in headers.
+  example_timeline:
+    marked: '2020-01-01'
+    no_support: '2020-06-01'
+    removed: '2020-09-01'
+deprecated:
+- name: 2025 deprecation programme
+  notice_phase_start: '2025-02-10'
+  no_support_phase_start: '2025-08-10'
+  removal_date: '2025-11-10'
+  summary: >-
+    Every variant of the integer userId field across the GraphQL schema was replaced by a UUID
+    psUserId equivalent (userId -> psUserId, ownerId -> ownerPsUserId, createdByUserId ->
+    createdByPsUserId, actorUserId -> actorPsUserId, assignedByUserId -> assignedByPsUserId), and
+    four REST surfaces were retired outright.
+  rest_apis_removed:
+  - https://app.pluralsight.com/plans/api/license/v1/*
+  - https://app.pluralsight.com/plans/api/reports/v1/*
+  - https://api.pluralsight.com/api-v0.9/courses
+  - https://paas-rest-api.pluralsight.com/courses
+  other_removals:
+  - operation: projectCatalog
+    reason: Projects are a retired content type.
+  - operation: skillAssessmentCatalog
+    field: stackOverflowTags
+    reason: Assessments no longer support these tags.
+  affects_repo_specs:
+  - openapi/pluralsight-licensing-api-openapi.yml
+  - openapi/pluralsight-reports-api-openapi.yml
+  - openapi/pluralsight-catalog-api-openapi.yml
+divestiture:
+  event: Pluralsight Flow sold to Appfire
+  announced: '2025-02-05'
+  source: https://appfire.com/newsroom/appfire-acquires-flow
+  detail: >-
+    Flow - the engineering-intelligence product behind the DORA, coding-metrics,
+    collaboration-metrics, commits, pull-requests, repos, tickets, teams and integrations APIs -
+    was acquired by Appfire and now operates as an independent SaaS product. Its API hosts have
+    moved off pluralsight.com onto appfireflow.com (api.appfireflow.com and
+    {workspace}.appfireflow.com/v3/customer/core), which is why nine of the OpenAPIs in this repo
+    carry non-pluralsight.com servers[]. flow-api.pluralsight.com did not answer any probe on
+    2026-08-29.
+  action_required: >-
+    The nine Flow API entries in apis.yml describe a product this company no longer sells. They
+    should be re-attributed to Appfire or removed by a human before the next scoring pass.
+status_page:
+  published: false
+  probes:
+  - url: https://status.pluralsight.com
+    status: null
+    result: DNS does not resolve (curl error 6, "Could not resolve host")
+  - url: https://pluralsight.statuspage.io
+    status: 200
+    result: redirects to Atlassian's Statuspage product marketing page - not a Pluralsight status page
+  - url: https://www.pluralsight.com/status
+    status: 404
+  note: >-
+    apis.yml previously carried a StatusPage pointer at https://status.pluralsight.com. That host no
+    longer resolves; the pointer was removed on 2026-08-29 rather than left asserting a page
+    Pluralsight does not serve.
+sla:
+  published: false
+  note: No public SLA document was found; availability terms sit inside the enterprise contract.
+support:
+  email: support@pluralsight.com
+  help_center: https://help.pluralsight.com
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,5 +1,7 @@
 name: Pluralsight
-description: APIs for the Pluralsight technology skills and engineering intelligence platform, providing access to courses, learning paths, assessments, user progress, channels, teams, and engineering metrics via GraphQL and REST APIs.
+description: APIs for the Pluralsight technology skills and engineering intelligence platform, providing access
+  to courses, learning paths, assessments, user progress, channels, teams, and engineering metrics via GraphQL and
+  REST APIs.
 deliveryModel:
   model: saas
   open_source: false
@@ -28,7 +30,7 @@ accessModel:
 image: https://www.pluralsight.com/content/dam/pluralsight2/general/headers/logo.png
 url: https://raw.githubusercontent.com/api-evangelist/pluralsight/refs/heads/main/apis.yml
 created: '2024'
-modified: '2026-04-17'
+modified: '2026-08-29'
 tags:
 - Courses
 - Education
@@ -42,7 +44,7 @@ apis:
   name: Pluralsight Catalog API
   description: Public course catalog operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://paas-rest-api.pluralsight.com
   tags:
   - Catalog
   properties:
@@ -65,16 +67,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-coding-metrics-api
   name: Pluralsight Coding Metrics API
   description: Code-level engineering metrics operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://flow-api.pluralsight.com
   tags:
   - Coding Metrics
   properties:
@@ -97,16 +97,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-collaboration-metrics-api
   name: Pluralsight Collaboration Metrics API
   description: Pull request and collaboration metrics operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://api.appfireflow.com
   tags:
   - Collaboration Metrics
   properties:
@@ -129,16 +127,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-commits-api
   name: Pluralsight Commits API
   description: Commit data operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://{workspace}.appfireflow.com/v3/customer/core
   tags:
   - Commits
   properties:
@@ -161,16 +157,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-dora-metrics-api
   name: Pluralsight DORA Metrics API
   description: DORA engineering metrics operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://flow-api.pluralsight.com
   tags:
   - DORA Metrics
   properties:
@@ -193,11 +187,9 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-graphql-api
   name: Pluralsight GraphQL API
   description: GraphQL query and mutation operations
@@ -225,16 +217,22 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+  - type: GraphQL
+    url: graphql/pluralsight-graphql-operations.json
+  - type: MCPServer
+    url: mcp/pluralsight-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/pluralsight-tool-crosswalk.yml
+  - type: AgentSkill
+    url: skills/_index.yml
 - aid: pluralsight:pluralsight-integrations-api
   name: Pluralsight Integrations API
   description: Flow integration management operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://{workspace}.appfireflow.com/v3/customer/core
   tags:
   - Integration
   tags_raw:
@@ -259,16 +257,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-licensing-api
   name: Pluralsight Licensing API
   description: License management operations (deprecated)
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://app.pluralsight.com/plans/api/license/v1
   tags:
   - Licensing
   properties:
@@ -291,16 +287,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-pull-requests-api
   name: Pluralsight Pull Requests API
   description: Pull request data operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://{workspace}.appfireflow.com/v3/customer/core
   tags:
   - Pull Requests
   properties:
@@ -323,16 +317,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-reports-api
   name: Pluralsight Reports API
   description: Report download operations (deprecated)
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://app.pluralsight.com/plans/api/reports/v1
   tags:
   - Reports
   properties:
@@ -355,16 +347,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-repos-api
   name: Pluralsight Repos API
   description: Repository data operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://{workspace}.appfireflow.com/v3/customer/core
   tags:
   - Repos
   properties:
@@ -387,16 +377,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-teams-api
   name: Pluralsight Teams API
   description: Flow team management operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://{workspace}.appfireflow.com/v3/customer/core
   tags:
   - Team
   tags_raw:
@@ -421,16 +409,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-tickets-api
   name: Pluralsight Tickets API
   description: Ticket data operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://{workspace}.appfireflow.com/v3/customer/core
   tags:
   - Tickets
   properties:
@@ -453,16 +439,14 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 - aid: pluralsight:pluralsight-users-api
   name: Pluralsight Users API
   description: Flow user management operations
   humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
+  baseURL: https://{workspace}.appfireflow.com/v3/customer/core
   tags:
   - User
   tags_raw:
@@ -487,11 +471,9 @@ apis:
   - type: Documentation
     url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+    url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
   - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+    url: https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/pluralsight/overview
@@ -511,10 +493,6 @@ common:
   url: https://www.linkedin.com/company/pluralsight
 - type: Portal
   url: https://developer.pluralsight.com
-- type: GettingStarted
-  url: https://developer.pluralsight.com/docs/getting-started
-- type: Authentication
-  url: https://developer.pluralsight.com/docs/getting-started
 - type: FAQ
   url: https://developer.pluralsight.com/docs/getting-started/faqs
 - type: CodeExamples
@@ -525,22 +503,19 @@ common:
   url: https://developer.pluralsight.com/docs/deprecations/2025-deprecation-guide
 - type: Documentation
   url: https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
-- type: RateLimits
-  url: https://developer.pluralsight.com/docs/rate-limits
 - type: TermsOfService
   url: https://www.pluralsight.com/terms
 - type: PrivacyPolicy
   url: https://www.pluralsight.com/privacy
 - type: Support
   url: https://help.pluralsight.com
-- type: StatusPage
-  url: https://status.pluralsight.com
 - type: Blog
   url: https://www.pluralsight.com/blog
 - type: Features
   data:
   - name: Course Catalog API
-    description: Access the full Pluralsight course catalog with titles, authors, duration, and release dates via GraphQL.
+    description: Access the full Pluralsight course catalog with titles, authors, duration, and release dates via
+      GraphQL.
   - name: Skills Assessment
     description: Measure technology skills with Skill IQ assessments and track competency levels.
   - name: Role IQ
@@ -587,9 +562,96 @@ common:
     description: Technology skills platform with courses, assessments, and learning paths for upskilling teams.
   - name: Pluralsight Flow
     description: Engineering intelligence platform with DORA metrics, coding analytics, and collaboration insights.
+- type: WellKnown
+  url: well-known/pluralsight-well-known.yml
+- type: SecurityTxt
+  url: well-known/pluralsight-security.txt
+- type: Security
+  url: https://pluralsight.com/.well-known/security.txt
+- type: MCPServer
+  url: mcp/pluralsight-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/pluralsight-tool-crosswalk.yml
+- type: LLMsTxt
+  url: llms/pluralsight-llms.txt
+- type: Conformance
+  url: conformance/pluralsight-conformance.yml
+- type: Compliance
+  url: https://trust.pluralsight.com/
+- type: ErrorCatalog
+  url: errors/pluralsight-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/pluralsight-lifecycle.yml
+- type: Deprecation
+  url: https://developer.pluralsight.com/docs/deprecations/deprecation-policy
+- type: OAuthScopes
+  url: scopes/pluralsight-scopes.yml
+- type: Conventions
+  url: conventions/pluralsight-conventions.yml
+- type: ChangeLog
+  url: changelog/pluralsight-changelog.yml
+- type: Sandbox
+  url: sandbox/pluralsight-sandbox.yml
+- type: Packages
+  url: packages/pluralsight-packages.yml
+- type: DataModel
+  url: data-model/pluralsight-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/pluralsight-graphql-overlay.yaml
+- type: RateLimits
+  url: rate-limits/pluralsight-rate-limits.yml
+- type: Plans
+  url: plans/pluralsight-plans-pricing.yml
+- type: FinOps
+  url: finops/pluralsight-finops.yml
+- type: Vocabulary
+  url: vocabulary/pluralsight-vocabulary.yml
+- type: SpectralRules
+  url: rules/pluralsight-spectral-rules.yml
+- type: JSONLDContext
+  url: json-ld/pluralsight-context.jsonld
+- type: Examples
+  url: examples/pluralsight-course-catalog-graph-ql-request-example.json
+- type: JSONSchema
+  url: json-schema/pluralsight-course-catalog-graph-ql-response-schema.json
+- type: JSONStructure
+  url: json-structure/pluralsight-course-catalog-graph-ql-response-structure.json
+- type: DeveloperPortal
+  url: https://developer.pluralsight.com
+- type: Documentation
+  url: https://developer.pluralsight.com/docs/getting-started/using-graphql
+- type: APIReference
+  url: https://developer.pluralsight.com/schema/content/courseCatalog
+- type: GettingStarted
+  url: https://developer.pluralsight.com/docs/getting-started/using-graphql
+- type: Quickstart
+  url: https://developer.pluralsight.com/quick-start
+- type: Authentication
+  url: https://developer.pluralsight.com/manage-keys
+- type: API Keys
+  url: https://developer.pluralsight.com/manage-keys
+- type: Playground
+  url: https://developer.pluralsight.com/playground
+- type: Pricing
+  url: https://www.pluralsight.com/pricing
+- type: SignUp
+  url: https://www.pluralsight.com/pricing
+- type: Login
+  url: https://app.pluralsight.com
+- type: Website
+  url: https://www.pluralsight.com
+- type: Postman
+  url: https://www.postman.com/kinlaneapi/pluralsight/overview
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 aid: pluralsight
 type: Index
 specificationVersion: '0.23'
+x-enrichment:
+  date: '2026-08-29'
+  status: enriched
+  artifacts_added: 37
+  pass: local-v1

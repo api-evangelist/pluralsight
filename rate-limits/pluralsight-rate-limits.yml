@@ -6,8 +6,9 @@ providerId: pluralsight
 created: '2026-05-04'
 # Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
 # bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
+method: searched
+modified: '2026-08-29'
+source: https://developer.pluralsight.com/docs/getting-started/faqs
 reconciled: false
 tags:
   - Rate Limiting
@@ -23,8 +24,27 @@ description: Pluralsight gates its APIs behind Business, Enterprise, and Flow co
   apply on throttling. Consumers should implement exponential backoff and contact their account
   representative if they encounter sustained throttling.
 sources:
+  - https://developer.pluralsight.com/docs/getting-started/faqs
+  - https://developer.pluralsight.com/docs/getting-started/pagination
   - https://help.pluralsight.com/help/skills-business-customer-api
   - https://help.pluralsight.com/help/api-introduction
+searched: '2026-08-29'
+searchedFinding: >-
+  Pluralsight's developer-portal FAQ confirms a rate limit exists and ties it directly to page size:
+  "Is there any rate limit for the APIs? Yes, and if you follow the recommendation of extracting
+  1000 records per page/API request, you shouldn't hit the limit." No number, no window, no burst
+  and no rate-limit response headers are published anywhere on developer.pluralsight.com. The
+  documented 1000-record batch recommendation is the only quantified control the provider gives a
+  consumer, and exceeding it does NOT return 429 - it silently reduces the result set and reports
+  the reduction in extensions.warnings.
+responseHeaders: []
+responseHeadersNote: >-
+  Probed and searched 2026-08-29 - Pluralsight publishes no X-RateLimit-*, no RateLimit-* and no
+  Retry-After contract. An agent has no runtime signal for how close it is to the limit.
+batchLimit:
+  recommended_records_per_request: 1000
+  overage_behaviour: silent truncation with a warning in extensions.warnings
+  docs: https://developer.pluralsight.com/docs/getting-started/pagination
 responseCodes:
   throttled: 429
   serviceUnavailable: 503

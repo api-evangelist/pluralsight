@@ -1,0 +1,81 @@
+generated: '2026-08-29'
+method: probed
+source: https://mcp.pluralsight.com/mcp
+provider: Pluralsight
+providerId: pluralsight
+name: Pluralsight MCP Gateway
+description: >-
+  Pluralsight runs a live, remote Model Context Protocol server at https://mcp.pluralsight.com/mcp.
+  It is a real MCP endpoint, not a marketing page: an unauthenticated JSON-RPC tools/list call
+  returns a protocol-level error object ({"jsonrpc":"2.0","id":0,"error":{"code":-32001,
+  "message":"Missing Bearer token"}}) and the 401 carries an RFC 9728 challenge -
+  WWW-Authenticate: Bearer error="invalid_token",
+  resource_metadata="https://mcp.pluralsight.com/.well-known/oauth-protected-resource".
+  The tool list itself is behind OAuth, so the tool names and inputSchemas could not be enumerated
+  anonymously. Pluralsight publishes no public documentation for this endpoint that this pass could
+  find - it was discovered by probe, not by docs.
+deployment:
+  mode: remote
+  endpoint: https://mcp.pluralsight.com/mcp
+  auth: oauth
+  verified: probed
+transports:
+- name: streamable-http
+  url: https://mcp.pluralsight.com/mcp
+  status: 401
+  note: JSON-RPC POST; responds with an MCP protocol error object when unauthenticated
+- name: sse
+  url: https://mcp.pluralsight.com/sse
+  status: 401
+  note: '{"success":false,"error":"Missing Bearer token"}'
+- name: sse
+  url: https://mcp.pluralsight.com/mcp/sse
+  status: 401
+authorization:
+  scheme: oauth2
+  flow: authorization_code
+  pkce: S256
+  dynamic_client_registration: true
+  issuer: https://mcp.pluralsight.com
+  authorization_endpoint: https://mcp.pluralsight.com/authorize
+  token_endpoint: https://mcp.pluralsight.com/token
+  registration_endpoint: https://mcp.pluralsight.com/register
+  jwks_uri: https://mcp.pluralsight.com/.well-known/jwks.json
+  protected_resource_metadata: https://mcp.pluralsight.com/.well-known/oauth-protected-resource
+  authorization_server_metadata: https://mcp.pluralsight.com/.well-known/oauth-authorization-server
+  scopes:
+  - invoke:gateway
+  - author:gateway
+  - employee:gateway
+  - admin:gateway
+tools:
+  status: gated
+  count: null
+  note: >-
+    tools/list requires a bearer token. No anonymous enumeration is possible and no llms.txt or
+    published tool list exists to fall back on, so no tool names are recorded here. Schemas need
+    authenticated introspection.
+x-evidence:
+- fetched: '2026-08-29'
+  url: https://mcp.pluralsight.com/mcp
+  method: POST
+  body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+  http_status: 401
+  response: '{"jsonrpc":"2.0","id":0,"error":{"code":-32001,"message":"Missing Bearer token"}}'
+  www_authenticate: Bearer error="invalid_token", resource_metadata="https://mcp.pluralsight.com/.well-known/oauth-protected-resource"
+- fetched: '2026-08-29'
+  url: https://mcp.pluralsight.com/.well-known/oauth-protected-resource
+  http_status: 200
+  file: ../well-known/pluralsight-mcp-oauth-protected-resource.json
+- fetched: '2026-08-29'
+  url: https://mcp.pluralsight.com/.well-known/oauth-authorization-server
+  http_status: 200
+  file: ../well-known/pluralsight-mcp-oauth-authorization-server.json
+- fetched: '2026-08-29'
+  url: https://mcp.pluralsight.com/
+  http_status: 404
+  response: <UnknownOperationException/>
+  note: no landing page - the host serves the gateway only
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

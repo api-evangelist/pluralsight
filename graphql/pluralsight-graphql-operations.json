@@ -1,0 +1,380 @@
+{
+  "source": "https://developer.pluralsight.com/schema/{category}/{operation} (Next.js SSG data: _next/data/<buildId>/schema/content/courseCatalog.json -> pageProps.initSchemaStructure)",
+  "fetched": "2026-08-29",
+  "http_status": 200,
+  "count": 71,
+  "operations": [
+    {
+      "operation": "addChannelContent",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "addChannelGroups",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "addChannelMembers",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "addChannelsToChannelGroups",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "addTeamsToChannels",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "archiveChannel",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "channelGroup",
+      "category": "channel",
+      "kind": "Query"
+    },
+    {
+      "operation": "channelMembers",
+      "category": "channel",
+      "kind": "Query"
+    },
+    {
+      "operation": "channels",
+      "category": "channel",
+      "kind": "Query"
+    },
+    {
+      "operation": "deleteChannelGroup",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "deleteChannelGroupChannels",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "editChannel",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "channelContent",
+      "category": "channel",
+      "kind": "Query"
+    },
+    {
+      "operation": "channelProgress",
+      "category": "channel",
+      "kind": "Query"
+    },
+    {
+      "operation": "addChannel",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "removeChannelMember",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "priority",
+      "category": "usage",
+      "kind": "Query"
+    },
+    {
+      "operation": "removeChannelContent",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "updateChannelGroups",
+      "category": "channel",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "contentSlugToId",
+      "category": "other",
+      "kind": "Query"
+    },
+    {
+      "operation": "contentCatalog",
+      "category": "content",
+      "kind": "Query"
+    },
+    {
+      "operation": "contentProgress",
+      "category": "usage",
+      "kind": "Query"
+    },
+    {
+      "operation": "labCatalog",
+      "category": "content",
+      "kind": "Query"
+    },
+    {
+      "operation": "pathCatalog",
+      "category": "content",
+      "kind": "Query"
+    },
+    {
+      "operation": "practiceExamQuizProgress",
+      "category": "usage",
+      "kind": "Query"
+    },
+    {
+      "operation": "programCatalog",
+      "category": "content",
+      "kind": "Query"
+    },
+    {
+      "operation": "courseCatalog",
+      "category": "content",
+      "kind": "Query"
+    },
+    {
+      "operation": "courseDailyUsage",
+      "category": "usage",
+      "kind": "Query"
+    },
+    {
+      "operation": "courseProgress",
+      "category": "usage",
+      "kind": "Query"
+    },
+    {
+      "operation": "marketTaxonomy",
+      "category": "content",
+      "kind": "Query"
+    },
+    {
+      "operation": "planInfo",
+      "category": "other",
+      "kind": "Query"
+    },
+    {
+      "operation": "programAssessmentAttempts",
+      "category": "usage",
+      "kind": "Query"
+    },
+    {
+      "operation": "programUserProgress",
+      "category": "usage",
+      "kind": "Query"
+    },
+    {
+      "operation": "roleIqCatalog",
+      "category": "role",
+      "kind": "Query"
+    },
+    {
+      "operation": "roleIqSkills",
+      "category": "role",
+      "kind": "Query"
+    },
+    {
+      "operation": "roleIqAssignments",
+      "category": "role",
+      "kind": "Query"
+    },
+    {
+      "operation": "roleIqLearnerLevels",
+      "category": "role",
+      "kind": "Query"
+    },
+    {
+      "operation": "roleIqsSummary",
+      "category": "role",
+      "kind": "Query"
+    },
+    {
+      "operation": "addRole",
+      "category": "role",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "deleteRole",
+      "category": "role",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "editRole",
+      "category": "role",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "assignUsersToRole",
+      "category": "role",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "assignTeamsToRole",
+      "category": "role",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "skillAssessmentResults",
+      "category": "skill",
+      "kind": "Query"
+    },
+    {
+      "operation": "skillAssessmentCatalog",
+      "category": "skill",
+      "kind": "Query"
+    },
+    {
+      "operation": "skillIqsSummary",
+      "category": "skill",
+      "kind": "Query"
+    },
+    {
+      "operation": "tags",
+      "category": "content",
+      "kind": "Query"
+    },
+    {
+      "operation": "addTeam",
+      "category": "team",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "addTeamManager",
+      "category": "team",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "addTeamMember",
+      "category": "team",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "deleteTeam",
+      "category": "team",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "editTeam",
+      "category": "team",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "inviteManager",
+      "category": "team",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "moveMemberToTeam",
+      "category": "team",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "planPermissionSets",
+      "category": "team",
+      "kind": "Query"
+    },
+    {
+      "operation": "removeTeamManager",
+      "category": "team",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "removeTeamMember",
+      "category": "team",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "teamManagers",
+      "category": "team",
+      "kind": "Query"
+    },
+    {
+      "operation": "teams",
+      "category": "team",
+      "kind": "Query"
+    },
+    {
+      "operation": "labProgress",
+      "category": "usage",
+      "kind": "Query"
+    },
+    {
+      "operation": "playgroundUserSummary",
+      "category": "usage",
+      "kind": "Query"
+    },
+    {
+      "operation": "editUser",
+      "category": "user",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "inviteMember",
+      "category": "user",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "createUser",
+      "category": "user",
+      "kind": "Mutation",
+      "deprecated": {
+        "name": "deprecated",
+        "arguments": [
+          {
+            "name": "reason",
+            "value": "This mutation is being deprecated in favor of the inviteMember mutation. See https://developer.pluralsight.com/docs/deprecations/createUser-deprecation-guide for more information."
+          },
+          {
+            "name": "deprecationDate",
+            "value": "2026-03-16"
+          },
+          {
+            "name": "removalDate",
+            "value": "2026-12-15"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "cancelInvite",
+      "category": "user",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "removeUser",
+      "category": "user",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "removeLicense",
+      "category": "user",
+      "kind": "Mutation"
+    },
+    {
+      "operation": "memberInvites",
+      "category": "user",
+      "kind": "Query"
+    },
+    {
+      "operation": "planAdmins",
+      "category": "user",
+      "kind": "Query"
+    },
+    {
+      "operation": "userCertificationUploads",
+      "category": "usage",
+      "kind": "Query"
+    },
+    {
+      "operation": "users",
+      "category": "user",
+      "kind": "Query"
+    }
+  ]
+}

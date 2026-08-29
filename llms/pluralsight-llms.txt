@@ -1,0 +1,110 @@
+# Pluralsight
+
+> Pluralsight is a technology skills platform. Its Skills product exposes a single GraphQL API
+> covering the course and content catalog, learning paths, labs, programs, Skill IQ and Role IQ
+> assessments, channels, teams, users and learner progress. Pluralsight also operates an
+> OAuth-protected remote MCP gateway. Access to every API requires a plan-admin API key on a
+> Business, Enterprise or equivalent plan - there is no free or anonymous tier.
+
+Generated 2026-08-29 by the API Evangelist enrichment pipeline from this repository. Pluralsight
+does not publish an llms.txt of its own (probed: developer.pluralsight.com/llms.txt 404,
+www.pluralsight.com/llms.txt 404, help.pluralsight.com/llms.txt 404).
+
+## Endpoints
+
+- GraphQL (Skills): https://paas-api.pluralsight.com/graphql — the live API. 71 operations,
+  47 queries and 24 mutations. Bearer API key required; unauthenticated calls return
+  401 {"error":"AuthenticationError: Invalid API Key"}.
+- MCP gateway: https://mcp.pluralsight.com/mcp — remote Model Context Protocol server,
+  streamable HTTP and SSE. OAuth 2.1 authorization_code + PKCE (S256), dynamic client registration.
+  Scopes: invoke:gateway, author:gateway, employee:gateway, admin:gateway.
+- Public course catalog (REST): https://paas-rest-api.pluralsight.com/courses — retired
+  2025-11-10 as part of the 2025 deprecation programme.
+
+## Documentation
+
+- Developer portal: https://developer.pluralsight.com
+- Using GraphQL: https://developer.pluralsight.com/docs/getting-started/using-graphql
+- Pagination: https://developer.pluralsight.com/docs/getting-started/pagination
+- Filters: https://developer.pluralsight.com/docs/getting-started/filters
+- Examples: https://developer.pluralsight.com/docs/getting-started/examples
+- FAQs: https://developer.pluralsight.com/docs/getting-started/faqs
+- License management: https://developer.pluralsight.com/docs/getting-started/license-management
+- Release stages: https://developer.pluralsight.com/docs/getting-started/release-stages
+- Deprecation policy: https://developer.pluralsight.com/docs/deprecations/deprecation-policy
+- 2025 deprecation guide: https://developer.pluralsight.com/docs/deprecations/2025-deprecation-guide
+- Changelog: https://developer.pluralsight.com/docs/getting-started/change-log
+- Schema browser: https://developer.pluralsight.com/schema/{category}/{operation}
+- Playground: https://developer.pluralsight.com/playground
+- Manage keys: https://developer.pluralsight.com/manage-keys
+- Plan permissions: https://developer.pluralsight.com/plan-permissions
+
+## Getting a key
+
+A plan admin generates an API key on https://developer.pluralsight.com/manage-keys. Attach an email
+address to each key — that address is how Pluralsight notifies you of deprecations. Release-stage
+access (General Release / Beta / Alpha) is granted per key, not per plan: toggle "Join beta" on the
+key to opt into Beta; Alpha is by invitation (support@pluralsight.com).
+
+## Calling it
+
+POST to https://paas-api.pluralsight.com/graphql with the API key as a bearer credential.
+
+Pagination is Relay cursor-based: pass `first` and `after`; read `pageInfo.endCursor` and
+`pageInfo.hasNextPage`; loop until `hasNextPage` is false. There is a hard cap on batch size and
+Pluralsight recommends 1000 records per request. Requesting more does NOT error — it silently
+reduces the result set and reports the reduction in `extensions.warnings`. Read that field on every
+response.
+
+A key at General Release stage fails the ENTIRE call if any single selected field, at any depth, is
+tagged Beta.
+
+## Errors
+
+- GraphQL failures return HTTP 200 with a top-level `errors[]` array. Check it on every response.
+- `extensions.warnings` carries deprecation notices and page-size truncation notices.
+- 401 — missing, revoked or wrong-plan key.
+- 429 — rate limited. Pluralsight confirms a rate limit exists but publishes no number, no window
+  and no RateLimit-* / Retry-After header contract. Back off exponentially.
+- There is no RFC 9457 problem+json, no error-code reference page, and no documented shape for
+  mutation validation failures.
+
+## Before you write
+
+There is NO idempotency key and NO dry-run mode on any of the 24 mutations. Retrying a timed-out
+`createUser`, `inviteMember`, `addTeamMember` or `addChannel` is not documented as safe.
+
+Most write operations have an inverse (addChannel/archiveChannel, addTeamMember/removeTeamMember,
+inviteMember/cancelInvite, createUser/removeUser, addRole/deleteRole), but Pluralsight states NO
+reversal window for any of them, and two have no published inverse at all: `assignUsersToRole` and
+`assignTeamsToRole` have no unassign mutation, and `removeLicense` has no re-grant mutation.
+
+## Identifiers
+
+Since 2025-11-10 the canonical user identifier is `psUserId`, a UUID. The legacy `userId` (and its
+variants ownerId, createdByUserId, actorUserId, assignedByUserId) was removed. A user's psUserId is
+NOT the same value as that user's old userId.
+
+## What is NOT here
+
+- No first-party SDK in any language. Pluralsight's own examples point at GraphQL Playground,
+  Graphios and Apollo Client.
+- No CLI.
+- No webhooks, no event stream, no AsyncAPI.
+- No status page. https://status.pluralsight.com does not resolve.
+- No A2A agent card on any host.
+- No public OpenAPI. The OpenAPIs in the API Evangelist repository are generated from Pluralsight's
+  documentation, not published by Pluralsight.
+
+## Not Pluralsight any more
+
+Pluralsight Flow — the engineering-intelligence product behind the DORA, coding-metrics,
+collaboration-metrics, commits, pull-requests, repos, tickets, teams and integrations APIs — was
+acquired by Appfire on 2025-02-05 and now runs on appfireflow.com. If you need those metrics, you
+are looking for Appfire, not Pluralsight. https://appfire.com/newsroom/appfire-acquires-flow
+
+## Security and compliance
+
+- security.txt: https://pluralsight.com/.well-known/security.txt
+- Vulnerability disclosure: https://hackerone.com/pluralsight, disclosure@pluralsight.com
+- Trust center: https://trust.pluralsight.com/ — SOC 2, ISO 27001, PCI DSS, GDPR

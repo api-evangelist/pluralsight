@@ -1,0 +1,41 @@
+generated: '2026-08-29'
+method: generated
+source: >-
+  graphql/pluralsight-graphql-operations.json (Pluralsight's own published 71-operation index),
+  https://developer.pluralsight.com/docs/getting-started/pagination,
+  https://developer.pluralsight.com/docs/deprecations/deprecation-policy
+provider: Pluralsight
+providerId: pluralsight
+description: >-
+  Packaged Agent Skills for the Pluralsight Skills GraphQL API. Every operation named in every skill
+  is taken verbatim from Pluralsight's published operation index; none is invented. Pluralsight
+  publishes no AGENTS.md and no skills of its own - probed 2026-08-29.
+api: pluralsight:pluralsight-graphql-api
+endpoint: https://paas-api.pluralsight.com/graphql
+skills:
+- name: pluralsight-catalog-and-progress-report
+  file: pluralsight-catalog-and-progress-report.md
+  kind: read
+  description: Extract the catalog and learner progress without silently truncating the result set.
+- name: pluralsight-onboard-learner-to-team
+  file: pluralsight-onboard-learner-to-team.md
+  kind: write
+  description: Invite or create a learner and place them on a team, with the reversibility table.
+- name: pluralsight-curate-channel
+  file: pluralsight-curate-channel.md
+  kind: write
+  description: Create and populate a channel, add members and teams, archive it.
+- name: pluralsight-skills-gap-analysis
+  file: pluralsight-skills-gap-analysis.md
+  kind: read-write
+  description: Read Skill IQ / Role IQ and assign roles - including the two assignments that cannot be undone.
+cross_cutting_rules:
+- Read extensions.warnings on EVERY response - it carries deprecation notices and the silent page-size truncation notice.
+- Read errors[] on EVERY response - GraphQL returns HTTP 200 on field-level failure.
+- No idempotency key and no dry-run mode exist on any mutation. Never blind-retry a write.
+- Page with first/after at 1000 records; read pageInfo.endCursor and pageInfo.hasNextPage.
+- Use psUserId (UUID). The legacy userId was removed 2025-11-10 and is not convertible.
+- A General-Release key fails the entire call if any selected field at any depth is tagged Beta.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

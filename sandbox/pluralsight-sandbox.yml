@@ -1,0 +1,49 @@
+generated: '2026-08-29'
+method: searched
+source: https://developer.pluralsight.com/playground
+provider: Pluralsight
+providerId: pluralsight
+description: >-
+  Pluralsight ships an interactive GraphQL console on its developer portal. It is an authenticated
+  console against production data, not an isolated sandbox: there is no test mode, no test key
+  prefix, no fixture data and no separate test host.
+consoles:
+- name: GraphQL Playground
+  url: https://developer.pluralsight.com/playground
+  http_status: 200
+  type: graphql-explorer
+  auth_required: true
+  note: >-
+    Named in the deprecation policy as one of the three ways to discover deprecated fields, and in
+    the "Using GraphQL" docs as the recommended way to build a query. The changelog records a
+    2024-09-16 migration to GraphiQL.
+- name: Schema browser
+  url: https://developer.pluralsight.com/schema/{category}/{operation}
+  http_status: 200
+  type: reference
+  auth_required: false
+  note: >-
+    Publicly readable operation index - 71 operations across channel, content, role, skill, team,
+    usage, user and other, each tagged Query or Mutation. Harvested to
+    graphql/pluralsight-graphql-operations.json.
+- name: Manage Keys
+  url: https://developer.pluralsight.com/manage-keys
+  http_status: 200
+  type: credential-management
+  auth_required: true
+  note: >-
+    Where a plan admin mints a key, attaches an email address for deprecation notices, and toggles
+    Beta release-stage access.
+test_mode:
+  supported: false
+  key_prefixes: []
+  test_host: null
+  test_data: null
+  time_simulation: false
+  note: >-
+    Pluralsight publishes no test/live key distinction, no sandbox tenant and no seeded test data.
+    Every documented call runs against the caller's real plan. Nothing here is invented - these are
+    absences observed across the developer portal's whole docs tree.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,43 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Pluralsight Flow Coding Metrics API
+  version: 1.0.0
+extends: pluralsight-coding-metrics-api-openapi.yml
+x-generated: '2026-08-29'
+x-method: generated
+x-source: API Evangelist enrichment pipeline; derived from developer.pluralsight.com docs and live probes
+  2026-08-29
+actions:
+- target: $.info
+  description: Stamp API Evangelist provenance and the artifacts derived from this contract.
+  update:
+    x-api-evangelist:
+      repository: https://github.com/api-evangelist/pluralsight
+      enriched: '2026-08-29'
+      conventions: conventions/pluralsight-conventions.yml
+      errors: errors/pluralsight-problem-types.yml
+      lifecycle: lifecycle/pluralsight-lifecycle.yml
+      authentication: authentication/pluralsight-authentication.yml
+      rate_limits: rate-limits/pluralsight-rate-limits.yml
+- target: $.info
+  description: Record that this contract describes Pluralsight Flow, divested to Appfire on 2025-02-05,
+    and is served from appfireflow.com / flow-api.pluralsight.com rather than a Pluralsight-owned API
+    host.
+  update:
+    x-divested:
+      to: Appfire
+      date: '2025-02-05'
+      source: https://appfire.com/newsroom/appfire-acquires-flow
+      note: Attribution of this API to Pluralsight is stale; the product now operates independently under
+        Appfire.
+- target: $.paths.*.*.responses
+  description: 'Document the throttling contract observed and published for these APIs: 429 on exhaustion,
+    no numeric limit and no RateLimit-* headers published.'
+  update:
+    x-rate-limit-contract:
+      status_on_exhaustion: 429
+      headers: []
+      published_numeric_limit: false
+      guidance: Exponential backoff with jitter; keep page size at or below the documented 1000-record
+        recommendation.
+      source: https://developer.pluralsight.com/docs/getting-started/faqs

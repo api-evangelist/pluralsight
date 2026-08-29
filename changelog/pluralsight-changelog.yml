@@ -1,0 +1,71 @@
+generated: '2026-08-29'
+method: searched
+source: https://developer.pluralsight.com/docs/getting-started/change-log
+provider: Pluralsight
+providerId: pluralsight
+name: Pluralsight GraphQL Schema Changelog
+description: >-
+  Pluralsight maintains a dated GraphQL schema changelog on its developer portal covering
+  backwards-compatible additions, schema previews and upcoming breaking changes, running from
+  2023 to the present. Entries are dated M-D-YY and are keyed on the operation and field affected.
+url: https://developer.pluralsight.com/docs/getting-started/change-log
+scheme: dated-entries
+versioned: false
+current_version: null
+version_note: >-
+  There is no released version number - the GraphQL schema is continuously deployed and change is
+  communicated by date plus per-field release stage (GR / Beta / Alpha).
+most_recent_entry: '2026-04-29'
+entries:
+- date: '2026-04-29'
+  breaking: true
+  highlights:
+  - >-
+    skillAssessmentCatalog now returns only skill assessments assigned to the plan by default; new
+    showOffPlanContent and isOnPlan handling.
+- date: '2026-01-21'
+  breaking: false
+  highlights:
+  - Changes to categories, tags and marketTaxonomy.
+- date: '2025-07-10'
+  breaking: false
+  highlights:
+  - playgroundUserSummary added at ALPHA release stage.
+- date: '2025-06-05'
+  breaking: false
+  highlights:
+  - programUserOptions changes.
+- date: '2025-04-07'
+  breaking: false
+  highlights:
+  - addTeamManager changes.
+- date: '2025-02-25'
+  breaking: false
+  highlights:
+  - certifications and Tags changes.
+- date: '2025-02-19'
+  breaking: false
+  highlights:
+  - LAB / ILX_EXPERIENCE content types added to addChannelContent and removeChannelContent.
+- date: '2025-02-10'
+  breaking: true
+  highlights:
+  - >-
+    userHandle, projectCatalog, stackOverflowTags and skillAssessmentResults fields marked for
+    removal - the start of the 2025 deprecation programme.
+- date: '2025-02-07'
+  breaking: false
+  highlights:
+  - Deprecations section added to the docs navigation, publishing the 2025 deprecation guide.
+- date: '2025-01-22'
+  breaking: true
+  highlights:
+  - createUser, editUser, removeLicense and removeUser move from userId to psUserId.
+notes:
+  - >-
+    The changelog is the primary discovery surface named by the deprecation policy - alongside the
+    docs strike-throughs, the playground, and the extensions.warnings field on live responses.
+  - Recent window only; the published log extends back to 2023-07 with many further entries.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

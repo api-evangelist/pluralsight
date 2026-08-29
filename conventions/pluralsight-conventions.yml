@@ -1,0 +1,185 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://developer.pluralsight.com/docs/getting-started/pagination,
+  https://developer.pluralsight.com/docs/getting-started/using-graphql,
+  https://developer.pluralsight.com/docs/getting-started/faqs,
+  https://developer.pluralsight.com/docs/deprecations/deprecation-policy
+provider: Pluralsight
+providerId: pluralsight
+description: >-
+  Cross-cutting runtime semantics for the Pluralsight Skills GraphQL API - the surface Pluralsight
+  still owns and still ships. Derived from the developer portal plus the OpenAPIs in this repo.
+auth:
+  style: api-key
+  transport: HTTP header
+  docs: https://developer.pluralsight.com/manage-keys
+  detail: >-
+    A plan admin generates an API key on the Manage Keys page of the developer portal; the key is
+    presented as a bearer credential on POSTs to https://paas-api.pluralsight.com/graphql. Keys
+    carry their own release-stage entitlement (GR / Beta / Alpha) and their own email address for
+    deprecation notices. The separate MCP gateway at mcp.pluralsight.com uses OAuth 2.1
+    (authorization_code + PKCE) instead - see mcp/pluralsight-mcp.yml.
+  see_also: ../authentication/pluralsight-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  detail: >-
+    Pluralsight documents no idempotency key, no request-deduplication window and no safe-retry
+    contract for its mutations. Retrying addTeamMember, createUser, inviteMember or addChannel after
+    a timeout is not documented as safe. This is an absence, recorded as an absence.
+pagination:
+  style: cursor
+  standard: GraphQL Cursor Connections (Relay) specification
+  docs: https://developer.pluralsight.com/docs/getting-started/pagination
+  request_params:
+  - name: first
+    description: how many records to read in this batch
+  - name: after
+    description: opaque cursor to start reading from
+  response_fields:
+  - pageInfo.endCursor
+  - pageInfo.hasNextPage
+  - totalCount
+  - edges[].cursor
+  - edges[].node
+  - nodes
+  recommended_page_size: 1000
+  detail: >-
+    Pluralsight publishes a hard cap on records per batch and strongly recommends 1000 records per
+    request. Requesting more than the limit does not error - it returns a warning saying the result
+    set was reduced to the limit, which is a silent-truncation hazard for any consumer that does not
+    read warnings.
+  loop: >-
+    read pageInfo.endCursor, pass it as `after` on the next call, stop when pageInfo.hasNextPage is
+    false.
+field_selection:
+  style: graphql-selection-set
+  detail: >-
+    Field selection is native GraphQL - the caller names exactly the fields it wants. There is no
+    REST-style expand/fields parameter. A key at GR release stage that selects a single Beta field
+    five levels deep fails the ENTIRE call, so selection sets are effectively coupled to key
+    entitlement.
+filtering:
+  docs: https://developer.pluralsight.com/docs/getting-started/filters
+  detail: >-
+    Queries expose filter arguments; Pluralsight's documented best practice is one query per API and
+    aggressive filtering (e.g. a 30- or 90-day window on courseProgress) to keep reports fast and
+    reduce server load.
+metadata:
+  supported: false
+  note: No customer-defined metadata / custom-fields facility is documented on the GraphQL objects.
+request_id:
+  header: null
+  note: >-
+    No request-id or correlation-id header is documented for the GraphQL API. Support escalation is
+    by query and timestamp, not by trace id.
+versioning:
+  style: release-stages
+  detail: See lifecycle/pluralsight-lifecycle.yml - stability is per operation and per field, not per URL.
+error_envelope:
+  style: graphql-errors
+  detail: >-
+    Errors are returned in the GraphQL top-level errors[] array with a 200 HTTP status in the
+    ordinary case; the REST surfaces return 401 and 429 status codes. Deprecation warnings ride in
+    extensions.warnings and MUST be read separately from errors[] - a call can succeed, be
+    truncated, and be deprecated all at once, and only the extensions block says so.
+  rfc9457: false
+  see_also: ../errors/pluralsight-problem-types.yml
+rate_limit_signal:
+  documented_numeric_limit: false
+  response_headers: []
+  status_on_exhaustion: 429
+  detail: >-
+    Pluralsight's FAQ confirms a rate limit exists ("Yes, and if you follow the recommendation of
+    extracting 1000 records per page/API request, you shouldn't hit the limit") but publishes no
+    number, no window and no X-RateLimit-* / RateLimit-* / Retry-After header contract. The page
+    size IS the rate-limit control surface in practice.
+  see_also: ../rate-limits/pluralsight-rate-limits.yml
+dry_run_mode:
+  supported: false
+  note: No preview, validate-only or dry-run mode is documented for any mutation.
+reversibility:
+  grade: documented
+  rationale: >-
+    Pluralsight's GraphQL API has a real write surface (24 mutations) and most destructive verbs are
+    paired with an inverse mutation, so an agent CAN take an action back. But no document states a
+    window, a retention period, or whether the inverse restores prior state or creates a new record.
+    A reversal path exists; a reversal guarantee does not.
+  write_surface: true
+  operations:
+  - action: addChannel
+    reversal: archiveChannel
+    reversal_operationId: archiveChannel
+    window: null
+    note: >-
+      archive, not delete. Whether an archived channel can be un-archived, and for how long, is not
+      documented.
+  - action: addChannelMembers
+    reversal: removeChannelMember
+    window: null
+  - action: addChannelContent
+    reversal: removeChannelContent
+    window: null
+  - action: addChannelGroups
+    reversal: deleteChannelGroup
+    window: null
+    note: delete, not archive - no documented restore path.
+  - action: addChannelsToChannelGroups
+    reversal: deleteChannelGroupChannels
+    window: null
+  - action: addTeam
+    reversal: deleteTeam
+    window: null
+    note: no documented restore path for a deleted team or its membership.
+  - action: addTeamMember
+    reversal: removeTeamMember
+    window: null
+  - action: addTeamManager
+    reversal: removeTeamManager
+    window: null
+  - action: moveMemberToTeam
+    reversal: moveMemberToTeam
+    window: null
+    note: reversible only by moving the member back; the prior team must be known by the caller.
+  - action: addRole
+    reversal: deleteRole
+    window: null
+  - action: assignUsersToRole
+    reversal: null
+    window: null
+    note: >-
+      no unassign mutation is published in the 71-operation index. An agent that assigns a role to
+      the wrong users has no documented way to undo it through the API.
+  - action: assignTeamsToRole
+    reversal: null
+    window: null
+    note: no unassign mutation published.
+  - action: inviteMember
+    reversal: cancelInvite
+    window: null
+    note: >-
+      cancelInvite works only while the invite is outstanding. The docs do not state an expiry, so
+      the window is bounded by redemption, not by a stated period.
+  - action: inviteManager
+    reversal: cancelInvite
+    window: null
+  - action: createUser
+    reversal: removeUser
+    window: null
+  - action: editUser
+    reversal: editUser
+    window: null
+    note: reversible only if the caller captured the prior values first - no read-back of history.
+  - action: removeLicense
+    reversal: null
+    window: null
+    note: >-
+      no documented re-grant mutation; re-licensing is done through inviteMember / license
+      management, which is not the same operation and may not restore prior progress attribution.
+  missing_windows: >-
+    NO document on the Pluralsight developer portal states a reversal window for any of these
+    operations. None is asserted here.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,72 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://registry.npmjs.org/pluralsight, https://pypi.org/pypi/pluralsight/json,
+  https://developer.pluralsight.com/docs/getting-started/examples,
+  https://developer.pluralsight.com/docs/getting-started/using-graphql
+provider: Pluralsight
+providerId: pluralsight
+description: >-
+  Pluralsight publishes NO first-party client library for any of its APIs. Its own "Examples" and
+  "Using GraphQL" docs point callers at generic third-party GraphQL clients (the GraphQL Playground,
+  the Graphios library, the Apollo Client library) rather than at a Pluralsight SDK. The two
+  packages that own the `pluralsight` name on npm and PyPI are community projects, both abandoned,
+  and both written against the REST APIs Pluralsight removed on 2025-11-10.
+official_sdk_count: 0
+packages:
+- name: pluralsight
+  registry: npm
+  url: https://www.npmjs.com/package/pluralsight
+  official: false
+  language: JavaScript
+  version: 1.0.2
+  published: '2019-07-09'
+  repository: https://github.com/StevenGodin/pluralsight-api
+  note: >-
+    Community library by Steven Godin. Last published 2019-07-09 - six years before the REST APIs it
+    wraps were removed. Not maintained, not endorsed by Pluralsight, and cannot reach the GraphQL
+    API that replaced them.
+- name: pluralsight
+  registry: pypi
+  url: https://pypi.org/project/pluralsight/
+  official: false
+  language: Python
+  version: 2.1.2
+  published: '2018-07-13'
+  repository: https://github.com/tonybaloney/pluralsight
+  docs: https://pluralsight.readthedocs.io/
+  license: Apache-2.0
+  note: >-
+    Community library by Anthony Shaw wrapping the Licensing (plans/api/license/v1) REST API. Last
+    published 2018-07-13; that endpoint was retired 2025-11-10, so the package is now pointed at a
+    dead host.
+- name: pluralsight_api
+  registry: null
+  url: https://github.com/sharadg/pluralsight_api
+  official: false
+  language: Python
+  version: null
+  published: null
+  note: >-
+    Community Python client for the retired Reporting API. Published to GitHub only - no package
+    registry entry exists, so no version or release date could be read.
+registries_checked:
+- registry: npm
+  query: pluralsight
+  result: one package, community-owned
+- registry: pypi
+  query: pluralsight
+  result: one package, community-owned
+- registry: docs
+  query: https://developer.pluralsight.com/docs/getting-started/examples
+  result: >-
+    raw HTTP POST examples only; the "Additional Resources" block links GraphQL Playground, Graphios
+    and Apollo Client - all third-party generic tooling.
+finding: >-
+  A provider running a live OAuth-protected MCP gateway and a 71-operation GraphQL API, with zero
+  first-party SDKs in any language, is publishing an agent surface ahead of a developer surface.
+  The only dated release evidence available for this provider - two community packages last shipped
+  in 2018 and 2019 - describes an API generation Pluralsight itself has since removed.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

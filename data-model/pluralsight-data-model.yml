@@ -1,0 +1,277 @@
+generated: '2026-08-29'
+method: derived
+source: graphql/pluralsight-graphql-operations.json, openapi/*.yml, json-schema/, examples/
+provider: Pluralsight
+providerId: pluralsight
+description: >-
+  Entity-relationship graph for the Pluralsight Skills platform, derived from the published
+  71-operation GraphQL index (operation name + category + Query/Mutation kind), the OpenAPIs in this
+  repo, and the harvested request/response examples. Field-level types are OAuth/API-key gated, so
+  relationships are inferred from operation naming and from the deprecation guide's field-mapping
+  tables (which name the exact foreign keys), not from a readable schema document.
+identifiers:
+- name: psUserId
+  type: UUID
+  entity: User
+  note: >-
+    The canonical user identifier since the 2025 deprecation programme. Replaced an integer/string
+    userId across every query and mutation; the two are NOT interchangeable - the deprecation guide
+    states each user's psUserId differs from that user's legacy userId.
+- name: userId
+  type: legacy
+  entity: User
+  status: removed
+  removed: '2025-11-10'
+- name: planId
+  type: ID
+  entity: Plan
+- name: channelId
+  entity: Channel
+- name: teamId
+  entity: Team
+- name: roleId
+  entity: Role
+- name: courseId
+  entity: Course
+- name: inviteId
+  entity: Invite
+  note: renamed from field.inviteId to input.inviteId on cancelInvite (changelog 2023-11-01).
+entities:
+- name: Plan
+  category: other
+  operations:
+  - planInfo
+  - planAdmins
+  - planPermissionSets
+  description: The customer account. Root of every other entity; scopes what an API key can read.
+- name: User
+  category: user
+  operations:
+  - users
+  - createUser
+  - editUser
+  - removeUser
+  - removeLicense
+  - memberInvites
+  - inviteMember
+  - cancelInvite
+  - planAdmins
+  description: A licensed learner or admin on a plan.
+- name: Invite
+  category: user
+  operations:
+  - memberInvites
+  - inviteMember
+  - inviteManager
+  - cancelInvite
+  description: An outstanding invitation to join a plan or manage a team.
+- name: Team
+  category: team
+  operations:
+  - teams
+  - addTeam
+  - editTeam
+  - deleteTeam
+  - teamManagers
+  - addTeamManager
+  - removeTeamManager
+  - addTeamMember
+  - removeTeamMember
+  - moveMemberToTeam
+  description: A group of users on a plan, with managers and members.
+- name: Channel
+  category: channel
+  operations:
+  - channels
+  - addChannel
+  - editChannel
+  - archiveChannel
+  - channelContent
+  - addChannelContent
+  - removeChannelContent
+  - channelMembers
+  - addChannelMembers
+  - removeChannelMember
+  - channelProgress
+  - addTeamsToChannels
+  description: A curated content collection with owners, contributors, members and content items.
+- name: ChannelGroup
+  category: channel
+  operations:
+  - channelGroup
+  - addChannelGroups
+  - updateChannelGroups
+  - deleteChannelGroup
+  - addChannelsToChannelGroups
+  - deleteChannelGroupChannels
+  description: A grouping of channels.
+- name: Course
+  category: content
+  operations:
+  - courseCatalog
+  - courseProgress
+  - courseDailyUsage
+  description: A video course in the catalog.
+- name: Content
+  category: content
+  operations:
+  - contentCatalog
+  - contentProgress
+  - contentSlugToId
+  description: >-
+    The superset content object - courses, interactive courses, code labs, guides, videos. Content
+    types observed in the changelog include COURSE, LAB and ILX_EXPERIENCE.
+- name: Path
+  category: content
+  operations:
+  - pathCatalog
+  description: A learning path - an ordered sequence of content around a skill or role.
+- name: Program
+  category: content
+  operations:
+  - programCatalog
+  - programUserProgress
+  - programAssessmentAttempts
+  - playgroundUserSummary
+  description: A structured learning program with assessments.
+- name: Lab
+  category: content
+  operations:
+  - labCatalog
+  - labProgress
+  description: A hands-on lab.
+- name: Tag
+  category: content
+  operations:
+  - tags
+  - marketTaxonomy
+  description: The content taxonomy. stackOverflowTags was removed 2025-11-10.
+- name: SkillAssessment
+  category: skill
+  operations:
+  - skillAssessmentCatalog
+  - skillAssessmentResults
+  - skillIqsSummary
+  description: Skill IQ assessments and per-learner results.
+- name: Role
+  category: role
+  operations:
+  - roleIqCatalog
+  - roleIqSkills
+  - roleIqAssignments
+  - roleIqLearnerLevels
+  - roleIqsSummary
+  - addRole
+  - editRole
+  - deleteRole
+  - assignUsersToRole
+  - assignTeamsToRole
+  description: Standard (Pluralsight-curated) and custom Role IQs, their skills and assignments.
+- name: Certification
+  category: usage
+  operations:
+  - userCertificationUploads
+  description: Learner-uploaded certification records.
+- name: PracticeExam
+  category: usage
+  operations:
+  - practiceExamQuizProgress
+  description: Practice exam attempts and scores.
+- name: Priority
+  category: usage
+  operations:
+  - priority
+  description: Learning priorities created by a plan admin.
+relationships:
+- from: Plan
+  to: User
+  type: has_many
+  via: planId
+- from: Plan
+  to: Team
+  type: has_many
+  via: planId
+- from: Plan
+  to: Channel
+  type: has_many
+  via: planId
+- from: Team
+  to: User
+  type: has_many
+  via: psUserId
+  note: members and managers are distinct edges (addTeamMember vs addTeamManager)
+- from: Team
+  to: Channel
+  type: has_many
+  via: addTeamsToChannels
+- from: ChannelGroup
+  to: Channel
+  type: has_many
+  via: channelIds
+- from: Channel
+  to: User
+  type: has_many
+  via: ownerPsUserId / contributorPsUserIds / memberPsUserIds
+- from: Channel
+  to: Content
+  type: has_many
+  via: addChannelContent
+- from: Path
+  to: Course
+  type: has_many
+  via: pathCatalog
+- from: Program
+  to: Content
+  type: has_many
+  via: programCatalog
+- from: Role
+  to: SkillAssessment
+  type: has_many
+  via: roleIqSkills
+- from: Role
+  to: User
+  type: has_many
+  via: assignUsersToRole / psUserIds
+- from: Role
+  to: Team
+  type: has_many
+  via: assignTeamsToRole
+- from: User
+  to: Course
+  type: has_many
+  via: courseProgress.psUserId
+  note: progress edge, not ownership
+- from: User
+  to: Content
+  type: has_many
+  via: contentProgress.psUserId
+- from: User
+  to: Lab
+  type: has_many
+  via: labProgress
+- from: User
+  to: SkillAssessment
+  type: has_many
+  via: skillAssessmentResults.psUserId
+- from: User
+  to: Certification
+  type: has_many
+  via: userCertificationUploads.psUserId
+- from: User
+  to: PracticeExam
+  type: has_many
+  via: practiceExamQuizProgress.psUserId
+- from: Invite
+  to: User
+  type: belongs_to
+  via: redeemedByPsUserId
+gaps:
+- >-
+    Field-level types, nullability and enum values are not readable anonymously - the GraphQL
+    endpoint returns 401 to introspection and the portal schema pages render client-side.
+- >-
+    No id-prefix convention is published (unlike Stripe-style typed prefixes); psUserId is a bare
+    UUID and other ids are opaque.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

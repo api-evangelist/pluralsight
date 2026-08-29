@@ -1,0 +1,161 @@
+generated: '2026-08-29'
+method: probed
+source: live HTTPS GETs of /.well-known/* on every apis.yml baseURL host, every OpenAPI servers[] host, the docs host, and the MCP host
+provider: Pluralsight
+providerId: pluralsight
+description: >-
+  Pluralsight serves an RFC 9116 security.txt from every pluralsight.com host that answers
+  (canonicalised to https://pluralsight.com/.well-known/security.txt), and its remote MCP gateway
+  at mcp.pluralsight.com publishes a full OAuth discovery set - RFC 8414 authorization-server
+  metadata, RFC 9728 protected-resource metadata, and an OpenID Connect discovery document.
+  No /.well-known/api-catalog and no A2A agent card is served on any host.
+notes:
+  - >-
+    app.pluralsight.com answers HTTP 200 with the same 9,887-byte single-page-app HTML shell for
+    EVERY /.well-known/* path probed. Those are catch-all shells, not documents, and are recorded
+    below with status 200 and a shell note so they are never mistaken for a served surface.
+  - >-
+    paas-api.pluralsight.com returns 401 {"error":"AuthenticationError: Invalid API Key"} for every
+    path other than security.txt - the API gateway authenticates before routing, so a well-known
+    document could not be ruled in or out there.
+hosts:
+- host: developer.pluralsight.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: pluralsight-security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: mcp.pluralsight.com
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: pluralsight-mcp-oauth-protected-resource.json
+    note: RFC 9728 protected-resource metadata for https://mcp.pluralsight.com/mcp
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: pluralsight-mcp-oauth-authorization-server.json
+    note: RFC 8414 authorization-server metadata; PKCE S256, dynamic client registration
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: pluralsight-mcp-openid-configuration.json
+  - path: /.well-known/security.txt
+    status: 200
+    file: pluralsight-security.txt
+    note: identical body to the developer host; canonicalised to pluralsight.com
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: pluralsight.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: pluralsight-security.txt
+    note: the canonical location declared by the served document
+- host: www.pluralsight.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: paas-api.pluralsight.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: pluralsight-security.txt
+  - path: /.well-known/openid-configuration
+    status: 401
+    note: API gateway authenticates before routing
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+- host: paas-rest-api.pluralsight.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: pluralsight-security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: app.pluralsight.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: pluralsight-security.txt
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: SPA catch-all HTML shell, not a document - treated as a miss
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: SPA catch-all HTML shell, not a document - treated as a miss
+  - path: /.well-known/api-catalog
+    status: 200
+    note: SPA catch-all HTML shell, not a document - treated as a miss
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    note: SPA catch-all HTML shell, not a document - treated as a miss
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: SPA catch-all HTML shell, not a document - treated as a miss
+  - path: /.well-known/agent.json
+    status: 200
+    note: SPA catch-all HTML shell, not a document - treated as a miss
+- host: api.appfireflow.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: AWS API Gateway "Missing Authentication Token"; host belongs to Appfire (Flow divestiture)
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+- host: flow-api.pluralsight.com
+  documents:
+  - path: /.well-known/security.txt
+    status: null
+    note: no response - host did not complete a TLS/HTTP exchange within the 10s probe ceiling
+  - path: /.well-known/agent-card.json
+    status: null
+    note: no response
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

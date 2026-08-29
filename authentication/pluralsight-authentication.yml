@@ -1,9 +1,11 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/channels.yml, openapi/content-catalog.yml, openapi/content-progress.yml, openapi/content-slug.yml,
-  openapi/course-catalog.yml, openapi/course-daily-usage.yml, openapi/course-progress.yml, openapi/flow-coding-metrics.yml,
-  openapi/flow-collaboration-metrics.yml, openapi/flow-commits.yml, openapi/flow-dora-metrics.yml,
-  openapi/flow-integrations.yml ...
+generated: '2026-08-29'
+method: searched
+source: openapi/pluralsight-coding-metrics-api-openapi.yml, openapi/pluralsight-collaboration-metrics-api-openapi.yml,
+  openapi/pluralsight-commits-api-openapi.yml, openapi/pluralsight-dora-metrics-api-openapi.yml,
+  openapi/pluralsight-graphql-api-openapi.yml, openapi/pluralsight-integrations-api-openapi.yml,
+  openapi/pluralsight-licensing-api-openapi.yml, openapi/pluralsight-pull-requests-api-openapi.yml,
+  openapi/pluralsight-reports-api-openapi.yml, openapi/pluralsight-repos-api-openapi.yml, openapi/pluralsight-teams-api-openapi.yml,
+  openapi/pluralsight-tickets-api-openapi.yml ...
 summary:
   types:
   - http
@@ -13,32 +15,77 @@ schemes:
   scheme: bearer
   bearerFormat: JWT
   sources:
-  - openapi/channels.yml
-  - openapi/content-catalog.yml
-  - openapi/content-progress.yml
-  - openapi/content-slug.yml
-  - openapi/course-catalog.yml
-  - openapi/course-daily-usage.yml
-  - openapi/course-progress.yml
-  - openapi/flow-coding-metrics.yml
-  - openapi/flow-collaboration-metrics.yml
-  - openapi/flow-commits.yml
-  - openapi/flow-dora-metrics.yml
-  - openapi/flow-integrations.yml
-  - openapi/flow-pull-requests.yml
-  - openapi/flow-repos.yml
-  - openapi/flow-teams.yml
-  - openapi/flow-tickets.yml
-  - openapi/flow-users.yml
-  - openapi/labs.yml
-  - openapi/learning-paths.yml
-  - openapi/licensing-rest.yml
-  - openapi/plan-info.yml
-  - openapi/practice-exams.yml
-  - openapi/programs.yml
-  - openapi/reports-rest.yml
-  - openapi/role-iq.yml
-  - openapi/skills-assessment.yml
-  - openapi/tags.yml
-  - openapi/teams.yml
-  - openapi/user-management.yml
+  - openapi/pluralsight-coding-metrics-api-openapi.yml
+  - openapi/pluralsight-collaboration-metrics-api-openapi.yml
+  - openapi/pluralsight-commits-api-openapi.yml
+  - openapi/pluralsight-dora-metrics-api-openapi.yml
+  - openapi/pluralsight-graphql-api-openapi.yml
+  - openapi/pluralsight-integrations-api-openapi.yml
+  - openapi/pluralsight-licensing-api-openapi.yml
+  - openapi/pluralsight-pull-requests-api-openapi.yml
+  - openapi/pluralsight-reports-api-openapi.yml
+  - openapi/pluralsight-repos-api-openapi.yml
+  - openapi/pluralsight-teams-api-openapi.yml
+  - openapi/pluralsight-tickets-api-openapi.yml
+  - openapi/pluralsight-users-api-openapi.yml
+
+docs: https://developer.pluralsight.com/manage-keys
+searched: '2026-08-29'
+searchedSources:
+- https://developer.pluralsight.com/manage-keys
+- https://developer.pluralsight.com/plan-permissions
+- https://developer.pluralsight.com/docs/getting-started/faqs
+- https://developer.pluralsight.com/docs/getting-started/release-stages
+- https://mcp.pluralsight.com/.well-known/oauth-authorization-server
+profiles:
+- surface: Skills GraphQL API
+  endpoint: https://paas-api.pluralsight.com/graphql
+  type: apiKey
+  transport: bearer credential in the HTTP Authorization header
+  issuance: >-
+    A Pluralsight PLAN ADMIN mints the key on https://developer.pluralsight.com/manage-keys. A
+    non-admin cannot request one directly - they must ask a plan admin. Multiple keys per plan are
+    supported.
+  entitlement:
+  - >-
+      Plan level - whether the plan carries the API entitlement at all, visible on
+      https://developer.pluralsight.com/plan-permissions.
+  - >-
+      Key level - the release stage attached to the individual key (General Release / Beta / Alpha).
+      Beta is a self-serve toggle on the key; Alpha is by invitation from support@pluralsight.com.
+  scopes: []
+  scopes_note: >-
+    There are no scopes. A key carries whatever its plan carries; an agent cannot request a narrower
+    grant.
+  key_metadata:
+  - >-
+      Each key should carry an email address - that address is how Pluralsight sends deprecation
+      notices for operations the key is observed using.
+  unauthenticated_response: '401 {"error":"AuthenticationError: Invalid API Key"}'
+  observed: '2026-08-29'
+- surface: MCP Gateway
+  endpoint: https://mcp.pluralsight.com/mcp
+  type: oauth2
+  flow: authorization_code
+  pkce: S256
+  dynamic_client_registration: https://mcp.pluralsight.com/register
+  authorization_endpoint: https://mcp.pluralsight.com/authorize
+  token_endpoint: https://mcp.pluralsight.com/token
+  jwks_uri: https://mcp.pluralsight.com/.well-known/jwks.json
+  token_endpoint_auth_methods_supported:
+  - none
+  scopes:
+  - invoke:gateway
+  - author:gateway
+  - employee:gateway
+  - admin:gateway
+  challenge: >-
+    401 with WWW-Authenticate: Bearer error="invalid_token",
+    resource_metadata="https://mcp.pluralsight.com/.well-known/oauth-protected-resource"
+  observed: '2026-08-29'
+  see_also: ../scopes/pluralsight-scopes.yml
+note: >-
+  The bearerAuth/JWT scheme recorded in schemes[] above is what the OpenAPIs in this repo declare.
+  In practice the Skills API credential is a plan-admin API key presented as a bearer token, not a
+  JWT issued by an authorization server; the only true OAuth surface Pluralsight operates is the MCP
+  gateway.

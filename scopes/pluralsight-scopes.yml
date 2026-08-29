@@ -1,0 +1,61 @@
+generated: '2026-08-29'
+method: probed
+source: https://mcp.pluralsight.com/.well-known/oauth-protected-resource
+provider: Pluralsight
+providerId: pluralsight
+description: >-
+  Pluralsight's only OAuth-scoped surface is its remote MCP gateway. The Skills GraphQL API uses
+  plan-admin API keys with no OAuth scopes at all - entitlement there is expressed as release-stage
+  access on the key plus plan permissions, not as scopes. The four scopes below are published
+  anonymously in the gateway's RFC 9728 protected-resource metadata and its RFC 8414
+  authorization-server metadata.
+docs: null
+docs_note: >-
+  No human-readable scopes reference page exists. These values come from the machine-readable
+  discovery documents only; the semantics below are read from the scope names and are marked as
+  inferred where Pluralsight does not describe them.
+surfaces:
+- name: Pluralsight MCP Gateway
+  resource: https://mcp.pluralsight.com/mcp
+  authorization_server: https://mcp.pluralsight.com
+  flow: authorization_code
+  pkce: S256
+  bearer_methods_supported:
+  - header
+  scopes:
+  - name: invoke:gateway
+    description: Call tools exposed through the gateway.
+    inferred: true
+  - name: author:gateway
+    description: Authoring-level access to gateway tools.
+    inferred: true
+  - name: employee:gateway
+    description: Pluralsight-employee-level access to gateway tools.
+    inferred: true
+  - name: admin:gateway
+    description: Administrative access to the gateway.
+    inferred: true
+  note: >-
+    Pluralsight publishes the scope STRINGS but not their meanings. The descriptions above are read
+    from the names and are flagged inferred; none is quoted from Pluralsight documentation.
+- name: Skills GraphQL API
+  resource: https://paas-api.pluralsight.com/graphql
+  scheme: apiKey
+  scopes: []
+  note: >-
+    No OAuth. Access is gated by (a) whether the plan has the API entitlement
+    (https://developer.pluralsight.com/plan-permissions) and (b) the release stage attached to the
+    individual API key (GR / Beta / Alpha). That is an entitlement model, not a scope model - an
+    agent cannot request a narrower grant than the key already carries.
+x-evidence:
+- fetched: '2026-08-29'
+  url: https://mcp.pluralsight.com/.well-known/oauth-protected-resource
+  http_status: 200
+  file: ../well-known/pluralsight-mcp-oauth-protected-resource.json
+- fetched: '2026-08-29'
+  url: https://mcp.pluralsight.com/.well-known/oauth-authorization-server
+  http_status: 200
+  file: ../well-known/pluralsight-mcp-oauth-authorization-server.json
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

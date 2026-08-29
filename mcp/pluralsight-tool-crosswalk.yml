@@ -1,0 +1,81 @@
+generated: '2026-08-29'
+method: derived
+source: mcp/pluralsight-mcp.yml, graphql/pluralsight-graphql-operations.json, openapi/*.yml
+provider: Pluralsight
+providerId: pluralsight
+description: >-
+  Crosswalk between Pluralsight's agent surface (the remote MCP gateway) and its callable
+  contracts (the GraphQL operation set and the REST OpenAPIs in this repo). The MCP tool list is
+  OAuth-gated, so NO tool-to-operation rows could be established. Everything below is the honest
+  inverse: the operations that exist and have no bindable tool recorded against them.
+surfaces:
+  mcp:
+    url: https://mcp.pluralsight.com/mcp
+    gated: true
+    reason: 'tools/list returns 401 "Missing Bearer token"; OAuth authorization_code + PKCE required'
+  graphql:
+    endpoint: https://paas-api.pluralsight.com/graphql
+    gated: true
+    reason: 'POST introspection returns 401 {"error":"AuthenticationError: Invalid API Key"}'
+    operation_index: ../graphql/pluralsight-graphql-operations.json
+    note: >-
+      the operation inventory (71 operations, 47 Query / 24 Mutation across categories channel,
+      content, role, skill, team, usage, user, other) IS published anonymously by the developer
+      portal schema browser and is harvested verbatim; only the field-level types are gated.
+  openapi:
+    files:
+    - openapi/pluralsight-catalog-api-openapi.yml
+    - openapi/pluralsight-licensing-api-openapi.yml
+    - openapi/pluralsight-reports-api-openapi.yml
+    - openapi/pluralsight-graphql-api-openapi.yml
+    note: >-
+      the nine Flow specs in openapi/ (coding-metrics, collaboration-metrics, commits,
+      dora-metrics, integrations, pull-requests, repos, teams, tickets) carry servers[] on
+      flow-api.pluralsight.com and appfireflow.com. Flow was divested to Appfire in February 2025,
+      so those operations are deliberately excluded from this crosswalk rather than credited to
+      Pluralsight. See lifecycle/pluralsight-lifecycle.yml.
+crosswalk: []
+mcp_only: []
+rest_only:
+- operationId: getCourseCatalog
+  spec: openapi/pluralsight-catalog-api-openapi.yml
+  reason: no MCP tool could be bound - the gateway's tool list is OAuth-gated
+- operationId: manageChannels
+  spec: openapi/pluralsight-graphql-api-openapi.yml
+  reason: no MCP tool could be bound - the gateway's tool list is OAuth-gated
+- operationId: listInvitations
+  spec: openapi/pluralsight-licensing-api-openapi.yml
+  reason: no MCP tool could be bound; operation is itself deprecated (removed 2025-11-10)
+- operationId: createInvitation
+  spec: openapi/pluralsight-licensing-api-openapi.yml
+  reason: no MCP tool could be bound; operation is itself deprecated (removed 2025-11-10)
+- operationId: listUsers
+  spec: openapi/pluralsight-licensing-api-openapi.yml
+  reason: no MCP tool could be bound; operation is itself deprecated (removed 2025-11-10)
+- operationId: listTeams
+  spec: openapi/pluralsight-licensing-api-openapi.yml
+  reason: no MCP tool could be bound; operation is itself deprecated (removed 2025-11-10)
+- operationId: downloadUserReport
+  spec: openapi/pluralsight-reports-api-openapi.yml
+  reason: no MCP tool could be bound; operation is itself deprecated (removed 2025-11-10)
+- operationId: downloadCourseCompletionReport
+  spec: openapi/pluralsight-reports-api-openapi.yml
+  reason: no MCP tool could be bound; operation is itself deprecated (removed 2025-11-10)
+- operationId: downloadCourseUsageReport
+  spec: openapi/pluralsight-reports-api-openapi.yml
+  reason: no MCP tool could be bound; operation is itself deprecated (removed 2025-11-10)
+coverage:
+  mcp_tools_total: null
+  mcp_tools_mapped: 0
+  graphql_operations_total: 71
+  graphql_operations_mapped: 0
+  rest_operations_considered: 9
+  rest_operations_mapped: 0
+  confidence: low
+  note: >-
+    coverage is zero because the MCP tool list cannot be read anonymously, not because the
+    operations are unmappable. Re-run this artifact with an authenticated tools/list and the
+    crosswalk becomes derivable at high confidence.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
