@@ -4,21 +4,24 @@ source: https://mcp.pluralsight.com/mcp
 provider: Pluralsight
 providerId: pluralsight
 name: Pluralsight MCP Gateway
-description: >-
-  Pluralsight runs a live, remote Model Context Protocol server at https://mcp.pluralsight.com/mcp.
-  It is a real MCP endpoint, not a marketing page: an unauthenticated JSON-RPC tools/list call
-  returns a protocol-level error object ({"jsonrpc":"2.0","id":0,"error":{"code":-32001,
-  "message":"Missing Bearer token"}}) and the 401 carries an RFC 9728 challenge -
-  WWW-Authenticate: Bearer error="invalid_token",
-  resource_metadata="https://mcp.pluralsight.com/.well-known/oauth-protected-resource".
-  The tool list itself is behind OAuth, so the tool names and inputSchemas could not be enumerated
-  anonymously. Pluralsight publishes no public documentation for this endpoint that this pass could
-  find - it was discovered by probe, not by docs.
+description: 'Pluralsight runs a live, remote Model Context Protocol server at https://mcp.pluralsight.com/mcp.
+  It is a real MCP endpoint, not a marketing page: an unauthenticated JSON-RPC tools/list call returns
+  a protocol-level error object ({"jsonrpc":"2.0","id":0,"error":{"code":-32001, "message":"Missing Bearer
+  token"}}) and the 401 carries an RFC 9728 challenge - WWW-Authenticate: Bearer error="invalid_token",
+  resource_metadata="https://mcp.pluralsight.com/.well-known/oauth-protected-resource". The tool list
+  itself is behind OAuth, so the tool names and inputSchemas could not be enumerated anonymously. Pluralsight
+  publishes no public documentation for this endpoint that this pass could find - it was discovered by
+  probe, not by docs.'
 deployment:
   mode: remote
   endpoint: https://mcp.pluralsight.com/mcp
   auth: oauth
   verified: probed
+  probe_prior: (never probed)
+  probe: gated
+  probe_why: RFC 9728 challenge (host-wide OAuth-protected resource)
+  checked: '2026-09-11'
+  source: claimed-backlog re-probe 2026-09-11
 transports:
 - name: streamable-http
   url: https://mcp.pluralsight.com/mcp
@@ -51,10 +54,8 @@ authorization:
 tools:
   status: gated
   count: null
-  note: >-
-    tools/list requires a bearer token. No anonymous enumeration is possible and no llms.txt or
-    published tool list exists to fall back on, so no tool names are recorded here. Schemas need
-    authenticated introspection.
+  note: tools/list requires a bearer token. No anonymous enumeration is possible and no llms.txt or published
+    tool list exists to fall back on, so no tool names are recorded here. Schemas need authenticated introspection.
 x-evidence:
 - fetched: '2026-08-29'
   url: https://mcp.pluralsight.com/mcp
