@@ -200,46 +200,6 @@ apis:
   - type: Documentation
     url: >-
       https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
-- aid: pluralsight:pluralsight-graphql-api
-  name: Pluralsight GraphQL API
-  description: GraphQL query and mutation operations
-  humanURL: https://developer.pluralsight.com
-  baseURL: https://paas-api.pluralsight.com/graphql
-  tags:
-  - GraphQL
-  properties:
-  - type: OpenAPI
-    url: openapi/pluralsight-graphql-api-openapi.yml
-  - type: Documentation
-    url: https://developer.pluralsight.com
-  - type: GraphQL
-    url: https://paas-api.pluralsight.com/graphql
-  - type: GraphQL
-    url: graphql/pluralsight-graphql.md
-  - type: Documentation
-    url: https://help.pluralsight.com/hc/en-us/articles/27573677812884-DORA-metrics-API
-  - type: Documentation
-    url: https://help.pluralsight.com/hc/en-us/articles/31476876875028-Updated-Coding-metrics-API
-  - type: Documentation
-    url: https://help.pluralsight.com/hc/en-us/articles/24286030333332-Collaboration-metrics-API
-  - type: Documentation
-    url: https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references
-  - type: Documentation
-    url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
-  - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
-  - type: Documentation
-    url: >-
-      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
-  - type: GraphQL
-    url: graphql/pluralsight-graphql-operations.json
-  - type: MCPServer
-    url: mcp/pluralsight-mcp.yml
-  - type: ToolCrosswalk
-    url: mcp/pluralsight-tool-crosswalk.yml
-  - type: AgentSkill
-    url: skills/_index.yml
 - aid: pluralsight:pluralsight-integrations-api
   name: Pluralsight Integrations API
   description: Flow integration management operations
@@ -468,6 +428,42 @@ apis:
   - type: Documentation
     url: >-
       https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+- aid: pluralsight:pluralsight-graph-ql-api
+  name: Pluralsight Graph QL API
+  description: GraphQL query and mutation operations
+  humanURL: https://developer.pluralsight.com
+  baseURL: https://paas-rest-api.pluralsight.com
+  tags:
+  - Graph QL
+  properties:
+  - type: OpenAPI
+    url: openapi/pluralsight-graph-ql-api-openapi.yml
+  - type: Documentation
+    url: https://developer.pluralsight.com
+  - type: GraphQL
+    url: https://paas-api.pluralsight.com/graphql
+  - type: GraphQL
+    url: graphql/pluralsight-graphql.md
+  - type: Documentation
+    url: https://help.pluralsight.com/hc/en-us/articles/27573677812884-DORA-metrics-API
+  - type: Documentation
+    url: https://help.pluralsight.com/hc/en-us/articles/31476876875028-Updated-Coding-metrics-API
+  - type: Documentation
+    url: https://help.pluralsight.com/hc/en-us/articles/24286030333332-Collaboration-metrics-API
+  - type: Documentation
+    url: https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references
+  - type: Documentation
+    url: https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API
+  - type: Documentation
+    url: >-
+      https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs
+  - type: Documentation
+    url: >-
+      https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations
+  - type: GraphQL
+    url: graphql/pluralsight-graphql-operations.json
+  - type: ToolCrosswalk
+    url: mcp/pluralsight-tool-crosswalk.yml
 common:
 - type: CapabilityMap
   url: capabilities/pluralsight-capability-edges.yml
