@@ -434,6 +434,8 @@ apis:
   humanURL: https://developer.pluralsight.com
   baseURL: https://paas-rest-api.pluralsight.com
   tags:
+  - GraphQL
+  tags_raw:
   - Graph QL
   properties:
   - type: OpenAPI
