@@ -1,6 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Pluralsight Graph QL API
+  title: Pluralsight Channels Graph QL API
+  description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
     name: Pluralsight API Support
@@ -9,12 +10,11 @@ info:
   license:
     name: Proprietary
     url: https://www.pluralsight.com/terms
-  description: 'Operations tagged GraphQL across 17 of this provider''s published API definitions: channels.yml, content-catalog.yml, content-progress.yml, content-slug.yml, course-catalog.yml, course-daily-usage.yml, course-progress.yml, labs.yml, learning-paths.yml, plan-info.yml, practice-exams.yml, programs.yml, role-iq.yml, skills-assessment.yml, tags.yml, teams.yml, user-management.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://paas-api.pluralsight.com
   description: Production
 tags:
-- name: GraphQL
+- name: Graph QL
   description: GraphQL query and mutation operations
 paths:
   /graphql:
@@ -23,7 +23,7 @@ paths:
       description: Execute GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
       operationId: manageChannels
       tags:
-      - GraphQL
+      - Graph QL
       security:
       - bearerAuth: []
       requestBody:
@@ -46,27 +46,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-    servers:
-    - url: https://paas-api.pluralsight.com
-      description: Production
 components:
   schemas:
-    GraphQLRequest:
-      type: object
-      required:
-      - query
-      properties:
-        query:
-          type: string
-          description: The GraphQL query string
-          example: example_value
-        variables:
-          type: object
-          description: Variables for the GraphQL query
-        operationName:
-          type: string
-          description: Name of the operation to execute
-          example: Example Course
     GraphQLError:
       type: object
       properties:
@@ -87,6 +68,22 @@ components:
           type: array
           items:
             type: string
+    GraphQLRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: The GraphQL query string
+          example: example_value
+        variables:
+          type: object
+          description: Variables for the GraphQL query
+        operationName:
+          type: string
+          description: Name of the operation to execute
+          example: Example Course
     GraphQLResponse:
       type: object
       properties:
@@ -106,21 +103,3 @@ components:
 externalDocs:
   description: Pluralsight Developer Documentation
   url: https://developer.pluralsight.com
-x-refined-from:
-- channels.yml
-- content-catalog.yml
-- content-progress.yml
-- content-slug.yml
-- course-catalog.yml
-- course-daily-usage.yml
-- course-progress.yml
-- labs.yml
-- learning-paths.yml
-- plan-info.yml
-- practice-exams.yml
-- programs.yml
-- role-iq.yml
-- skills-assessment.yml
-- tags.yml
-- teams.yml
-- user-management.yml
