@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Pluralsight Channels Graph QL API
+  title: Pluralsight Channels GraphQL API
   description: GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
   version: 1.0.0
   contact:
