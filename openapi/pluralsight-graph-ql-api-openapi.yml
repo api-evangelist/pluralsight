@@ -68,6 +68,17 @@ components:
           type: array
           items:
             type: string
+    GraphQLResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          description: The query result data
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GraphQLError'
+          description: Any errors that occurred during query execution
     GraphQLRequest:
       type: object
       required:
@@ -84,17 +95,6 @@ components:
           type: string
           description: Name of the operation to execute
           example: Example Course
-    GraphQLResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          description: The query result data
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GraphQLError'
-          description: Any errors that occurred during query execution
   securitySchemes:
     bearerAuth:
       type: http
