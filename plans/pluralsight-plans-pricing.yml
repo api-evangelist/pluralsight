@@ -282,3 +282,87 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - negotiated
+  - seat
+  plans:
+  - name: Skills - Core Tech
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - AI+
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - Cloud+
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - Security+
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - Data+
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - Complete
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - Business / Enterprise
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - negotiated
+    - seat
+    periods:
+    - per-use
+    - year
+  - name: Flow
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - negotiated
+    - seat
+    periods:
+    - per-use
+    - year
