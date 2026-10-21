@@ -3,6 +3,7 @@ method: searched
 checked:
 - https://aws.amazon.com/marketplace/
 - https://azuremarketplace.microsoft.com/
+- jetbrains/integrations/jetbrains-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -41,3 +42,22 @@ edges:
   seller_name: Pluralsight
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: JetBrains (jetbrains-marketplace)
+  partner: jetbrains
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: jetbrains-marketplace
+  evidence: https://plugins.jetbrains.com/vendor/Pluralsight
+  mirror_of: jetbrains/integrations/jetbrains-integration-edges.yml
+  apps:
+  - Pluralsight Activity Dashboard
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: IDE / developer extension marketplace listing
+source:
+- jetbrains/integrations/jetbrains-integration-edges.yml
