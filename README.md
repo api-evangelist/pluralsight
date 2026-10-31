@@ -1,4 +1,4 @@
-# Pluralsight (pluralsight)
+# Pluralsight
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,692 +66,326 @@
 
 APIs for the Pluralsight technology skills and engineering intelligence platform, providing access to courses, learning paths, assessments, user progress, channels, teams, and engineering metrics via GraphQL and REST APIs.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/pluralsight/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/pluralsight/refs/heads/main/apis.yml)
-
-## Scope
-
-- **Type:** Index
-
-## Tags
-
-- Courses
-- Education
-- Engineering Metrics
-- Learning
-- Skills Assessment
-- Technology
-- Video Training
-
-## Timestamps
-
-- **Created:** 2024
-- **Modified:** 2026-04-17
-
-## APIs
-
-### Pluralsight Course Catalog API
-
-GraphQL query for accessing course catalog information including titles, descriptions, authors, duration, release dates, and retirement status. Updated daily.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Catalog
-- Content
-- Courses
-- Graphql
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/course-catalog.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/course-catalog.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/course-catalog.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Content Catalog API
-
-GraphQL query for accessing the general content catalog including videos, guides, interactive courses, and other content types beyond traditional courses.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Catalog
-- Content
-- Graphql
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/content-catalog.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/content-catalog.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/content-catalog.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Learning Paths API
-
-GraphQL query for accessing learning path catalog data including structured sequences of courses and content organized around specific skills and roles.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Catalog
-- Content
-- Graphql
-- Learning Paths
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/learning-paths.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/learning-paths.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/learning-paths.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Labs API
-
-GraphQL queries for accessing lab catalog and lab activity data for hands-on learning experiences and practical exercises.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Catalog
-- Graphql
-- Hands-On
-- Labs
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/labs.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/labs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/labs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Programs API
-
-GraphQL query for accessing the program catalog including structured learning programs and curriculum offerings.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Catalog
-- Curriculum
-- Graphql
-- Programs
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/programs.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/programs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/programs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Tags API
-
-GraphQL query for accessing content tags and taxonomy data used to categorize and organize learning content.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Content
-- Graphql
-- Taxonomy
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/tags.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tags.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tags.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Content Slug API
-
-GraphQL query for resolving content slugs to internal identifiers, enabling lookup of content by human-readable URL slugs.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Content
-- Graphql
-- Identifiers
-- Slugs
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/content-slug.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/content-slug.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/content-slug.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Channels API
-
-GraphQL queries and mutations for managing content channels including creating channels, managing members and groups, organizing content sections, and tracking channel progress.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Channels
-- Content Curation
-- Graphql
-- Members
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/channels.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/channels.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/channels.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Course Progress API
-
-GraphQL query for tracking user course progress including completion status and viewing history for video courses. Updated daily.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Completion
-- Courses
-- Graphql
-- Progress
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/course-progress.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/course-progress.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/course-progress.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Content Progress API
-
-GraphQL query for tracking user progress across all content types including videos, guides, paths, interactive courses, and projects. Currently in beta.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Analytics
-- Beta
-- Content
-- Graphql
-- Progress
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/content-progress.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/content-progress.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/content-progress.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Course Daily Usage API
-
-GraphQL query for retrieving daily course engagement metrics and usage statistics.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Analytics
-- Daily Metrics
-- Graphql
-- Usage
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/course-daily-usage.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/course-daily-usage.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/course-daily-usage.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Practice Exams API
-
-GraphQL query for retrieving practice exam attempt data including scores and results.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Assessments
-- Certification Prep
-- Graphql
-- Practice Exams
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/practice-exams.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/practice-exams.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/practice-exams.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Skills Assessment API
-
-GraphQL queries for accessing skill assessments, Skill IQ scores, assessment catalogs, and competency measurements.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Assessments
-- Graphql
-- Skill Iq
-- Skills
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/skills-assessment.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/skills-assessment.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/skills-assessment.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Role IQ API
-
-GraphQL queries and mutations for Role IQ assessments, role catalogs, skill assignments, and user/team role associations.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Assessments
-- Graphql
-- Role Iq
-- Roles
-- Skills
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/role-iq.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/role-iq.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/role-iq.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight User Management API
-
-GraphQL queries and mutations for managing users including listing users, inviting members, editing user details, removing users, and canceling invitations.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Graphql
-- Invitations
-- Licensing
-- Users
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/user-management.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/user-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/user-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Teams API
-
-GraphQL queries and mutations for managing teams including creating teams, managing membership, assigning managers, and configuring team permissions.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Graphql
-- Management
-- Permissions
-- Teams
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/teams.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/teams.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/teams.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Plan Info API
-
-GraphQL query for retrieving account and plan details including subscription tier and configuration.
-
-- **Human URL:** [https://developer.pluralsight.com](https://developer.pluralsight.com)
-- **Base URL:** `https://paas-api.pluralsight.com/graphql`
-
-#### Tags
-
-- Account
-- Graphql
-- Plan
-- Subscription
-
-#### Properties
-
-- [Documentation](https://developer.pluralsight.com)
-- [Graph Q L](https://paas-api.pluralsight.com/graphql)
-- [OpenAPI](openapi/plan-info.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/plan-info.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/plan-info.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Flow DORA Metrics API
-
-REST API for accessing DORA engineering metrics including deployment frequency, lead time for changes, change failure rate, and time to restore service.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/articles/27573677812884-DORA-metrics-API](https://help.pluralsight.com/hc/en-us/articles/27573677812884-DORA-metrics-API)
-- **Base URL:** `https://flow-api.pluralsight.com/dora/build-release`
-
-#### Tags
-
-- Change Failure Rate
-- Deployment Frequency
-- Dora
-- Engineering Metrics
-- Lead Time
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/articles/27573677812884-DORA-metrics-API)
-- [OpenAPI](openapi/flow-dora-metrics.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/flow-dora-metrics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flow-dora-metrics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Flow Coding Metrics API
-
-REST API for accessing code-level engineering metrics and developer productivity data with date range filtering.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/articles/31476876875028-Updated-Coding-metrics-API](https://help.pluralsight.com/hc/en-us/articles/31476876875028-Updated-Coding-metrics-API)
-- **Base URL:** `https://flow-api.pluralsight.com/collaboration/code/metrics`
-
-#### Tags
-
-- Coding Metrics
-- Engineering Metrics
-- Productivity
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/articles/31476876875028-Updated-Coding-metrics-API)
-- [OpenAPI](openapi/flow-coding-metrics.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/flow-coding-metrics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flow-coding-metrics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Flow Collaboration Metrics API
-
-REST API for accessing pull request and collaboration metrics for engineering teams with date range filtering.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/articles/24286030333332-Collaboration-metrics-API](https://help.pluralsight.com/hc/en-us/articles/24286030333332-Collaboration-metrics-API)
-- **Base URL:** `https://api.appfireflow.com/collaboration/pullrequest/metrics`
-
-#### Tags
-
-- Collaboration
-- Engineering Metrics
-- Pull Requests
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/articles/24286030333332-Collaboration-metrics-API)
-- [OpenAPI](openapi/flow-collaboration-metrics.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/flow-collaboration-metrics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flow-collaboration-metrics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Flow Commits API
-
-REST API for accessing commit data and aggregated commit metrics across repositories.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- **Base URL:** `https://<workspace>.appfireflow.com/v3/customer/core`
-
-#### Tags
-
-- Commits
-- Engineering Data
-- Source Control
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- [OpenAPI](openapi/flow-commits.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/flow-commits.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flow-commits.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Flow Pull Requests API
-
-REST API for accessing pull request data, comments, and events across repositories.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- **Base URL:** `https://<workspace>.appfireflow.com/v3/customer/core`
-
-#### Tags
-
-- Code Review
-- Engineering Data
-- Pull Requests
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- [OpenAPI](openapi/flow-pull-requests.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/flow-pull-requests.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flow-pull-requests.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Flow Repos API
-
-REST API for accessing repository data and metadata across connected source control systems.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- **Base URL:** `https://<workspace>.appfireflow.com/v3/customer/core`
-
-#### Tags
-
-- Engineering Data
-- Repositories
-- Source Control
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- [OpenAPI](openapi/flow-repos.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/flow-repos.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flow-repos.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Flow Users API
-
-REST API for managing Flow users including listing, updating, merging, hiding, and bulk operations on user accounts.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- **Base URL:** `https://<workspace>.appfireflow.com/v3/customer/core`
-
-#### Tags
-
-- Engineering Data
-- Management
-- Users
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- [OpenAPI](openapi/flow-users.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/flow-users.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flow-users.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Flow Teams API
-
-REST API for managing Flow engineering teams and team membership data.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- **Base URL:** `https://<workspace>.appfireflow.com/v3/customer/core`
-
-#### Tags
-
-- Engineering Data
-- Management
-- Teams
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- [OpenAPI](openapi/flow-teams.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/flow-teams.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flow-teams.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Flow Integrations API
-
-REST API for managing Flow integrations and checking connection status with external tools and services.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API](https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API)
-- **Base URL:** `https://<workspace>.appfireflow.com/v3/customer/core`
-
-#### Tags
-
-- Connections
-- Engineering Data
-- Integrations
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/articles/24285986280212-Integrations-API)
-- [OpenAPI](openapi/flow-integrations.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/flow-integrations.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flow-integrations.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Flow Tickets API
-
-REST API for accessing ticket data including comments, events, and project associations from connected project management tools.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- **Base URL:** `https://<workspace>.appfireflow.com/v3/customer/core`
-
-#### Tags
-
-- Engineering Data
-- Project Management
-- Tickets
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/sections/24176771997588-Customer-API-references)
-- [OpenAPI](openapi/flow-tickets.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/flow-tickets.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flow-tickets.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Reports REST API
-
-Legacy REST API for downloading user, course completion, and course usage reports as CSV files. Deprecated as of February 2025, removal scheduled for November 2025.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs](https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs)
-- **Base URL:** `https://app.pluralsight.com/plans/api/reports/v1`
-
-#### Tags
-
-- Csv
-- Deprecated
-- Legacy
-- Reports
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs)
-- [OpenAPI](openapi/reports-rest.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/reports-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/reports-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Licensing REST API
-
-Legacy REST API for managing user invitations, users, and teams within a plan. Deprecated as of February 2025, removal scheduled for November 2025.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs](https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs)
-- **Base URL:** `https://app.pluralsight.com/plans/api/license/v1`
-
-#### Tags
-
-- Deprecated
-- Invitations
-- Legacy
-- Licensing
-- Users
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs)
-- [OpenAPI](openapi/licensing-rest.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/licensing-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/licensing-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Pluralsight Public Course Catalog REST API
-
-Legacy public REST API for accessing the full course catalog without authentication. Returns course IDs, titles, durations, release dates, and retirement status.
-
-- **Human URL:** [https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations](https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations)
-- **Base URL:** `https://paas-rest-api.pluralsight.com`
-
-#### Tags
-
-- Catalog
-- Courses
-- Legacy
-- Public
-
-#### Properties
-
-- [Documentation](https://help.pluralsight.com/hc/en-us/articles/24420554286868-Skills-APIs-and-integrations)
-- [OpenAPI](openapi/public-course-catalog-rest.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/public-course-catalog-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/public-course-catalog-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/pluralsight)
-- [LinkedIn](https://www.linkedin.com/company/pluralsight)
-- [Portal](https://developer.pluralsight.com)
-- [Getting Started](https://developer.pluralsight.com/docs/getting-started)
-- [Authentication](https://developer.pluralsight.com/docs/getting-started)
-- [F A Q](https://developer.pluralsight.com/docs/getting-started/faqs)
-- [Code Examples](https://developer.pluralsight.com/docs/getting-started/examples)
-- [Graph Q L](https://developer.pluralsight.com/docs/getting-started/using-graphql)
+**Areas:** Courses · Education · Engineering Metrics · Learning · Skills Assessment · Technology · Video Training
+
+## Pluralsight on APIs.io
+
+Everything profiled for Pluralsight is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/pluralsight/](https://apis.io/providers/pluralsight/)** — or go straight to one of the APIs or properties below.
+
+### APIs (13)
+
+- [Pluralsight Catalog API](https://apis.io/apis/pluralsight/pluralsight-catalog-api/) — Public course catalog operations
+- [Pluralsight Coding Metrics API](https://apis.io/apis/pluralsight/pluralsight-coding-metrics-api/) — Code-level engineering metrics operations
+- [Pluralsight Collaboration Metrics API](https://apis.io/apis/pluralsight/pluralsight-collaboration-metrics-api/) — Pull request and collaboration metrics operations
+- [Pluralsight Commits API](https://apis.io/apis/pluralsight/pluralsight-commits-api/) — Commit data operations
+- [Pluralsight DORA Metrics API](https://apis.io/apis/pluralsight/pluralsight-dora-metrics-api/) — DORA engineering metrics operations
+- [Pluralsight Integrations API](https://apis.io/apis/pluralsight/pluralsight-integrations-api/) — Flow integration management operations
+- [Pluralsight Licensing API](https://apis.io/apis/pluralsight/pluralsight-licensing-api/) — License management operations (deprecated)
+- [Pluralsight Pull Requests API](https://apis.io/apis/pluralsight/pluralsight-pull-requests-api/) — Pull request data operations
+- [Pluralsight Reports API](https://apis.io/apis/pluralsight/pluralsight-reports-api/) — Report download operations (deprecated)
+- [Pluralsight Repos API](https://apis.io/apis/pluralsight/pluralsight-repos-api/) — Repository data operations
+- [Pluralsight Tickets API](https://apis.io/apis/pluralsight/pluralsight-tickets-api/) — Ticket data operations
+- [Pluralsight Users API](https://apis.io/apis/pluralsight/pluralsight-users-api/) — Flow user management operations
+- [Pluralsight Graph QL API](https://apis.io/apis/pluralsight/pluralsight-graph-ql-api/) — GraphQL query and mutation operations
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### GraphQL (1)
+
+GraphQL schemas.
+
+- [Pluralsight GraphQL API](https://apis.io/graphqls/pluralsight/pluralsight-graphql/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Pluralsight MCP Gateway](https://apis.io/servers/pluralsight/pluralsight-mcp-gateway/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Pluralsight Agentic Access](https://apis.io/agentic-access/pluralsight/pluralsight-agentic-access/)
+
+#### JSON Schema (54)
+
+The data models the API reads and writes.
+
+- [GraphQLError](https://apis.io/schemas/pluralsight/pluralsight-channels-graph-ql-error/)
+- [GraphQLRequest](https://apis.io/schemas/pluralsight/pluralsight-channels-graph-ql-request/)
+- [GraphQLResponse](https://apis.io/schemas/pluralsight/pluralsight-channels-graph-ql-response/)
+- [GraphQLError](https://apis.io/schemas/pluralsight/pluralsight-content-catalog-graph-ql-error/)
+- [GraphQLRequest](https://apis.io/schemas/pluralsight/pluralsight-content-catalog-graph-ql-request/)
+- [GraphQLResponse](https://apis.io/schemas/pluralsight/pluralsight-content-catalog-graph-ql-response/)
+- [GraphQLError](https://apis.io/schemas/pluralsight/pluralsight-content-progress-graph-ql-error/)
+- [GraphQLRequest](https://apis.io/schemas/pluralsight/pluralsight-content-progress-graph-ql-request/)
+- [GraphQLResponse](https://apis.io/schemas/pluralsight/pluralsight-content-progress-graph-ql-response/)
+- [GraphQLError](https://apis.io/schemas/pluralsight/pluralsight-content-slug-graph-ql-error/)
+- [GraphQLRequest](https://apis.io/schemas/pluralsight/pluralsight-content-slug-graph-ql-request/)
+- [GraphQLResponse](https://apis.io/schemas/pluralsight/pluralsight-content-slug-graph-ql-response/)
+- [GraphQLError](https://apis.io/schemas/pluralsight/pluralsight-course-catalog-graph-ql-error/)
+- [GraphQLRequest](https://apis.io/schemas/pluralsight/pluralsight-course-catalog-graph-ql-request/)
+- [GraphQLResponse](https://apis.io/schemas/pluralsight/pluralsight-course-catalog-graph-ql-response/)
+- [GraphQLError](https://apis.io/schemas/pluralsight/pluralsight-course-daily-usage-graph-ql-error/)
+- [GraphQLRequest](https://apis.io/schemas/pluralsight/pluralsight-course-daily-usage-graph-ql-request/)
+- [GraphQLResponse](https://apis.io/schemas/pluralsight/pluralsight-course-daily-usage-graph-ql-response/)
+- [GraphQLError](https://apis.io/schemas/pluralsight/pluralsight-course-progress-graph-ql-error/)
+- [GraphQLRequest](https://apis.io/schemas/pluralsight/pluralsight-course-progress-graph-ql-request/)
+- [GraphQLResponse](https://apis.io/schemas/pluralsight/pluralsight-course-progress-graph-ql-response/)
+- [GraphQLError](https://apis.io/schemas/pluralsight/pluralsight-graphqlerror/)
+- [GraphQLRequest](https://apis.io/schemas/pluralsight/pluralsight-graphqlrequest/)
+- [GraphQLResponse](https://apis.io/schemas/pluralsight/pluralsight-graphqlresponse/)
+- [GraphQLError](https://apis.io/schemas/pluralsight/pluralsight-labs-graph-ql-error/)
+- …and 29 more published on APIs.io
+
+#### JSON Structure (52)
+
+Data models expressed in JSON Structure.
+
+- [Pluralsight Channels Graph Ql Error Structure](https://apis.io/json-structure/pluralsight/pluralsight-channels-graph-ql-error-structure/)
+- [Pluralsight Channels Graph Ql Request Structure](https://apis.io/json-structure/pluralsight/pluralsight-channels-graph-ql-request-structure/)
+- [Pluralsight Channels Graph Ql Response Structure](https://apis.io/json-structure/pluralsight/pluralsight-channels-graph-ql-response-structure/)
+- [Pluralsight Content Catalog Graph Ql Error Structure](https://apis.io/json-structure/pluralsight/pluralsight-content-catalog-graph-ql-error-structure/)
+- [Pluralsight Content Catalog Graph Ql Request Structure](https://apis.io/json-structure/pluralsight/pluralsight-content-catalog-graph-ql-request-structure/)
+- [Pluralsight Content Catalog Graph Ql Response Structure](https://apis.io/json-structure/pluralsight/pluralsight-content-catalog-graph-ql-response-structure/)
+- [Pluralsight Content Progress Graph Ql Error Structure](https://apis.io/json-structure/pluralsight/pluralsight-content-progress-graph-ql-error-structure/)
+- [Pluralsight Content Progress Graph Ql Request Structure](https://apis.io/json-structure/pluralsight/pluralsight-content-progress-graph-ql-request-structure/)
+- [Pluralsight Content Progress Graph Ql Response Structure](https://apis.io/json-structure/pluralsight/pluralsight-content-progress-graph-ql-response-structure/)
+- [Pluralsight Content Slug Graph Ql Error Structure](https://apis.io/json-structure/pluralsight/pluralsight-content-slug-graph-ql-error-structure/)
+- [Pluralsight Content Slug Graph Ql Request Structure](https://apis.io/json-structure/pluralsight/pluralsight-content-slug-graph-ql-request-structure/)
+- [Pluralsight Content Slug Graph Ql Response Structure](https://apis.io/json-structure/pluralsight/pluralsight-content-slug-graph-ql-response-structure/)
+- [Pluralsight Course Catalog Graph Ql Error Structure](https://apis.io/json-structure/pluralsight/pluralsight-course-catalog-graph-ql-error-structure/)
+- [Pluralsight Course Catalog Graph Ql Request Structure](https://apis.io/json-structure/pluralsight/pluralsight-course-catalog-graph-ql-request-structure/)
+- [Pluralsight Course Catalog Graph Ql Response Structure](https://apis.io/json-structure/pluralsight/pluralsight-course-catalog-graph-ql-response-structure/)
+- [Pluralsight Course Daily Usage Graph Ql Error Structure](https://apis.io/json-structure/pluralsight/pluralsight-course-daily-usage-graph-ql-error-structure/)
+- [Pluralsight Course Daily Usage Graph Ql Request Structure](https://apis.io/json-structure/pluralsight/pluralsight-course-daily-usage-graph-ql-request-structure/)
+- [Pluralsight Course Daily Usage Graph Ql Response Structure](https://apis.io/json-structure/pluralsight/pluralsight-course-daily-usage-graph-ql-response-structure/)
+- [Pluralsight Course Progress Graph Ql Error Structure](https://apis.io/json-structure/pluralsight/pluralsight-course-progress-graph-ql-error-structure/)
+- [Pluralsight Course Progress Graph Ql Request Structure](https://apis.io/json-structure/pluralsight/pluralsight-course-progress-graph-ql-request-structure/)
+- [Pluralsight Course Progress Graph Ql Response Structure](https://apis.io/json-structure/pluralsight/pluralsight-course-progress-graph-ql-response-structure/)
+- [Pluralsight Labs Graph Ql Error Structure](https://apis.io/json-structure/pluralsight/pluralsight-labs-graph-ql-error-structure/)
+- [Pluralsight Labs Graph Ql Request Structure](https://apis.io/json-structure/pluralsight/pluralsight-labs-graph-ql-request-structure/)
+- [Pluralsight Labs Graph Ql Response Structure](https://apis.io/json-structure/pluralsight/pluralsight-labs-graph-ql-response-structure/)
+- [Pluralsight Learning Paths Graph Ql Error Structure](https://apis.io/json-structure/pluralsight/pluralsight-learning-paths-graph-ql-error-structure/)
+- …and 27 more published on APIs.io
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Pluralsight Context](https://apis.io/jsonld/pluralsight/pluralsight-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Pluralsight Vocabulary](https://apis.io/vocabularies/pluralsight/pluralsight-vocabulary/)
+
+#### Examples (51)
+
+Example requests and responses.
+
+- [Pluralsight Channels Graph Ql Error Example](https://apis.io/examples/pluralsight/pluralsight-channels-graph-ql-error-example/)
+- [Pluralsight Channels Graph Ql Request Example](https://apis.io/examples/pluralsight/pluralsight-channels-graph-ql-request-example/)
+- [Pluralsight Channels Graph Ql Response Example](https://apis.io/examples/pluralsight/pluralsight-channels-graph-ql-response-example/)
+- [Pluralsight Content Catalog Graph Ql Error Example](https://apis.io/examples/pluralsight/pluralsight-content-catalog-graph-ql-error-example/)
+- [Pluralsight Content Catalog Graph Ql Request Example](https://apis.io/examples/pluralsight/pluralsight-content-catalog-graph-ql-request-example/)
+- [Pluralsight Content Catalog Graph Ql Response Example](https://apis.io/examples/pluralsight/pluralsight-content-catalog-graph-ql-response-example/)
+- [Pluralsight Content Progress Graph Ql Error Example](https://apis.io/examples/pluralsight/pluralsight-content-progress-graph-ql-error-example/)
+- [Pluralsight Content Progress Graph Ql Request Example](https://apis.io/examples/pluralsight/pluralsight-content-progress-graph-ql-request-example/)
+- [Pluralsight Content Progress Graph Ql Response Example](https://apis.io/examples/pluralsight/pluralsight-content-progress-graph-ql-response-example/)
+- [Pluralsight Content Slug Graph Ql Error Example](https://apis.io/examples/pluralsight/pluralsight-content-slug-graph-ql-error-example/)
+- [Pluralsight Content Slug Graph Ql Request Example](https://apis.io/examples/pluralsight/pluralsight-content-slug-graph-ql-request-example/)
+- [Pluralsight Content Slug Graph Ql Response Example](https://apis.io/examples/pluralsight/pluralsight-content-slug-graph-ql-response-example/)
+- [Pluralsight Course Catalog Graph Ql Error Example](https://apis.io/examples/pluralsight/pluralsight-course-catalog-graph-ql-error-example/)
+- [Pluralsight Course Catalog Graph Ql Request Example](https://apis.io/examples/pluralsight/pluralsight-course-catalog-graph-ql-request-example/)
+- [Pluralsight Course Catalog Graph Ql Response Example](https://apis.io/examples/pluralsight/pluralsight-course-catalog-graph-ql-response-example/)
+- [Pluralsight Course Daily Usage Graph Ql Error Example](https://apis.io/examples/pluralsight/pluralsight-course-daily-usage-graph-ql-error-example/)
+- [Pluralsight Course Daily Usage Graph Ql Request Example](https://apis.io/examples/pluralsight/pluralsight-course-daily-usage-graph-ql-request-example/)
+- [Pluralsight Course Daily Usage Graph Ql Response Example](https://apis.io/examples/pluralsight/pluralsight-course-daily-usage-graph-ql-response-example/)
+- [Pluralsight Course Progress Graph Ql Error Example](https://apis.io/examples/pluralsight/pluralsight-course-progress-graph-ql-error-example/)
+- [Pluralsight Course Progress Graph Ql Request Example](https://apis.io/examples/pluralsight/pluralsight-course-progress-graph-ql-request-example/)
+- [Pluralsight Course Progress Graph Ql Response Example](https://apis.io/examples/pluralsight/pluralsight-course-progress-graph-ql-response-example/)
+- [Pluralsight Labs Graph Ql Error Example](https://apis.io/examples/pluralsight/pluralsight-labs-graph-ql-error-example/)
+- [Pluralsight Labs Graph Ql Request Example](https://apis.io/examples/pluralsight/pluralsight-labs-graph-ql-request-example/)
+- [Pluralsight Labs Graph Ql Response Example](https://apis.io/examples/pluralsight/pluralsight-labs-graph-ql-response-example/)
+- [Pluralsight Learning Paths Graph Ql Error Example](https://apis.io/examples/pluralsight/pluralsight-learning-paths-graph-ql-error-example/)
+- …and 26 more published on APIs.io
+
+#### Collections (58)
+
+Postman and Open Collection request collections.
+
+- [Pluralsight Channels API](https://apis.io/collections/pluralsight/open-channels/)
+- [Pluralsight Content Catalog API](https://apis.io/collections/pluralsight/open-content-catalog/)
+- [Pluralsight Content Progress API](https://apis.io/collections/pluralsight/open-content-progress/)
+- [Pluralsight Content Slug API](https://apis.io/collections/pluralsight/open-content-slug/)
+- [Pluralsight Course Catalog API](https://apis.io/collections/pluralsight/open-course-catalog/)
+- [Pluralsight Course Daily Usage API](https://apis.io/collections/pluralsight/open-course-daily-usage/)
+- [Pluralsight Course Progress API](https://apis.io/collections/pluralsight/open-course-progress/)
+- [Pluralsight Flow Coding Metrics API](https://apis.io/collections/pluralsight/open-flow-coding-metrics/)
+- [Pluralsight Flow Collaboration Metrics API](https://apis.io/collections/pluralsight/open-flow-collaboration-metrics/)
+- [Pluralsight Flow Commits API](https://apis.io/collections/pluralsight/open-flow-commits/)
+- [Pluralsight Flow DORA Metrics API](https://apis.io/collections/pluralsight/open-flow-dora-metrics/)
+- [Pluralsight Flow Integrations API](https://apis.io/collections/pluralsight/open-flow-integrations/)
+- [Pluralsight Flow Pull Requests API](https://apis.io/collections/pluralsight/open-flow-pull-requests/)
+- [Pluralsight Flow Repos API](https://apis.io/collections/pluralsight/open-flow-repos/)
+- [Pluralsight Flow Teams API](https://apis.io/collections/pluralsight/open-flow-teams/)
+- [Pluralsight Flow Tickets API](https://apis.io/collections/pluralsight/open-flow-tickets/)
+- [Pluralsight Flow Users API](https://apis.io/collections/pluralsight/open-flow-users/)
+- [Pluralsight Labs API](https://apis.io/collections/pluralsight/open-labs/)
+- [Pluralsight Learning Paths API](https://apis.io/collections/pluralsight/open-learning-paths/)
+- [Pluralsight Licensing REST API](https://apis.io/collections/pluralsight/open-licensing-rest/)
+- [Pluralsight Plan Info API](https://apis.io/collections/pluralsight/open-plan-info/)
+- [Pluralsight Channels Catalog API](https://apis.io/collections/pluralsight/open-pluralsight-catalog-api/)
+- [Pluralsight Channels Catalog Coding Metrics API](https://apis.io/collections/pluralsight/open-pluralsight-coding-metrics-api/)
+- [Pluralsight Channels Catalog Collaboration Metrics API](https://apis.io/collections/pluralsight/open-pluralsight-collaboration-metrics-api/)
+- [Pluralsight Channels Catalog Commits API](https://apis.io/collections/pluralsight/open-pluralsight-commits-api/)
+- …and 33 more published on APIs.io
+
+#### Overlays (27)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Pluralsight Catalog Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-catalog-api-phrasing-overlay/)
+- [Pluralsight Catalog Overlay](https://apis.io/overlays/pluralsight/pluralsight-catalog-overlay/)
+- [Pluralsight Coding Metrics Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-coding-metrics-api-phrasing-overlay/)
+- [Pluralsight Coding Metrics Overlay](https://apis.io/overlays/pluralsight/pluralsight-coding-metrics-overlay/)
+- [Pluralsight Collaboration Metrics Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-collaboration-metrics-api-phrasing-overlay/)
+- [Pluralsight Collaboration Metrics Overlay](https://apis.io/overlays/pluralsight/pluralsight-collaboration-metrics-overlay/)
+- [Pluralsight Commits Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-commits-api-phrasing-overlay/)
+- [Pluralsight Commits Overlay](https://apis.io/overlays/pluralsight/pluralsight-commits-overlay/)
+- [Pluralsight Dora Metrics Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-dora-metrics-api-phrasing-overlay/)
+- [Pluralsight Dora Metrics Overlay](https://apis.io/overlays/pluralsight/pluralsight-dora-metrics-overlay/)
+- [Pluralsight Graph Ql Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-graph-ql-api-phrasing-overlay/)
+- [Pluralsight Graphql Overlay](https://apis.io/overlays/pluralsight/pluralsight-graphql-overlay/)
+- [Pluralsight Integrations Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-integrations-api-phrasing-overlay/)
+- [Pluralsight Integrations Overlay](https://apis.io/overlays/pluralsight/pluralsight-integrations-overlay/)
+- [Pluralsight Licensing Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-licensing-api-phrasing-overlay/)
+- [Pluralsight Licensing Overlay](https://apis.io/overlays/pluralsight/pluralsight-licensing-overlay/)
+- [Pluralsight Pull Requests Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-pull-requests-api-phrasing-overlay/)
+- [Pluralsight Pull Requests Overlay](https://apis.io/overlays/pluralsight/pluralsight-pull-requests-overlay/)
+- [Pluralsight Reports Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-reports-api-phrasing-overlay/)
+- [Pluralsight Reports Overlay](https://apis.io/overlays/pluralsight/pluralsight-reports-overlay/)
+- [Pluralsight Repos Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-repos-api-phrasing-overlay/)
+- [Pluralsight Repos Overlay](https://apis.io/overlays/pluralsight/pluralsight-repos-overlay/)
+- [Pluralsight Teams Overlay](https://apis.io/overlays/pluralsight/pluralsight-teams-overlay/)
+- [Pluralsight Tickets Api Phrasing Overlay](https://apis.io/overlays/pluralsight/pluralsight-tickets-api-phrasing-overlay/)
+- [Pluralsight Tickets Overlay](https://apis.io/overlays/pluralsight/pluralsight-tickets-overlay/)
+- …and 2 more published on APIs.io
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Pluralsight — jsonschema rules](https://apis.io/rules/pluralsight/pluralsight-jsonschema-spectral-rules/)
+- [Pluralsight API Rules](https://apis.io/rules/pluralsight/pluralsight-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Pluralsight Authentication](https://apis.io/security/pluralsight/pluralsight-authentication/)
+- [Pluralsight Domain Security](https://apis.io/security/pluralsight/pluralsight-domain-security/)
+- [Pluralsight Trust Center](https://apis.io/security/pluralsight/pluralsight-trust-center/)
+- [Pluralsight Vulnerability Disclosure](https://apis.io/security/pluralsight/pluralsight-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Pluralsight Scopes](https://apis.io/scopes/pluralsight/pluralsight-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Pluralsight Plans Pricing](https://apis.io/plans/pluralsight/pluralsight-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Pluralsight Rate Limits](https://apis.io/rate-limits/pluralsight/pluralsight-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Pluralsight Finops](https://apis.io/finops/pluralsight/pluralsight-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.pluralsight.com)
 - [Documentation](https://developer.pluralsight.com/docs/deprecations/2025-deprecation-guide)
-- [Documentation](https://help.pluralsight.com/hc/en-us/articles/24420566008084-Migrating-from-REST-to-GraphQL-APIs)
-- [Rate Limits](https://developer.pluralsight.com/docs/rate-limits)
-- [Terms of Service](https://www.pluralsight.com/terms)
-- [Privacy Policy](https://www.pluralsight.com/privacy)
+- [Getting started](https://developer.pluralsight.com/docs/getting-started/using-graphql)
+- [API reference](https://developer.pluralsight.com/schema/content/courseCatalog)
+- [Pricing](https://www.pluralsight.com/pricing)
+- [Sign up](https://www.pluralsight.com/pricing)
 - [Support](https://help.pluralsight.com)
-- [Status Page](https://status.pluralsight.com)
 - [Blog](https://www.pluralsight.com/blog)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Solutions](undefined)
+- [Security](https://pluralsight.com/.well-known/security.txt)
+- [Compliance](https://trust.pluralsight.com/)
+- [Terms of service](https://www.pluralsight.com/terms)
+- [Privacy policy](https://www.pluralsight.com/privacy)
+- [GitHub](https://github.com/pluralsight)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 65.8** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 80.0 |
+| Contract quality | 57.9 |
+| Contract governance | 45.5 |
+| Operational transparency | 63.2 |
+| Developer ergonomics | 63.1 |
+| Access clarity | 68.4 |
+
+**Agent readiness 48.1** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 45.1** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/pluralsight/](https://apis.io/providers/pluralsight/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Pluralsight: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/pluralsight/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
