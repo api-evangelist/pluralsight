@@ -1,0 +1,368 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Pluralsight
+providerId: pluralsight
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - Learning
+  - Education
+  - Skills Assessment
+  - Engineering Metrics
+  - Video Training
+  - Technology
+description: Pluralsight is a per-seat subscription business across two product lines - Pluralsight
+  Skills (individual and business learning library, including Cloud Guru content) and Pluralsight Flow
+  (engineering metrics). Individual Skills plans are sold direct on the public pricing page; Business,
+  Enterprise, and Flow plans are quoted by the sales team. APIs (Skills GraphQL, Flow REST, legacy
+  Reports/Licensing REST) are entitlements of the Business / Enterprise / Flow plans rather than
+  separately metered products.
+sources:
+  - https://www.pluralsight.com/individuals/pricing
+  - https://www.pluralsight.com/pricing
+  - https://help.pluralsight.com/help/skills-business-customer-api
+plans:
+  - id: pluralsight-skills-core-tech
+    name: Skills - Core Tech
+    type: subscription
+    description: Individual subscription for Pluralsight Skills with access to over 3,900 courses
+      across the core technology library.
+    entries:
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$449/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$45/month'
+        userMultiplied: true
+    elements:
+      - name: 3900+ Courses
+      - name: Skill Assessments
+      - name: Learning Paths
+      - name: Certification Prep
+      - name: Hands-On Labs
+  - id: pluralsight-skills-aiplus
+    name: Skills - AI+
+    type: subscription
+    description: Topic-focused individual plan covering the AI library.
+    entries:
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$299/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$29/month'
+        userMultiplied: true
+    elements:
+      - name: AI-Focused Library
+      - name: Skill Assessments
+      - name: Learning Paths
+      - name: Hands-On Labs
+  - id: pluralsight-skills-cloudplus
+    name: Skills - Cloud+
+    type: subscription
+    description: Topic-focused individual plan that includes A Cloud Guru courses and labs.
+    entries:
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$299/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$29/month'
+        userMultiplied: true
+    elements:
+      - name: A Cloud Guru Courses
+      - name: Cloud Sandbox Labs
+      - name: Certification Prep
+      - name: Hands-On Labs
+  - id: pluralsight-skills-securityplus
+    name: Skills - Security+
+    type: subscription
+    description: Topic-focused individual plan covering the security library.
+    entries:
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$299/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$29/month'
+        userMultiplied: true
+    elements:
+      - name: Security Library
+      - name: Skill Assessments
+      - name: Learning Paths
+      - name: Hands-On Labs
+  - id: pluralsight-skills-dataplus
+    name: Skills - Data+
+    type: subscription
+    description: Topic-focused individual plan covering the data library.
+    entries:
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$299/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$29/month'
+        userMultiplied: true
+    elements:
+      - name: Data Library
+      - name: Skill Assessments
+      - name: Learning Paths
+      - name: Hands-On Labs
+  - id: pluralsight-skills-complete
+    name: Skills - Complete
+    type: subscription
+    description: All-access individual plan with unlimited access to over 6,500 courses.
+    entries:
+      - label: Subscription (annual billing)
+        name: subscription_annual
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$299/year'
+        userMultiplied: true
+      - label: Subscription (monthly billing)
+        name: subscription_monthly
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$29/month'
+        userMultiplied: true
+    elements:
+      - name: 6500+ Courses (All Libraries)
+      - name: Skill Assessments
+      - name: Learning Paths
+      - name: Certification Prep
+      - name: Hands-On Labs
+  - id: pluralsight-skills-business
+    name: Skills - Business / Enterprise
+    type: enterprise
+    description: Per-seat business and enterprise plans. Pricing is contact-sales. Skills GraphQL APIs
+      and legacy Reports / Licensing REST APIs are included as entitlements of these plans for
+      subscription, user, content, and progress management.
+    entries:
+      - label: Per-Seat Subscription
+        name: per_seat_subscription
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: true
+      - label: API Access
+        name: api_access
+        type: flat
+        metric: varies
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: Skills GraphQL API
+      - name: Reports REST API (legacy)
+      - name: Licensing REST API (legacy)
+      - name: SSO and SCIM
+      - name: Customer Success Manager
+      - name: Custom Channels
+  - id: pluralsight-flow
+    name: Flow
+    type: enterprise
+    description: Pluralsight Flow engineering metrics platform. Per-developer pricing, contact-sales.
+      Flow REST APIs (DORA, coding metrics, collaboration metrics, commits, pull requests, repos,
+      users, teams, integrations, tickets) are included as entitlements.
+    entries:
+      - label: Per-Developer Subscription
+        name: per_developer_subscription
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: true
+      - label: Flow API Access
+        name: flow_api_access
+        type: flat
+        metric: varies
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: Flow DORA Metrics API
+      - name: Flow Coding Metrics API
+      - name: Flow Collaboration Metrics API
+      - name: Flow Commits / Pull Requests / Repos APIs
+      - name: Flow Users / Teams / Integrations / Tickets APIs
+      - name: Source Control Integrations
+      - name: Issue Tracker Integrations
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - negotiated
+  - seat
+  plans:
+  - name: Skills - Core Tech
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - AI+
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - Cloud+
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - Security+
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - Data+
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - Complete
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Skills - Business / Enterprise
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - negotiated
+    - seat
+    periods:
+    - per-use
+    - year
+  - name: Flow
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - negotiated
+    - seat
+    periods:
+    - per-use
+    - year
